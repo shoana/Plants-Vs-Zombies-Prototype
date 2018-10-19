@@ -30,7 +30,7 @@ LEVEL ONE
 - game state: Zombies state, plant state
 - plant state: sunflower and peashooter
 - Sunflower increases the rate of sun
-- Lawn mower = number of rows
+- lawnMower = number of rows
 - enum: different states
 
 ==============================================================================================================================
@@ -41,7 +41,7 @@ Classes:
    >peashooter
 - Zombies 
 - Main Class:
-   >Sun
-   >Lawn mower
+   >sun
+   >lawn mower
    
 ==============================================================================================================================
