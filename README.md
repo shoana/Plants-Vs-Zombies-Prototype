@@ -6,9 +6,9 @@ Milestone 1: A text-based (i.e., console-based input and textual representation)
 
  Requirements:
  
- - Peashooterd
+ - Peashooter
  - Sunflowers
- - Zoobies
+ - Zombies
  - Suns(Money)
- - Life Bar of the Zoombie
+ - Zombies Life Bar 
  - Lawn Mower (lives)
