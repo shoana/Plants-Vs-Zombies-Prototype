@@ -1,9 +1,9 @@
 # SYSC3310_Group6_PvZ
 
 Plants vs. Zombies
-
+====================
 Milestone 1: A text-based (i.e., console-based input and textual representation), bare- bones but playable version of the game (sunflowers, one other type of plant, one type of zombie, just one level), UML modeling of the problem domain (class diagrams, sequence diagrams, complete variable and method signatures)
-
+==============================================================================================================================
  Requirements:
  
  - Peashooter
@@ -13,9 +13,29 @@ Milestone 1: A text-based (i.e., console-based input and textual representation)
  - Zombies Life Bar 
  - Lawn Mower (lives)
 
-testing Fatima
+==============================================================================================================================
+Game:
 
-testing
+LEVEL ONE
+- gird = new char[rows][columns]
+- # of grid spaces: to check if its full
+- bar increses as zombies decreases
+- sun tab
+- game state: Zombies state, plant state
+- plant state: sunflower and peashooter
+- Sunflower increases the rate of sun 
+- Lawn mower = # of rows
+- enum: different states
+==============================================================================================================================
 
-Check to see if branches 
+Classes:
 
+- Plants
+ - sunflowers
+ - peashooter
+- Zombies 
+- Main Class
+ - Sun
+ - Lawn mower
+ 
+==============================================================================================================================
