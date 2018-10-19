@@ -18,24 +18,23 @@ Game:
 
 LEVEL ONE
 - gird = new char[rows][columns]
-- # of grid spaces: to check if its full
+- number of grid spaces: to check if its full
 - bar increses as zombies decreases
 - sun tab
 - game state: Zombies state, plant state
 - plant state: sunflower and peashooter
 - Sunflower increases the rate of sun 
-- Lawn mower = # of rows
+- Lawn mower = number of rows
 - enum: different states
-==============================================================================================================================
 
+==============================================================================================================================
 Classes:
 
-- Plants
- - sunflowers
- - peashooter
+- Plants:
+   >sunflowers
+   >peashooter
 - Zombies 
 - Main Class
- - Sun
- - Lawn mower
- 
+   >Sun
+   >Lawn mower
 ==============================================================================================================================
