@@ -93,6 +93,33 @@ public class gamePlay {
 		return this.gameState;
 	}
 	
+	public void zombieTime(int numZombies)
+	{
+		//Change game state to zombie time.
+		//Still need to incorporate adding plants @ the same time.
+		gameState = gameEnum.ZOMBIE_TIME;
+		System.out.println("ZOMBIES ARE ATTACKING!!!");
+
+			
+			for(int i = 0; i < numZombies; i++)
+			{
+				grid[i][(nRows - 1)] = 'z';
+				
+			}
+			
+			System.out.println(toString());
+
+		//Clears the zombies from the board after they are finished.
+		for(int i = 0; i < numZombies; i++)
+		{
+			grid[i][nRows - 1] = ' ';
+		}
+		
+		gameState = plantOrZombie();
+		gameState = gameEnum.PLANT_TIME;
+		
+	}
+	
 	/**
 	 * Finding if the plant is < 2 away from the zombie
 	 * If plant is < 2 away, then the zombie will get killed
@@ -167,8 +194,11 @@ public class gamePlay {
 					scanner.nextLine();
 	            
 					if(row < 4 && row >= 0 && column < 4 && column >= 0) {
-	            			game.plantTurn(row, column, plantType);
-	            		
+	            				game.plantTurn(row, column, plantType);
+	            				if(peashooters.size() == 2) //Need to implement a timer
+	            				{
+	            					game.zombieTime(2);
+	            				}
 					}
 					else
 					{
