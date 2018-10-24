@@ -13,6 +13,9 @@ public class gamePlay {
 	private char plantType;
 	private ArrayList<Peashooter> peashooters = new ArrayList<Peashooter>();
 	private ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
+	private int counter; // counter to generate the suns in the sunflower class
+
+	
 	
 	/**
 	 * Constructor for the game play
@@ -119,6 +122,15 @@ public class gamePlay {
 		gameState = gameEnum.PLANT_TIME;
 		
 	}
+	
+	//////////////////////// added this for the sunflower class
+	public int getCounter() {
+		return this.counter;
+	}
+	public void setCounter(int c) {
+		this.counter = c;
+	}
+	////////////////////////
 	
 	/**
 	 * Finding if the plant is < 2 away from the zombie
