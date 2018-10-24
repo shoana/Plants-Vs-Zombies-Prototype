@@ -1,14 +1,19 @@
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class gamePlay {
+	
 	private int nRows, nColumns; //GRID DIMENSIONS
 	private char grid[][]; //EMPTY, PLANT, SUNFLOWER OR ZOMBIE
 	private gameEnum gameState;
-	private int sunshine; // sunshine to be used as currency to purchase sunflowers, peashooters
+	private static int sunshine; // sunshine to be used as currency to purchase sunflowers, peashooters
 	private static final int plantToZombieLength = 3; //Plant must be >= 3 steps away from zombie or else it will eat it.
 	private char plantType;
+	private ArrayList<Peashooter> peashooters = new ArrayList<Peashooter>();
+	private ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
+	
 	/**
 	 * Constructor for the game play
 	 * @param nRows
@@ -22,7 +27,7 @@ public class gamePlay {
 		
 		this.nRows = nRows;
 		this.nColumns = nColumns;
-		this.sunshine = sunshine;
+		gamePlay.sunshine = sunshine;
 		this.plantType = 'p';
 		this.gameState = gameEnum.PLANT_TIME;
 		this.grid = new char[nRows][nColumns];
@@ -40,7 +45,7 @@ public class gamePlay {
             }
         }
 		
-		this.sunshine = 0;
+		gamePlay.sunshine = 0;
 		this.gameState = gameEnum.PLANT_TIME;
 	}
 	
@@ -55,9 +60,32 @@ public class gamePlay {
 	{
 		gameState = gameEnum.PLANT_TIME;
 		
-			System.out.println("Options: ");
-			System.out.println("Sunshine: " + this.sunshine + "\nPEASHOOTER PRICE: 100 -  SUNFLOWER PRICE: 200" );
-			this.grid[row][column] = plantType;
+			
+			if(sunshine > 100) {
+				this.grid[row][column] = plantType;
+				System.out.println(toString());
+				
+				if(plantType == 'p')
+				{
+					sunshine -= 100;
+					Peashooter p = new Peashooter(100);
+					peashooters.add(p);
+					
+					
+				}
+				if(plantType == 's')
+				{
+					sunshine -= 200;
+					Sunflower s = new Sunflower(200);
+					sunflowers.add(s);
+				}
+				
+				
+			}
+			else {
+				System.out.println("You don't have enough sunshine");
+			}
+			
 			
 		
 		
@@ -81,6 +109,27 @@ public class gamePlay {
 	 public char getPlantType() {
 	   return this.plantType;
 	 }
+	 
+	 public String charToPlantType(char s)
+	 {
+		 String plant = "";
+		 if(s == 's')
+		 {
+			 plant += "Sunflower";
+		 }
+		 
+		 if(s == 'p')
+		 {
+			 plant += "Peashooter";
+		 }
+		 
+		 return plant;
+	 }
+	 
+	 public void setPlantType(char s)
+	 {
+		 this.plantType = s;
+	 }
 	 public gameEnum getGameState() {
 	    return this.gameState;
 	 }
@@ -99,24 +148,37 @@ public class gamePlay {
 	 
 	 
 	 public static void main(String args[]) {
-	        gamePlay game = new gamePlay(4,4,150);
+	        gamePlay game = new gamePlay(4,4,300);
 	        Scanner scanner = new Scanner(System.in);
-
+	        
 	        do { 
-	            System.out.println(game.toString());
-	            System.out.println(game.getPlantType() + ": Where do you want to put your peashooter? Enter row column");
-	            int row = scanner.nextInt();
-	            int column = scanner.nextInt();
-	            scanner.nextLine();
+	        		
+				System.out.println("Sunshine: " + sunshine + "\nPEASHOOTER PRICE: 100 -  SUNFLOWER PRICE: 200" );
+				System.out.println("Choose your plant type. You have " + sunshine + " Sunshines");
+				char plantType = scanner.next().charAt(0);
+				if(plantType == 's' || plantType == 'p')
+				{
+					game.setPlantType(plantType);
+				
+				
+					System.out.println("Where do you want to put your " + game.charToPlantType(plantType) +"? Enter row column");
+					int row = scanner.nextInt();
+					int column = scanner.nextInt();
+					scanner.nextLine();
 	            
-	            if(row < 4 && row >= 0 && column < 4 && column >= 0) {
-	            		game.plantTurn(row, column, 'p');
-	            }
-	            else
-	            {
-	            		System.out.println("Invalid input. please choose another location");
-	            }
-	            
+					if(row < 4 && row >= 0 && column < 4 && column >= 0) {
+	            			game.plantTurn(row, column, plantType);
+	            		
+					}
+					else
+					{
+						System.out.println("Invalid input. please choose another location");
+					}
+					}
+				
+				else {
+					System.out.println("Invalid input. Please choose 'p' or 's'");
+				}
 	            
 	        } while (game.getGameState() == gameEnum.PLANT_TIME);
 	        System.out.println( game.getGameState());
@@ -126,3 +188,4 @@ public class gamePlay {
 	 
 	 
 }
+
