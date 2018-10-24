@@ -1,0 +1,5 @@
+package pvz;
+
+class Sun {
+
+}
