@@ -1,0 +1,89 @@
+import java.io.Reader;
+import java.util.Scanner;
+
+public class pvzGamePlay{
+    
+    private int nRows, nColumns;    // Dimensions of grid
+    private char grid[][];          // EMPTY, PEASHOOTER, SUNFLOWER
+    private pvzEnum pvzState;  
+    private int sunMoney;           // number of suns collected to "buy" peashooters and sunflowers - later cherries
+    private char plantType; 		// 'p' = peashooter		's' = sunflower
+   
+    
+    public gamePlay(int nRows, int nColumns, int sunshine) {
+		if (nRows < 0 || nColumns < 0) 
+            throw new IllegalArgumentException("Grid must be a positive size");
+		
+		this.nRows = nRows;
+		this.nColumns = nColumns;
+		this.sunMoney = sunMoney;
+		this.plantType = 'p';
+		this.gameState = gameEnum.PLANT_TIME;
+		this.grid = new char[nRows][nColumns];
+	}
+    
+    public void reset() {
+        for (int r=0;r<nRows; r++) {
+            for (int c=0; c<nColumns; c++) {
+                this.grid[r][c] = ' ';
+            }
+        }     
+        this.sunMoney = 0;
+        this.pvzState = pvzEnum.IN_PROGRESS;
+    }
+    
+
+    public pvzEnum placePlant(int row, int column, char plantType)  {
+    	pvzState = pvzEnum.PLANT_TIME;
+		System.out.println("Suns: " + this.sunMoney + "\nPEASHOOTER PRICE: 100 -  SUNFLOWER PRICE: 150" ); // not sure about the prices
+		this.grid[row][column] = plantType;
+		this.pvzState = plantVsZombie()
+		return pvzState; 
+    }
+    
+    public pvzEnum plantVsZombie() {
+		/////figure this out
+		return gameEnum.PLANT_TIME;
+	}
+     
+    public int getPlantType() {
+        return plantType;
+    }
+    
+    public pvzEnum getPvZState() {
+        return pvzState;
+    }
+    
+    // kept this the same, let's change if we need to (i dont think we do)
+    public String toString() {
+        String s = "";
+        for (int r=0;r < nRows; r++ ) {
+            for (int c=0; c < nColumns; c++) {
+                s += grid[r][c] + " | ";
+            }
+            s += "\n";
+        }
+        return s;
+    }
+    
+    public static void main(String args[]) {
+    	gamePlay game = new gamePlay (1, 7, 100); // have to change this
+    	Scanner scanner = new Scanner(System.in);
+    	
+    	do { 
+            System.out.println(game.toString());
+            System.out.println(game.getPlantType() + ": Where do you want to place your peashooter? Row Column: ");
+            int row = scanner.nextInt();
+            int column = scanner.nextInt();
+            scanner.nextLine();
+            
+            if(row < 1 && row >= 0 && column < 7 && column >= 0) { // prob have to change this as well
+            	game.plantTurn(row, column, 'p');
+            } else {
+            	System.out.println("Try Again! Choose another location to place the peashooter: ");
+            }
+    	}
+    	while (game.getPvZState() == pvzEnum.PLANT_TIME);
+        System.out.println( game.getgetPvZState());
+    }
+}
