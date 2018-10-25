@@ -15,7 +15,6 @@ public class gamePlay {
 	private ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
 	private ArrayList<Sun> suns = new ArrayList<Sun>();
 	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
-	private int counter; // counter to generate the suns in the sunflower class
 
 	
 	
@@ -80,7 +79,7 @@ public class gamePlay {
 				}
 				if(plantType == 's')
 				{
-					sunshine -= 200;
+					sunshine -=200;
 					Sunflower s = new Sunflower(200);
 					sunflowers.add(s);
 				}
@@ -88,7 +87,7 @@ public class gamePlay {
 				
 			}
 			else {
-				System.out.println("You don't have enough sunshine");
+				System.out.println("You don't have enough sunshine. Collect more suns.");
 			}
 		
 		this.gameState = plantOrZombie();
