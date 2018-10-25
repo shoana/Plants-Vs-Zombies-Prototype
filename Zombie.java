@@ -10,7 +10,7 @@ public class Zombie {
 		//super();
 		this.lifeRemaining = lifeRemaining;
 		this.positionX = positionX;
-		this.positionY = positionY
+		this.positionY = positionY;
 	}
 	
 	public int getLifeRemaining(){
@@ -18,7 +18,7 @@ public class Zombie {
 	}
 	
 	public int setLifeRemaining(){
-		this.lifeRemaining = lifeRemaining;
+		return this.lifeRemaining = lifeRemaining;
 	}
 	
 	public int getPositionX(){
@@ -26,7 +26,7 @@ public class Zombie {
 	}
 	
 	public int setPositionX(){
-		this.positionX = positionX;
+		return this.positionX = positionX;
 	}
 	
 	public int getPositionY(){
@@ -34,15 +34,16 @@ public class Zombie {
 	}
 	
 	public int setPositionY(){
-		this.positionY = positionY;
+		return this.positionY = positionY;
 	}
 	
 	public int eat (){
 		
+	}
 	
 	public int walk (int positionX, int positionY) {
 		if (this.lifeRemaining != 0) { //check if zombie is still living
-			if (positionRow <= 0) {
+			if (positionRow <= 0) { 
 				return -1; // game lost
 			}
 			if () // check is next spot is empty
