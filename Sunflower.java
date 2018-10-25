@@ -1,19 +1,19 @@
 import javax.swing.Timer;
 
 public class Sunflower extends gamePlay {
+    private int counter;
     private boolean collect;
     private static final int money = 25;
 
     public Sunflower() {
-    	
+    	counter = 3;
         this.collect = false;
     }
     
     //Generates a sun after the counter is 0
     public void generateSun() {
-        if (getCounter() == 0) {
+        if (counter == 0) {
             System.out.println("Collect the Sun");
-            this.setCounter(3);
             this.collect = true;
         }
     }
@@ -26,5 +26,9 @@ public class Sunflower extends gamePlay {
     
     public boolean isCollect() {
         return collect;
+    }
+    
+    public static void main(){
+        
     }
 }
