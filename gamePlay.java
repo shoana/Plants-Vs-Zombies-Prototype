@@ -14,6 +14,7 @@ public class gamePlay {
 	private ArrayList<Peashooter> peashooters = new ArrayList<Peashooter>();
 	private ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
 	private ArrayList<Sun> suns = new ArrayList<Sun>();
+	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
 	private int counter; // counter to generate the suns in the sunflower class
 
 	
@@ -177,9 +178,28 @@ public class gamePlay {
 	   
 	 }
 	 
+	private gameEnum findWinner() {
+		 
+		 gameEnum newGameState = this.gameState;
+		 
+		 if(newGameState == gameEnum.PLANT_TIME) {
+			 if(zombies.isEmpty()) {
+				 
+				 System.out.println("Plants have won!");
+				 return gameEnum.PLANTS_WIN;
+			 }
+			 else {
+				 System.out.println("Zombies have won!");
+				 return gameEnum.ZOMBIES_WIN;
+		
+			 } 
+		 }
+
+		 return gameEnum.IN_PROGRESS;
+	 }
 	 
 	 public static void main(String args[]) {
-	        gamePlay game = new gamePlay(4,4,300);
+	        gamePlay game = new gamePlay(1,7,200); //1 row and 7 columns 
 	        Scanner scanner = new Scanner(System.in);
 	        
 	        do { 
