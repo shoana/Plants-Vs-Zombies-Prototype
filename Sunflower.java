@@ -1,10 +1,8 @@
 import javax.swing.Timer;
 
 public class Sunflower extends gamePlay {
-    private int cost;
     private boolean collect;
     private static final int money = 25;
-    Timer sunProduceTimer;
 
     public Sunflower() {
     	
