@@ -89,9 +89,6 @@ public class gamePlay {
 			else {
 				System.out.println("You don't have enough sunshine");
 			}
-			
-			
-		
 		
 		this.gameState = plantOrZombie();
 		return this.gameState;
@@ -216,10 +213,6 @@ public class gamePlay {
 	            
 	        } while (game.getGameState() == gameEnum.PLANT_TIME);
 	        System.out.println( game.getGameState());
-	       
-	    }
-	 
-	 
-	 
+	 }
 }
 
