@@ -13,6 +13,7 @@ public class gamePlay {
 	private char plantType;
 	private ArrayList<Peashooter> peashooters = new ArrayList<Peashooter>();
 	private ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
+	private ArrayList<Sun> suns = new ArrayList<Sun>();
 	private int counter; // counter to generate the suns in the sunflower class
 
 	
