@@ -25,16 +25,16 @@ public class Zombie {
 		return positionX;
 	}
 	
-	public int setPositionX(){
-		return this.positionX = positionX;
+	public void setPositionX(int positionX){
+		this.positionX = positionX;
 	}
 	
 	public int getPositionY(){
 		return positionY;
 	}
 	
-	public int setPositionY(){
-		return this.positionY = positionY;
+	public void setPositionY(int positionY){
+		this.positionY = positionY;
 	}
 	
 	public int eat (){
