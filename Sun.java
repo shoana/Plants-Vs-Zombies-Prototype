@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-class Sun {
+class Sun //(?){
 	
     static Timer timer; //= new Timer();
     static int seconds; //= 0;
@@ -21,7 +21,7 @@ class Sun {
 		int sun = r.nextInt(10);
 		
 			
-	if (type == "sunflower")
+	if (type == "sunflower") //isCollect == true, money from sunflower gets add
     {
         //Create a new timer
         Timer timer = new Timer();
