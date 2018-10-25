@@ -1,4 +1,4 @@
-import javax.swing.Timer;
+//import javax.swing.Timer;
 
 public class Sunflower extends gamePlay {
     private int counter;
@@ -14,7 +14,12 @@ public class Sunflower extends gamePlay {
     public void generateSun() {
         if (counter == 0) {
             System.out.println("Collect the Sun");
-            this.collect = true;
+            if(isCollect()){
+                //should the user click on the sun, it will disapear -- need function from sun class
+                this.collect = true;
+            } else {
+                this.collect = false;
+            }
         }
     }
     
@@ -28,7 +33,11 @@ public class Sunflower extends gamePlay {
         return collect;
     }
     
-    public static void main(){
-        
+    public static void main(String args[]) {
+        if (getPlantType() == 's'){
+            counter --;
+            generateSun();
+            collectSun();         
+        }
     }
 }
