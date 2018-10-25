@@ -1,17 +1,18 @@
 //import javax.swing.Timer;
 
 public class Sunflower extends gamePlay {
-    private int counter;
+    static int counter; //static so that it can be used in the main function
     private boolean collect;
     private static final int money = 25;
 
     public Sunflower() {
+        super(counter, counter, counter); //change, but needed to define super class
     	counter = 3;
         this.collect = false;
     }
     
     //Generates a sun after the counter is 0
-    public void generateSun() {
+    public static void generateSun() {
         if (counter == 0) {
             System.out.println("Collect the Sun");
             if(isCollect()){
@@ -34,7 +35,7 @@ public class Sunflower extends gamePlay {
     }
     
     public static void main(String args[]) {
-        if (getPlantType() == 's'){
+        if (getPlantType() == 's'){ //need to change planttype to static in gamePlay and make plantType char to static as well
             counter --;
             generateSun();
             collectSun();         
