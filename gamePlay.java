@@ -124,15 +124,6 @@ public class gamePlay {
 		
 	}
 	
-	//////////////////////// added this for the sunflower class
-	public int getCounter() {
-		return this.counter;
-	}
-	public void setCounter(int c) {
-		this.counter = c;
-	}
-	////////////////////////
-	
 	/**
 	 * Finding if the plant is < 2 away from the zombie
 	 * If plant is < 2 away, then the zombie will get killed
