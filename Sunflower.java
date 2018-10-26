@@ -15,6 +15,22 @@ public class Sunflower extends gamePlay {
         collect = false;
     }
     
+    public int getPositionX(){
+		return positionX;
+	}
+	
+	public void setPositionX(int positionX){
+		this.positionX = positionX;
+	}
+	
+	public int getPositionY(){
+		return positionY;
+	}
+	
+	public void setPositionY(int positionY){
+		this.positionY = positionY;
+	}
+	
     //Generates a sun after the counter is 0
     public static void enableSun () {
         if (counter == 0) {
