@@ -3,7 +3,7 @@ import java.util.*;
 
 class Sun {
 
-	private int sun;	
+	private static int sun;	
 		
 	public Sun() {
 		this.sun = sun;
