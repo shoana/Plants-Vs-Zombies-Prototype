@@ -12,7 +12,7 @@ public class gamePlay {
 	private gameEnum gameState;
 	private static int sunshine; // sunshine to be used as currency to purchase sunflowers, peashooters
 	private static final int plantToZombieLength = 3; //Plant must be >= 3 steps away from zombie or else it will eat it.
-	private char plantType;
+	private static char plantType;
 	private static int nTurns = 0;
 	private static ArrayList<Peashooter> peashooters = new ArrayList<Peashooter>();
 	private static ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
@@ -32,7 +32,7 @@ public class gamePlay {
 		this.nRows = nRows;
 		this.nColumns = nColumns;
 		gamePlay.sunshine = sunshine;
-		this.plantType = 'p';
+		plantType = 'p';
 		this.gameState = gameEnum.PLANT_TIME;
 		this.grid = new char[nRows][nColumns];
 		
@@ -235,8 +235,8 @@ public class gamePlay {
 		
 	}
 	
-	 public char getPlantType() {
-	   return this.plantType;
+	 public static char getPlantType() {
+	   return plantType;
 	 }
 	 
 	 public String charToPlantType(char s)
