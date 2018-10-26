@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
- 
+
 public class gamePlay {
 	
 	private int nRows, nColumns; //GRID DIMENSIONS
@@ -17,7 +17,8 @@ public class gamePlay {
 	private static ArrayList<Peashooter> peashooters = new ArrayList<Peashooter>();
 	private static ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
 	private static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
-	
+	private int plantsEaten = 0; 
+	private int zombiesEaten = 0;
 	/**
 	 * Constructor for the game play
 	 * @param nRows
@@ -34,7 +35,8 @@ public class gamePlay {
 		gamePlay.sunshine = sunshine;
 		plantType = 'p';
 		this.gameState = gameEnum.PLANT_TIME;
-		this.grid = new char[nRows][nColumns];		
+		this.grid = new char[nRows][nColumns];
+		
 	}
 	
 	/**
@@ -62,7 +64,7 @@ public class gamePlay {
 	public gameEnum plantTurn(int row, int column, char plantType)
 	{
 		gameState = gameEnum.PLANT_TIME;
-		
+		Scanner scanner = new Scanner(System.in);
 			
 			if(sunshine >= 100) {
 				this.grid[row][column] = plantType;
@@ -79,13 +81,13 @@ public class gamePlay {
 				}
 				if(plantType == 's')
 				{
-					sunshine -= 50;
-					Sunflower s = new Sunflower(50, row, column);
 					System.out.println(" Do you want to collect the sun? (y/n) ");
 					char sun = scanner.next().charAt(0);
 					if(sun == 'y'){
-						sunshine +=25;
+						sunshine += 100;
 					}
+					sunshine -= 50;
+					Sunflower s = new Sunflower(200, row, column);
 					sunflowers.add(s);
 				}
 				
@@ -110,14 +112,20 @@ public class gamePlay {
 		System.out.println(" ");
 		Random r = new Random();
 		
-			for(int i = 0; i < numZombies; i++)
+		if(zombiesEaten <= 1) {
+			for(int i = 0; i < 1; i++)
 			{
-				int random = 1;//r.nextInt(nRows);
+				int random = r.nextInt(nRows);
+				//int random2 = 2;
 				grid[random][(nRows - 1)] = 'z';
-				Zombie z = new Zombie(random,(nRows -1)); //Add a new zombie to the list
+				//grid[random2][(nRows - 1)] = 'z';
+				Zombie z = new Zombie(random, (nRows -1)); //Add a new zombie to the list
+				//Zombie z2 = new Zombie(random2, (nRows - 1));
 				zombies.add(z);
+				//zombies.add(z2);
 			}
-			
+		}
+		
 			
 		System.out.println(toString());
 		gameState = plantOrZombie();
@@ -133,60 +141,68 @@ public class gamePlay {
 	 */
 	public gameEnum plantOrZombie()
 	{
+		
 		//Keeping track of how many zombies and plants have died for game play
-		int plantsEaten = 0; 
-		int zombiesEaten = 0;
+		
 		
 		//EDGE CASES:
 		//If there are no peashooters left and zombies are still left, zombies win
-		if((peashooters.size() == 0 && zombies.size() > 0))
+		if((peashooters.size() == 0 && sunflowers.size() == 0 && zombies.size() > 0))
 		{
-			System.out.println("THE ZOMBIES WON! THEY ATE YOU!");
+			
 			return gameEnum.ZOMBIES_WIN;
 		}
 				
 		//If there are no zombies left, peashooters automatically win
-		if(zombies.size() == 0)
+		if(zombiesEaten > 1)
 		{
+			//System.out.println("sadjasd");
 			System.out.println(toString());
-			System.out.println("YAY! YOU KILLED THE ALL THE ZOMBIES!");
 			return gameEnum.PLANTS_WIN;
 		}
 		
-		Iterator<Peashooter> it = peashooters.iterator();
-		Iterator<Zombie> it2 = zombies.iterator();
 		
-				while(it.hasNext())
+		//Iterator<Zombie> it2 = zombies.iterator();
+		
+				for(Iterator<Peashooter> it = peashooters.iterator(); it.hasNext();)
 				{
-					while(it2.hasNext())
+					Peashooter p = it.next();
+					
+					
+					for(Iterator<Zombie> it2 = zombies.iterator(); it2.hasNext();)
 					{
-						if(it.hasNext() && it2.hasNext())
-						{
-							Peashooter p = it.next();
+						
+						
+						
+						//if(it2.hasNext())
+						//{
+							
 							Zombie b = it2.next();
 						
-						if(b.getPositionY() == 0)
-						{
-							return gameEnum.ZOMBIES_WIN;
-						}
 						
-						if((p.getPositionX() == b.getPositionX()))
-						{
-							if(((b.getPositionY() - p.getPositionY())) < 3)
+							if(b.getPositionY() == 0)
 							{
-								it.remove();
-								grid[p.getPositionX()][p.getPositionY()] = ' ';
-								b.setPositionY(b.getPositionY() - 1);
-								grid[b.getPositionX()][b.getPositionY()] = 'z';
-								plantsEaten++;
+								return gameEnum.ZOMBIES_WIN;
 							}
+						
+							if((p.getPositionX() == b.getPositionX()))
+							{
+								if(((b.getPositionY() - p.getPositionY())) < 3)
+								{
+									//System.out.println("REACHED");
+									it.remove();
+									grid[p.getPositionX()][p.getPositionY()] = ' ';
+									b.setPositionY(b.getPositionY() - 1);
+									grid[b.getPositionX()][b.getPositionY()] = 'z';
+									plantsEaten++;
+								}
 							else
 							{
 								it2.remove();
 								grid[b.getPositionX()][b.getPositionY()] = ' ';
 								zombiesEaten++;
 							}
-						}
+						//}
 						
 					}
 				}
@@ -195,11 +211,12 @@ public class gamePlay {
 				Iterator<Sunflower> it3 = sunflowers.iterator();
 				Iterator<Zombie> it4 = zombies.iterator();
 						
-				while(it3.hasNext())
+				while(it3.hasNext()) {
+					Sunflower p = it3.next();
+				
 					while(it4.hasNext())
 					{
-						if(it3.hasNext() && it4.hasNext()) {
-						Sunflower p = it3.next();
+						
 						Zombie b = it4.next();
 						
 						if(b.getPositionY() == 0)
@@ -228,8 +245,21 @@ public class gamePlay {
 					}
 				}
 				
-		
-						
+				
+		if(zombiesEaten > 1)
+		{
+			//System.out.println("sadjasd");
+			System.out.println(toString());
+			return gameEnum.PLANTS_WIN;
+		}
+		//EDGE CASES:
+		//If there are no peashooters left and zombies are still left, zombies win
+		if((peashooters.size() == 0 && sunflowers.size() == 0 && zombies.size() > 0))
+		{
+					
+			return gameEnum.ZOMBIES_WIN;
+		}
+					
 					
 		System.out.println(plantsEaten + " Plants have been eaten!");
 		System.out.println(zombiesEaten + " Zombies have been destroyed!");
@@ -294,18 +324,10 @@ public class gamePlay {
 	        Scanner scanner = new Scanner(System.in);
 	        
 	        do { 
-	        		System.out.println("Sunshine: " + sunshine + "\nPEASHOOTER PRICE: 100 -  SUNFLOWER PRICE: 200");
+	        		
+				System.out.println("Sunshine: " + sunshine + "\nPEASHOOTER PRICE: 100 -  SUNFLOWER PRICE: 200" );
 				System.out.println("Choose your plant type. You have " + sunshine + " Sunshines");
-			
 				char plantType = scanner.next().charAt(0);
-
-				System.out.println(" Do you want to collect the sun? (y/n) ");
-				char sun = scanner.next().charAt(0);
-				if(sun == 'y'){
-					sunshine +=25;
-				}
-			
-				System.out.println("Now you have " + sunshine + "sunshine!");
 				if(plantType == 's' || plantType == 'p')
 				{
 					game.setPlantType(plantType);
@@ -315,7 +337,7 @@ public class gamePlay {
 					int row = scanner.nextInt();
 					int column = scanner.nextInt();
 					scanner.nextLine();
-	            			
+	            
 					if(row < 6 && row >= 0 && column < 6 && column >= 0) {
 	            			game.plantTurn(row, column, plantType);
 	            			if(nTurns - 2 == 0)
@@ -333,7 +355,7 @@ public class gamePlay {
 					}
 				
 				else {
-					System.out.println("Invalid input. Please choose 'p' or 's' for plants and, 'y' and 'n' for collecting sunshine");
+					System.out.println("Invalid input. Please choose 'p' or 's'");
 				}
 	            
 	        } while (game.getGameState() == gameEnum.PLANT_TIME);
