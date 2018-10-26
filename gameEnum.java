@@ -1,4 +1,3 @@
-
 public enum gameEnum {
 	PLANT_TIME, ZOMBIE_TIME, PLANTS_WIN, ZOMBIES_WIN;
 }
