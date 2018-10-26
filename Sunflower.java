@@ -1,12 +1,16 @@
-package del1;
-
 public class Sunflower extends gamePlay {
-    static int counter; //static so that it can be used in the main function
+	private int cost;
+	private int positionX;
+	private int positionY;
+    private static int counter; //static so that it can be used in the main function
     private static boolean collect;
     private static final int money = 25;
 
-    public Sunflower() {
-        super(counter, counter, counter); //change, but needed to define super class
+    public Sunflower (int cost, int positionX, int positionY) {
+    	super(cost, positionX, positionY);
+    	this.cost = cost;
+		this.positionX = positionX;
+		this.positionY = positionY;
     	counter = 3;
         collect = false;
     }
