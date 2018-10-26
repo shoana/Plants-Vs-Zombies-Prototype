@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
-
+ 
 public class gamePlay {
 	
 	private int nRows, nColumns; //GRID DIMENSIONS
