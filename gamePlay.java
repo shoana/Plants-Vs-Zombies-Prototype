@@ -115,7 +115,7 @@ public class gamePlay {
 			{
 				int random = 1;//r.nextInt(nRows);
 				grid[random][(nRows - 1)] = 'z';
-				Zombie z = new Zombie(random, (nRows -1)); //Add a new zombie to the list
+				Zombie z = new Zombie(random,(nRows -1)); //Add a new zombie to the list
 				zombies.add(z);
 			}
 			
