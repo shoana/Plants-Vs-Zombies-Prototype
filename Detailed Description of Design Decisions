@@ -13,6 +13,6 @@ This grid uses nRows and nColumns to keep tract of the board dimensions.
 grid [nRows][nColumns] -- using the specific cordinate on the board, the user can place a peashooter or a sunflower. 
 This grid also helped us to randomly place zombies on the board. 
 The variable sunshine is the money that accumulates when collecting suns, this is also the currency used to buy plants.
-We have made a design decision to kill a zombie if it is 3 or more spaces away from the plant as we have no way of showing the slow demise of the zombie as the peashooter shoots its peas. 
-If the zombie is less than 3 spaces away from the plant, the plant will be eaten when the plant is a space before the zombie.
+We have made a design decision to kill a zombie if the plant is 2 spaces or more away from the zombie as we have no way of showing the slow demise of the zombie as the peashooter shoots its peas. 
+If the zombie is less than 2 spaces away from the plant, the plant will be eaten when the plant is a space before the zombie.
 The zombies, peashooters, and sunflowers are stored and implented using array lists because there are multiple of each type and the size of the ArrayList grows automatically as elements are added to it.
