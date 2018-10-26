@@ -12,7 +12,7 @@ public class Sunflower extends gamePlay {
     }
     
     //Generates a sun after the counter is 0
-    public static void generateSun() {
+    public static void enableSun () {
         if (counter == 0) {
             System.out.println("Collect the Sun");
             if(isCollect()){
@@ -37,7 +37,7 @@ public class Sunflower extends gamePlay {
     public static void main(String args[]) {
         if (getPlantType() == 's'){ //need to change planttype to static in gamePlay and make plantType char to static as well
             counter --;
-            generateSun();
+            enableSun();
             collectSun();         
         }
     }
