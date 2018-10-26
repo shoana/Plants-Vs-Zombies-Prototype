@@ -10,11 +10,9 @@ class Sun {
 		
 	}
 	
-	public int generateSun(){
-		 
+	public static int generateSun(){
 		Random r = new Random();
 		return int sun = r.nextInt(20);
-		
 	}
 	
 }
