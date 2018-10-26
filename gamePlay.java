@@ -298,7 +298,7 @@ public class gamePlay {
 				System.out.println("Choose your plant type. You have " + sunshine + " Sunshines");
 			
 				char plantType = scanner.next().charAt(0);
-				generateSun();
+
 				System.out.println(" Do you want to collect the sun? (y/n) ");
 				char sun = scanner.next().charAt(0);
 				if(sun == 'y'){
