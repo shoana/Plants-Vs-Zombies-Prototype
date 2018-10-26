@@ -19,14 +19,14 @@ public class gamePlay {
 	private static ArrayList<Peashooter> peashooters = new ArrayList<Peashooter>();
 	private static ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
 	private static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
-	private int plantsEaten = 0; 
-	private int zombiesEaten = 0;
+	private int plantsEaten = 0; // counter to keep track of the number of plants that are eaten by the zombies
+	private int zombiesEaten = 0; // counter to keep track of the number of zombies that are killed
 
 	/**
 	 * Constructor for the game play
-	 * @param nRows
-	 * @param nColumns
-	 * @param sunshine
+	 * @param int nRows
+	 * @param int nColumns
+	 * @param int sunshine
 	 */
 	public gamePlay(int nRows, int nColumns, int sunshine)
 	{
@@ -59,9 +59,9 @@ public class gamePlay {
 
 	/**
 	 * Code for the plant's turn 
-	 * @param row
-	 * @param column
-	 * @param plantType
+	 * @param int row
+	 * @param int column
+	 * @param char plantType
 	 * @return
 	 */
 	public gameEnum plantTurn(int row, int column, char plantType)
@@ -103,7 +103,10 @@ public class gamePlay {
 		setGameState(gameEnum.PLANT_TIME);
 		return this.gameState;
 	}
-
+	/**
+	 * Code for zombie time. It allows the user to know when the zombies start appearing
+	 * @param int numZombies
+	 */
 	public void zombieTime(int numZombies)
 	{
 
@@ -138,8 +141,8 @@ public class gamePlay {
 	/**
 	 * Finding if the plant is < 2 away from the zombie
 	 * If plant is < 2 away, then the zombie will get killed
-	 * @param row
-	 * @param column
+	 * @param int row
+	 * @param int column
 	 * @return
 	 */
 	public gameEnum plantOrZombie()
