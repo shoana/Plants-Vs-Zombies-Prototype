@@ -142,6 +142,7 @@ public class gamePlay {
 		//If there are no peashooters left and zombies are still left, zombies win
 		if((peashooters.size() == 0 && zombies.size() > 0))
 		{
+			System.out.println("THE ZOMBIES WON! THEY ATE YOU!");
 			return gameEnum.ZOMBIES_WIN;
 		}
 				
@@ -149,6 +150,7 @@ public class gamePlay {
 		if(zombies.size() == 0)
 		{
 			System.out.println(toString());
+			System.out.println("YAY! YOU KILLED THE ALL THE ZOMBIES!");
 			return gameEnum.PLANTS_WIN;
 		}
 		
