@@ -17,7 +17,7 @@ public class Zombie {
 		return lifeRemaining;
 	}
 	
-	public void setLifeRemaining(){
+	public void setLifeRemaining(int lifeRemaining){
 		this.lifeRemaining = lifeRemaining;
 	}
 	
