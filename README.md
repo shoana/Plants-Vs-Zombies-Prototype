@@ -1,10 +1,7 @@
 # SYSC3310_Group6_PvZ
 
 Authors:
-> Sarah Lamonica
-> Shoana Sharma
-> Fatima Hashi 
-> Mounica Pillarisetty
+> Sarah Lamonica Shoana Sharma Fatima Hashi Mounica Pillarisetty
 
 Plants vs. Zombies
 ====================
