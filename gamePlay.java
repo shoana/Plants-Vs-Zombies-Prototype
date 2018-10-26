@@ -34,9 +34,7 @@ public class gamePlay {
 		gamePlay.sunshine = sunshine;
 		plantType = 'p';
 		this.gameState = gameEnum.PLANT_TIME;
-		this.grid = new char[nRows][nColumns];
-		this.money = 50; //initializing the money 
-		
+		this.grid = new char[nRows][nColumns];		
 	}
 	
 	/**
