@@ -17,8 +17,8 @@ public class Zombie {
 		return lifeRemaining;
 	}
 	
-	public int setLifeRemaining(){
-		return this.lifeRemaining = lifeRemaining;
+	public void setLifeRemaining(){
+		this.lifeRemaining = lifeRemaining;
 	}
 	
 	public int getPositionX(){
