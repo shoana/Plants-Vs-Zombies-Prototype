@@ -79,14 +79,13 @@ public class gamePlay {
 				}
 				if(plantType == 's')
 				{
-					generateSun();
+					sunshine -= 50;
+					Sunflower s = new Sunflower(50, row, column);
 					System.out.println(" Do you want to collect the sun? (y/n) ");
 					char sun = scanner.next().charAt(0);
 					if(sun == 'y'){
 						sunshine +=25;
 					}
-					sunshine -= 200;
-					Sunflower s = new Sunflower(200, row, column);
 					sunflowers.add(s);
 				}
 				
