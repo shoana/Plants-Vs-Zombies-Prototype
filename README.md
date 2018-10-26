@@ -1,11 +1,19 @@
 # SYSC3310_Group6_PvZ
 
 Authors:
-> Sarah Lamonica Shoana Sharma Fatima Hashi Mounica Pillarisetty
+> Sarah Lamonica
+> Shoana Sharma 
+> Fatima Hashi 
+> Mounica Pillarisetty
 
 Plants vs. Zombies
-====================
-Milestone 1: A text-based (i.e., console-based input and textual representation), bare- bones but playable version of the game (sunflowers, one other type of plant, one type of zombie, just one level), UML modeling of the problem domain (class diagrams, sequence diagrams, complete variable and method signatures)
+
+Milestone 1: 
+
+- Text-based, bare-bones playable version of the game
+- To include sunflowers, one other type of plant, one type of zombie at Level 1
+- UML models (class & sequence diagrams)
+
 ==============================================================================================================================
  Requirements:
  
