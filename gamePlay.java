@@ -35,6 +35,7 @@ public class gamePlay {
 		plantType = 'p';
 		this.gameState = gameEnum.PLANT_TIME;
 		this.grid = new char[nRows][nColumns];
+		this.money = 50; //initializing the money 
 		
 	}
 	
@@ -80,6 +81,12 @@ public class gamePlay {
 				}
 				if(plantType == 's')
 				{
+					generateSun();
+					System.out.println(" Do you want to collect the sun? (y/n) ");
+					char sun = scanner.next().charAt(0);
+					if(sun == 'y'){
+						sunshine +=25;
+					}
 					sunshine -= 200;
 					Sunflower s = new Sunflower(200, row, column);
 					sunflowers.add(s);
@@ -288,10 +295,18 @@ public class gamePlay {
 	        Scanner scanner = new Scanner(System.in);
 	        
 	        do { 
-	        		
-				System.out.println("Sunshine: " + sunshine + "\nPEASHOOTER PRICE: 100 -  SUNFLOWER PRICE: 200" );
+	        		System.out.println("Sunshine: " + sunshine + "\nPEASHOOTER PRICE: 100 -  SUNFLOWER PRICE: 200");
 				System.out.println("Choose your plant type. You have " + sunshine + " Sunshines");
+			
 				char plantType = scanner.next().charAt(0);
+				generateSun();
+				System.out.println(" Do you want to collect the sun? (y/n) ");
+				char sun = scanner.next().charAt(0);
+				if(sun == 'y'){
+					sunshine +=25;
+				}
+			
+				System.out.println("Now you have " + sunshine + "sunshine!");
 				if(plantType == 's' || plantType == 'p')
 				{
 					game.setPlantType(plantType);
@@ -301,7 +316,7 @@ public class gamePlay {
 					int row = scanner.nextInt();
 					int column = scanner.nextInt();
 					scanner.nextLine();
-	            
+	            			
 					if(row < 6 && row >= 0 && column < 6 && column >= 0) {
 	            			game.plantTurn(row, column, plantType);
 	            			if(nTurns - 2 == 0)
@@ -319,7 +334,7 @@ public class gamePlay {
 					}
 				
 				else {
-					System.out.println("Invalid input. Please choose 'p' or 's'");
+					System.out.println("Invalid input. Please choose 'p' or 's' for plants and, 'y' and 'n' for collecting sunshine");
 				}
 	            
 	        } while (game.getGameState() == gameEnum.PLANT_TIME);
