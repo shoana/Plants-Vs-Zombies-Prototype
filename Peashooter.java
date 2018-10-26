@@ -1,10 +1,11 @@
-
 public class Peashooter {
+	private int cost;
 	private int positionX;
 	private int positionY;
 	
-	public Peashooter(int positionX, int positionY)
+	public Peashooter(int cost, int positionX, int positionY)
 	{
+		this.cost = cost;
 		this.positionX = positionX;
 		this.positionY = positionY;
 	}
@@ -24,5 +25,4 @@ public class Peashooter {
 	public void setPositionY(int positionY){
 		this.positionY = positionY;
 	}
-	
 }
