@@ -12,7 +12,7 @@ class Sun {
 	
 	public static int generateSun(){
 		Random r = new Random();
-		return int sun = r.nextInt(20);
+		return sun = r.nextInt(20);
 	}
 	
 }
