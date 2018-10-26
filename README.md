@@ -1,10 +1,10 @@
 # SYSC3310_Group6_PvZ
 
 Authors:
-> Sarah Lamonica
-> Shoana Sharma 
-> Fatima Hashi 
-> Mounica Pillarisetty
+- Sarah Lamonica
+- Shoana Sharma 
+- Fatima Hashi 
+- Mounica Pillarisetty
 
 Plants vs. Zombies
 
@@ -14,7 +14,7 @@ Milestone 1:
 - To include sunflowers, one other type of plant, one type of zombie at Level 1
 - UML models (class & sequence diagrams)
 
-==============================================================================================================================
+==============================================================================
  Requirements:
  
  - Peashooter
@@ -24,8 +24,7 @@ Milestone 1:
  - Zombies Life Bar 
  - Lawn Mower (lives)
 
-==============================================================================================================================
-Game:
+==============================================================================
 
 LEVEL ONE
 - gird = new char[rows][columns]
@@ -38,15 +37,14 @@ LEVEL ONE
 - lawnMower = number of rows
 - enum: different states
 
-==============================================================================================================================
+===============================================================================
 Classes:
 
-- Plants:
-   >sunflowers
-   >peashooter
-- Zombies 
-- Main Class:
-   >sun
-   >lawn mower
+- Plants
+   - sunflowers
+   - peashooter
+- Zombie
+- Main Class
+
    
-==============================================================================================================================
+=================================================================================
