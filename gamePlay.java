@@ -11,7 +11,7 @@ public class gamePlay {
 
 	private int nRows, nColumns; //GRID DIMENSIONS
 	private char grid[][]; //EMPTY, PLANT, SUNFLOWER OR ZOMBIE
-	private gameEnum gameState;
+	private gameEnum gameState; // holds the state of the game
 	private static int sunshine; // sunshine to be used as currency to purchase sunflowers, peashooters
 	private static final int plantToZombieLength = 3; //Plant must be >= 3 steps away from zombie or else it will eat it.
 	private static char plantType;
@@ -27,6 +27,7 @@ public class gamePlay {
 	 * @param int nRows
 	 * @param int nColumns
 	 * @param int sunshine
+	 * @throws IllegalArgumentException is the <row,column> is out of range or if the location is not adjacent to a filled lower spot
 	 */
 	public gamePlay(int nRows, int nColumns, int sunshine)
 	{
@@ -177,12 +178,6 @@ public class gamePlay {
 
 			for(Iterator<Zombie> it2 = zombies.iterator(); it2.hasNext();)
 			{
-
-
-
-				//if(it2.hasNext())
-				//{
-
 				Zombie b = it2.next();
 
 
@@ -208,7 +203,6 @@ public class gamePlay {
 						grid[b.getPositionX()][b.getPositionY()] = ' ';
 						zombiesEaten++;
 					}
-					//}
 
 				}
 			}
@@ -276,10 +270,27 @@ public class gamePlay {
 
 	}
 
+	/**
+	 * A getter to get the type of plant that is being placed into the grid
+	 * @return char
+	 */
 	public static char getPlantType() {
 		return plantType;
 	}
+	
+	/**
+	 * a setter for the plant type
+	 * @param char s
+	 */
+	public void setPlantType(char s) {
+		this.plantType = s;
+	}
 
+	/**
+	 * it changes the plant type from a char to a string 
+	 * @param cahr s
+	 * @return String
+	 */
 	public String charToPlantType(char s)
 	{
 		String plant = "";
@@ -296,19 +307,26 @@ public class gamePlay {
 		return plant;
 	}
 
-	public void setPlantType(char s)
-	{
-		this.plantType = s;
-	}
-
+	/**
+	 * a getter that returns the state of the game
+	 * @return 
+	 */
 	public gameEnum getGameState() {
 		return this.gameState;
 	}
 
+	/**
+	 * a setter that sets the state of the game
+	 * @return 
+	 */
 	public void setGameState(gameEnum g) {
 		this.gameState = g;
 	}
-
+	
+	/**
+	 * a toSring method ...............................
+	 * @return String
+	 */
 	public String toString() {
 	
 		String s = "";
