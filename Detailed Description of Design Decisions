@@ -16,3 +16,8 @@ The variable sunshine is the money that accumulates when collecting suns, this i
 We have made a design decision to kill a zombie if the plant is 2 spaces or more away from the zombie as we have no way of showing the slow demise of the zombie as the peashooter shoots its peas. 
 If the zombie is less than 2 spaces away from the plant, the plant will be eaten when the plant is a space before the zombie.
 The zombies, peashooters, and sunflowers are stored and implented using array lists because there are multiple of each type and the size of the ArrayList grows automatically as elements are added to it.
+
+
+KNOWN BUGS:
+- Zombies are sometimes generated on the same grid space, which the user cannot see and will result in disrepancies in
+the game play (such as # of zombies shot). 
