@@ -1,6 +1,6 @@
 USER MANUAL:
 -------------
-Inorder for the game to begin, run the App.java class. 
+Inorder for the game to begin, run the View.java class. 
 
 1) You have a current score of 1000 sunshines
 2) With your given sunshines, choose the type of plant that you would like to place on the 6 by 6 grid by clicking on the buttons on the top of the display.
@@ -12,6 +12,7 @@ Inorder for the game to begin, run the App.java class.
    Plant sunflowers to collect suns to purchase more plants.
 5) Zombies begin at the end of the board (rightmost positon). After each turn, zombies will move forward. 
    Make sure you are placing your plants so that the zombies cannot reach the house or eat the plants.
-6) If the zombies reach the house (leftmost grid space) then the zombies will win. If the zombies eat all of the plants, the
-zombies will also win. Lastly, if you use all your sunshine and can not plant anymore plants onto the grid, the zombies win.
+6) If the zombies reach the house then the zombies will win. If the zombies eat all of the plants and no plants are on the grid, the
+zombies will also win. Lastly, if you use all your sunshine and can not plant anymore plants onto the grid, the zombies can win that way too.
 7) For the plants to win, you must defeat 2 of the zombies and still have sunshine leftover. 
+8) Place plants strategically and try not to get killed!
