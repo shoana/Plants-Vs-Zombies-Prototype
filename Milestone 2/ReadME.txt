@@ -20,10 +20,10 @@ Milestone 2:
 
 =================================================================================================
  Requirements:
- - Peashooter
+ - Peashooter -- one type
  - Sunflowers
- - Zombies
- - Sunshine(Money)
+ - Zombies -- one type
+ - Sunshine(Money) -- starts with 1000
  - Type of zombie the user wants to fight (NOT IMPLEMENTED IN MILESTONE 2)
  - Zombies Life Bar (NOT IMPLEMENTED IN MILESTONE 2)
  - Lawn Mower (lives) (NOT IMPLEMENTED IN MILESTONE 2)
