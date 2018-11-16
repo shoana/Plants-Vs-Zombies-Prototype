@@ -71,7 +71,7 @@ User-visible Changes:
 
 =================================================================================================
 Known Errors:
-- The intermediate steps are not visible in the GUI, but take a look at the console for them (will be fixed in the next module)
+- The intermediate steps for the zombies are not visible in the GUI, but take a look at the console for them (will be fixed in the next milestone)
 -
 =================================================================================================
 Roadmap Ahead:
@@ -81,3 +81,19 @@ Roadmap Ahead:
 
 We will also include the types of zombies that the user wants to fight and 
 - Milestone 4: Save/Load features.
+
+=================================================================================================
+Who did what:
+
+Sarah Lamonica: 
+- Worked on implementing the View and Controller classes 
+- Implemented the Event Model pattern in the project so the Model could update the View using event listeners.
+
+Mounica Pillarisetty:
+- Worked on implementing the View and sunflower classes
+- Edited the gamePlay class (model)
+- Did the: Detailed Discription, README file, User Manual
+  
+Shoana Sharma:
+
+Fatima Hashi:
