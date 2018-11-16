@@ -63,7 +63,7 @@ Change Log:
 - UML diagrams (class and sequence) are modified according to the code (addition of event model, controller, view ...)
 
 =================================================================================================
-Chnages to UML from:
+Changes to UML from:
  - Class Diagrams:
 This UML differs from the previous UML because it now includes a MVC model based class diagram. It now has an addtional class for controller, view, gamePlayEvent and a gamePlayListener. The view class inerits from the JFrame class from the java biuld-in libraries. The GUI implemetations are also included in the view class with its distinct methods.  
  
@@ -86,12 +86,11 @@ Known Errors:
      
 =================================================================================================
 Roadmap Ahead:
-- Milestone 3: Complete implementation of the game which includes multiple types of zombies, plants, etc. 
-  To complete this, we will be utilizing inheritance to group plants and zombies together. They will each have their own behaviour but     will act similar on the grid and in the game.
-  Inhertance will be implemented for the plants as we will have multiple plant types in this milestone. 
 
-We will also include the types of zombies that the user wants to fight and 
+- Milestone 3: Complete implementation of the game which includes multiple types of zombies, plants, etc. as the levels increase. Will also include zombie health bar to keep track of zombie life. To complete this, we will be utilizing inheritance to group plants and zombies together. They will each have their own behaviour but will act similar on the grid and in the game. Inheritance will also be implemented for all plants (peashooter, sunflowers & others ) as more plants will be available for levels to come. We will also include the types of zombies that the user wants to fight. 
+
 - Milestone 4: Save/Load features.
+
 =================================================================================================
 ZIP folder contains:
 - README file
