@@ -92,7 +92,7 @@ Sarah Lamonica:
 Mounica Pillarisetty:
 - Worked on implementing the View and sunflower classes
 - Edited the gamePlay class (model)
-- Did the: Detailed Discription, README file, User Manual
+- Did the: Detailed Discription (documentation), README file, User Manual
   
 Shoana Sharma:
 
