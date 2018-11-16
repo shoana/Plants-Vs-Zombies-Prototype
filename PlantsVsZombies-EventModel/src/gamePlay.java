@@ -197,11 +197,6 @@ public class gamePlay {
 		System.out.println(toString()); //Update the user
 		gameState = plantOrZombie();
 		
-		//zombieEvent e = new zombieEvent (this, zombies);
-       // for (ZombieListener zl: zombieListeners) zl.handleZombieEvent(e);
-        
-		//gamePlayEvent e = new gamePlayEvent (this, gameState, peashooters, sunflowers, zombies);
-        //for (gamePlayListener tttl: gameListeners) tttl.handleGameEvent(e);
 	}
 
 	/**
