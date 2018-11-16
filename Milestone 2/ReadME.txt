@@ -68,6 +68,7 @@ Chnages to UML from:
 This UML differs from the previous UML because it now includes a MVC model based class diagram. It now has an addtional class for controller, view, gamePlayEvent and a gamePlayListener. The view class inerits from the JFrame class from the java biuld-in libraries. The GUI implemetations are also included in the view class with its distinct methods.  
  
  - Sequence Diagrams:
+ The sequence digrams now implement EventModel as well as the entire MVC componenets (previously only had one digram for the model class). They also include all edge cases for the methods 'plantTurn', 'zombieTime' & 'plantOrZombie' in the gamePlay (model) class which previously wasn't there. 
  
 ==================================================================================================
 User-visible Changes:
