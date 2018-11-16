@@ -87,12 +87,12 @@ Known Errors:
 =================================================================================================
 Roadmap Ahead:
 
-- Milestone 3: Complete implementation of the game which includes multiple types of zombies, plants, etc. as the levels increase. Will also include zombie health bar to keep track of zombie life. To complete this, we will be utilizing inheritance to group plants and zombies together. They will each have their own behaviour but will act similar on the grid and in the game. Inheritance will also be implemented for all plants (peashooter, sunflowers & others ) as more plants will be available for levels to come. We will also include the types of zombies that the user wants to fight. 
+Milestone 3: Complete implementation of the game which includes multiple types of zombies, plants, etc. as the levels increase. Will also include zombie health bar to keep track of zombie life. To complete this, we will be utilizing inheritance to group plants and zombies together. They will each have their own behaviour but will act similar on the grid and in the game. Inheritance will also be implemented for all plants (peashooter, sunflowers & others ) as more plants will be available for levels to come. We will also include the types of zombies that the user wants to fight. Smelly code will be fixed and better test classes will be implemented.
 
-- Milestone 4: Save/Load features.
-
+Milestone 4: Save/Load features.
 =================================================================================================
 ZIP folder contains:
+
 - README file
 - Design Decisions
 - Unit Tests
