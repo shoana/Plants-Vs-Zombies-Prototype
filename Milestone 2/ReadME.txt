@@ -72,7 +72,9 @@ User-visible Changes:
 =================================================================================================
 Known Errors:
 - The intermediate steps for the zombies are not visible in the GUI, but take a look at the console for them (will be fixed in the next milestone)
--
+   - The intermediate steps include: the movement of the zombies on the grid, the removal of the zombie once it leaves its initial 
+     position. * please note while testing, check the intermediate steps on the console if wary of how zombies behave. 
+     
 =================================================================================================
 Roadmap Ahead:
 - Milestone 3: Complete implementation of the game which includes multiple types of zombies, plants, etc. 
@@ -96,5 +98,12 @@ Mounica Pillarisetty:
 - Did the: Detailed Discription (documentation), README file, User Manual
   
 Shoana Sharma:
+- JavaDoc
+- Test Classes
+- UML Class diagrams
+- worked on gamePlay
 
 Fatima Hashi:
+- Test Classes
+- UML Sequence diagrams
+- worked on gamePlay
