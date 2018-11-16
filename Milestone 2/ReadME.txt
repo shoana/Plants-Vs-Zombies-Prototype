@@ -53,7 +53,12 @@ Classes:
 
 =================================================================================================
 Change Log:
-- The user will be given a 1000 sunshines to start the game rather than 300. It will be 
+- The user will be given a 1000 sunshines to start the game rather than 300 (like the last milestone). It will allow the user to win much easier.
+- This milestone is a visual game rather than a text-base game
+- GUI-based version (with the View and the Controller) of the bare-bones version of the game 
+- Utilized the Event Model design pattern to ensure the game followed the previous iteration of the game (loop-based)
+- Unit tests for classes
+
 =================================================================================================
 User-visible Changes:
 - In this milestone the game has become a visul rather than a textual base
@@ -64,7 +69,7 @@ User-visible Changes:
 
 =================================================================================================
 Known Errors:
-- 
+- The 
 - 
 -
 =================================================================================================
