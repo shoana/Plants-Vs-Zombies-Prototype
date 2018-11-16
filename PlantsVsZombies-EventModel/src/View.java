@@ -56,11 +56,11 @@ public class View extends JFrame implements gamePlayListener {
 		plantType.setLayout(new BorderLayout());
 
 		//add peashooter actionlistener
-		peashooterButton = new JButton("Peashooter");
+		peashooterButton = new JButton("Peashooter - 100");
 		//peashooterButton.addActionListener(this);
 
 		//add sunshine actionlistener
-		sunshineButton = new JButton("Sunshine");
+		sunshineButton = new JButton("Sunshine - 50");
 		//sunshineButton.addActionListener(this);
 
 
