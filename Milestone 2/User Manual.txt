@@ -8,11 +8,10 @@ Inorder for the game to begin, run the view.java class.
    ex. if you would like to place a plantshooter (100 sunshines), click on the Plantshooter button to place the plant you purchased
        Or if you would like to plant a sunflower (50 sunshines), click on the Sunflower button to place the plant you purchased
          - If you chose to plant a sunflower you will be asked if you would like to collect the sun to get 25 sunshines
-3) A 'p' is placed for a Peashooter and 's' is placed in the position of the Sunflower
-4) The Zombies, noted with 'z' start to creep up as you place your plants. Try to strategically place your peashooters to kill the zombies. Plant sunflowers to collect suns to purchase more plants.
-5) Zombies begin at the end of the board (rightmost positon). After each turn, zombies will move forward. 
-   Make sure you are placing your plants so that the zombies cannot reach the house or eat the plants.
-6) If the zombies reach the house then the zombies will win. If the zombies eat all of the plants and no plants are on the grid, the
+4) A 'p' is placed for a Peashooter and 's' is placed in the position of the Sunflower
+5) The Zombies, noted with 'z' start to creep up as you place your plants. Try to strategically place your peashooters to kill the zombies. Plant sunflowers to collect suns to purchase more plants. (One sunflower produces one sun worth 25 sunshines)
+6) Zombies begin at the end of the board (rightmost positon). After each turn (planting), zombies will move forward. Make sure you are placing your plants so that the zombies cannot reach the house or eat the plants.
+7) If the zombies reach the house then the zombies will win. If the zombies eat all of the plants and no plants are on the grid, the
 zombies will also win. Lastly, if you use all your sunshine and can not plant anymore plants onto the grid, the zombies can win that way too.
-7) For the plants to win, you must defeat 2 of the zombies and still have sunshine leftover. 
-8) Place plants strategically and try not to get killed!
+8) For the plants to win, you must defeat 2 of the zombies and still have sunshine leftover. 
+9) Place plants strategically and try not to get killed!
