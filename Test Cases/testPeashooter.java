@@ -3,13 +3,13 @@ import java.util.*;
 import org.junit.*;
 
 import junit.framework.TestCase;
-
 /**
  * This class a part of the test cases which is used to test the functionality of a peashooter and it's edge cases
  * @author Fatima Hashi, Sarah Lamonica, Shoana Sharma,  Mounica Pillarisetty
- * @version November 15th, 2018
+ * @version November 16th, 2018
  *
  */
+
 public class testPeashooter extends TestCase{
 
 	private Peashooter p1, p2, p3;
@@ -34,7 +34,7 @@ public class testPeashooter extends TestCase{
 	public void testEmptyListSize() {
 		
 		ArrayList<Peashooter> emptyList = peashooters;
-		assertEquals("Size of peashooter list should be 0", 0, emptyList.size());
+		assertEquals("Size of peashooter list should be 0", 0, emptyList.size());// Edge case when game board is empty
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class testPeashooter extends TestCase{
 		addPeashooter.add(p1);
 		total = total - peashooterCost; // update total
 		assertEquals("Size of peashooter list should be 1", 1, addPeashooter.size());
-		assertEquals("The total number of sunshines should be 900", 900, total); //edge case for checking if total sunshines is updated
+		assertEquals("The total number of sunshines should be 900", 900, total); //Edge case for checking if total sunshines is updated
 	}
 
 	/**
