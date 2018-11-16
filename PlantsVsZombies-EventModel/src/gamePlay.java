@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 
@@ -25,7 +26,7 @@ public class gamePlay {
 	private gameEnum gameState; // holds the state of the game
 	private static int sunshine; // sunshine to be used as currency to purchase sunflowers, peashooters
 	private static final int plantToZombieLength = 3; //Plant must be >= 3 steps away from zombie or else it will eat it.
-	private static final int startSunshine = 1000; //starting money 
+	private static final int startSunshine = 300; //starting money 
 	private static char plantType; //Type of plant. Used for user input
 	private static int nTurns = 0; //Tracks # of turns
 	
@@ -100,11 +101,26 @@ public class gamePlay {
 	 * @param plantType is an int could be a sunflower or a peashooter
 	 * @return gameEnum the gameState
 	 */
-	public gameEnum plantTurn(int row, int column, char plantType)
+	public gameEnum plantTurn(int row, int column)
 	{
+		
+		
 		gameState = gameEnum.PLANT_TIME;
 		Scanner scanner = new Scanner(System.in);
-
+		
+		Object[] options = {"Peashooter", "Sunflower"};
+		int n = JOptionPane.showOptionDialog(null, "Choose your plant type!", "Choice", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+		
+		if(n == JOptionPane.YES_OPTION)
+		{
+			plantType = 'p';
+		}
+		
+		if(n == JOptionPane.NO_OPTION)
+		{
+			plantType = 's';
+		}
+		
 		if(sunshine >= 50) {
 			if(plantType == 'p' && sunshine >= 100) {
 				sunshine -= 100;
@@ -116,11 +132,20 @@ public class gamePlay {
 			}
 
 			if(plantType == 's' && sunshine >= 50) {
-				System.out.println("Do you want to collect the sun? It gives you 25 sunshines! (y/n) ");
-				char sun = scanner.next().charAt(0);
-				if(sun == 'y'){
-					sunshine += 25; //Add more sunshine
+				if(plantType == 's' && sunshine >= 50) {
+					   JDialog.setDefaultLookAndFeelDecorated(true);
+					      int response = JOptionPane.showConfirmDialog(null, "Do you want to collect the sun? It gives you 25 sunshines!", "Confirm",
+					          JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+					      if (response == JOptionPane.NO_OPTION) {
+					        System.out.println("No button clicked");
+					      } else if (response == JOptionPane.YES_OPTION) {
+					        System.out.println("Yes button clicked");
+					        sunshine += 25;
+					      } else if (response == JOptionPane.CLOSED_OPTION) {
+					       System.out.println("JOptionPane closed");
+					      }
 				}
+				
 				sunshine -= 50;
 				this.grid[row][column] = plantType; //Place a plant at this grid space
 				nTurns++;
@@ -135,8 +160,6 @@ public class gamePlay {
 		}
 
 		
-        
-        
 		gameState = plantOrZombie(); //Find if the zombies win, or plants win, or if the game can continue
 		
 		gamePlayEvent e = new gamePlayEvent (this, row, column, plantType, zombies, sunshine);
@@ -144,6 +167,7 @@ public class gamePlay {
         
 		return this.gameState;
 	}
+	
 	/**
 	 * This method keeps track of the affects on zombie when the game state
 	 * is zombie time.
@@ -169,6 +193,7 @@ public class gamePlay {
 				zombies.add(z);
 			}
 		}
+		
 		System.out.println(toString()); //Update the user
 		gameState = plantOrZombie();
 		
@@ -198,7 +223,7 @@ public class gamePlay {
 
 		//Moving the zombie one space when there is nothing ahead of it.
 		for(Zombie z : zombies) {
-			if(grid[z.getPositionX()][(z.getPositionY() - 1)] == ' ' && z.getPositionY() != 0) {
+			if(grid[z.getPositionX()][(z.getPositionY() - 1)] == ' ' && z.getPositionY() != 1) {
 				grid[z.getPositionX()][z.getPositionY()] = ' ';
 				z.setPositionY(z.getPositionY() - 1);
 				grid[z.getPositionX()][z.getPositionY()] = 'z';
@@ -266,7 +291,7 @@ public class gamePlay {
 			while(it4.hasNext()) {
 				Zombie b = it4.next();
 				if(b.getPositionY() == 0) {
-					JOptionPane.showMessageDialog(null,"ZOMBIES WON");
+					JOptionPane.showMessageDialog(null,"Zombies Reached The House!");
 					System.exit(-1);
 					return gameEnum.ZOMBIES_WIN;
 				}
@@ -426,7 +451,7 @@ public class gamePlay {
 				scanner.nextLine();
 
 				if(row < 6 && row >= 0 && column < 6 && column >= 0) {
-					game.plantTurn(row, column, plantType);
+					game.plantTurn(row, column);
 					if(nTurns - 2 == 0) {
 						game.zombieTime(numZombies);
 						nTurns = 0;
