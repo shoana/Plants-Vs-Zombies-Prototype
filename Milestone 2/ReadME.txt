@@ -65,9 +65,9 @@ Change Log:
 User-visible Changes:
 - In this milestone the game has become a visul rather than a textual base
 - JFrame is used as the display and GridLayout using JButton is used for choosing and placing plant
-- At the bottom of the frame there is a status update of the game, tell you how many zombies and plants have been killed
 - There is a live counter used for money (sunshines) that changes after every move
-- There are pop-ups to collect suns, to notify if a game is finshed (either the plants or the zombies win)
+- JOptionPane is used to generate pop-ups that ask the user for the type of plant they want to buy
+- Pop-ups are also used to collect suns, to notify if a game is finshed (either the plants or the zombies win)
 
 =================================================================================================
 Known Errors:
