@@ -8,13 +8,15 @@ public class gamePlayEvent extends EventObject {
 	private int y;
 	private char plantType;
 	private ArrayList<Zombie> z;
+	private int sunshines;
 	
-	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z) {
+	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines) {
 		super(source);
 		this.x = x;
 		this.y = y;
 		this.plantType = plantType;
 		this.z = z;
+		this.sunshines = sunshines;
 		
 	}
 	
@@ -36,6 +38,11 @@ public class gamePlayEvent extends EventObject {
 	public int getY()
 	{
 		return y;
+	}
+	
+	public int getSunshines()
+	{
+		return sunshines;
 	}
 	
 	public char getPlantType()
