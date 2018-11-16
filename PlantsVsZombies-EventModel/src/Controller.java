@@ -7,24 +7,18 @@ public class Controller implements ActionListener {
 	gamePlay model;
 	int x;
 	int y;
-	
-	
-	
+
 	public Controller(gamePlay model, int x, int y)
 	{
 		this.model = model;
 		this.x = x;
 		this.y = y;
-		
-		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		model.plantTurn(x, y, 'p');
+		model.plantTurn(x, y);
 		model.zombieTime(2);
 	}
 	
-	
-
 }
