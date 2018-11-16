@@ -6,7 +6,9 @@ Sarah Lamonica:
 - Implemented the Event Model pattern in the project so the Model could update the View using event listeners.
 
 Mounica Pillarisetty:
-
+- Implemented the Sunflower Class 
+- Worked on implementing the View 
+- 
 Shoana Sharma:
 
 Fatima Hashi:
