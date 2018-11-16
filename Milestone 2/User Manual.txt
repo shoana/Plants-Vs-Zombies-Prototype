@@ -4,7 +4,7 @@ Inorder for the game to begin, run the View.java class.
 
 1) You have a current score of 1000 sunshines
 2) Choose a position on the board by pressing a button on the grid. 
-3) A pop-up will show to choose a ...............................
+3) A pop-up will appear for you to choose the type of plant that you would like to place on the 6 by 6 grid
 2) With your given sunshines, choose the type of plant that you would like to place on the 6 by 6 grid by clicking on the buttons on the top of the display.
    ex. if you would like to place a plantshooter (100 sunshines), click on the [Plantshooter - 100] button and then press on a button on the grid to place the plant you purchaced.
        Or if you would like to plant a sunflower (50 sunshines), click on the [Sunflower - 50] button and then press on a button on the grid to place the plant you purchaced. 
