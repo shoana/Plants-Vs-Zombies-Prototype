@@ -63,9 +63,11 @@ Change Log:
 - UML diagrams (class and sequence) are modified according to the code (addition of event model, controller, view ...)
 
 =================================================================================================
-Chnages to UML:
-
-Class Diagrams:
+Chnages to UML from:
+ - Class Diagrams:
+ 
+ - Sequence Diagrams:
+ 
 ==================================================================================================
 User-visible Changes:
 - In this milestone the game has become a visul rather than a textual base
