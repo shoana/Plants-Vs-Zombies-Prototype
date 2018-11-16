@@ -192,6 +192,7 @@ public class gamePlay {
 		if((peashooters.size() == 0 && sunflowers.size() == 0 && zombies.size() > 0)) {
 			System.out.println("Zombies ate all your plants! Plants LOSE");
 			JOptionPane.showMessageDialog(null,"ZOMBIES WON");
+			System.exit(-1);
 			return gameEnum.ZOMBIES_WIN;
 		}
 
@@ -206,6 +207,7 @@ public class gamePlay {
 			if(z.getPositionY() == 0) { 
 				System.out.println("Zombies reached the house. Plants LOSE");
 				JOptionPane.showMessageDialog(null,"ZOMBIES WON");
+				System.exit(-1);
 				return gameEnum.ZOMBIES_WIN;
 			}
 		}
@@ -215,6 +217,7 @@ public class gamePlay {
 			System.out.println(toString());
 			System.out.println("456 Plants defeated the zombies! Plants WIN");
 			JOptionPane.showMessageDialog(null,"PLANTS WON");
+			System.exit(-1);
 			return gameEnum.PLANTS_WIN;
 		}
 
@@ -264,6 +267,7 @@ public class gamePlay {
 				Zombie b = it4.next();
 				if(b.getPositionY() == 0) {
 					JOptionPane.showMessageDialog(null,"ZOMBIES WON");
+					System.exit(-1);
 					return gameEnum.ZOMBIES_WIN;
 				}
 
@@ -285,6 +289,7 @@ public class gamePlay {
 			System.out.println(toString());
 			System.out.println("Plants defeated the zombies! Plants WIN!");
 			JOptionPane.showMessageDialog(null,"PLANTS WON");
+			System.exit(-1);
 			return gameEnum.PLANTS_WIN;
 		}
 
@@ -293,6 +298,7 @@ public class gamePlay {
 		if((peashooters.size() == 0 && sunflowers.size() == 0 && zombies.size() > 0)) {
 			System.out.println("Zombies ate all your plants! Plants LOSE");
 			JOptionPane.showMessageDialog(null, "PLANTS WON");
+			System.exit(-1);
 			return gameEnum.ZOMBIES_WIN;
 		}
 
@@ -300,6 +306,7 @@ public class gamePlay {
 		if (sunshine <= 25) {
 			System.out.println("YOU LOST THE GAME! YOU DON'T HAVE ENOUGH SUNSHINE TO GET NEW PLANTS AND THE ZOMBIES ESCAPED!");
 			JOptionPane.showMessageDialog(null,"Zombies Win");
+			System.exit(-1);
 			return gameEnum.ZOMBIES_WIN;
 		}
 
