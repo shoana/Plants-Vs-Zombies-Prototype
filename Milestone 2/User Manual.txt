@@ -1,12 +1,11 @@
 USER MANUAL:
 -------------
-Inorder for the game to begin, run the View.java class. 
+Inorder for the game to begin, run the view.java class. 
 
 1) You have a current score of 1000 sunshines
-2) Choose a position on the board by pressing a button on the grid. 
+2) Start by choosing a position on the board by pressing a button on the grid. 
 3) A pop-up will appear for you to choose the type of plant that you would like to place on the 6 by 6 grid
-2) With your given sunshines, choose the type of plant that you would like to place on the 6 by 6 grid by clicking on the buttons on the top of the display.
-   ex. if you would like to place a plantshooter (100 sunshines), click on the [Plantshooter - 100] button and then press on a button on the grid to place the plant you purchaced.
+   ex. if you would like to place a plantshooter (100 sunshines), click on the Plantshooter button and then press on a button on the grid to place the plant you purchaced.
        Or if you would like to plant a sunflower (50 sunshines), click on the [Sunflower - 50] button and then press on a button on the grid to place the plant you purchaced. 
          - If you chose to plant a sunflower you will be asked if you would like to collect the sun to get 25 sunshines
 3) A 'P' is placed for a peashooter and 'S' is placed in the position of the Sunflower
