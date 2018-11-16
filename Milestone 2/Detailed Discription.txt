@@ -1,5 +1,17 @@
 Here is our take on the classic Plant vs Zombies Game:
 
+AUTHORS:
+Sarah Lamonica: 
+- Worked on implementing the View and Controller classes 
+- Implemented the Event Model pattern in the project so the Model could update the View using event listeners.
+
+Mounica Pillarisetty:
+
+Shoana Sharma:
+
+Fatima Hashi:
+
+
 We broke our game into 8 classes: 
 - gamePlay, focusses on the main play of the game
 - gameEnum, includes the different states of the game (PLANT_TIME, ZOMBIE_TIME and so on)
@@ -8,7 +20,6 @@ We broke our game into 8 classes:
 - Sunflower, it also contains its specific location in the game and its individual price
 - View, the layout and visual display of the game (buttons, windows, panels...)
 - Controller, controls the user actions and flow of application execution to return a response to the actions
-- App, the main where the game is run
 
 GAMEPLAY Class:
 - gamePlay is the model of the MVC for the PvZ game. 
@@ -57,3 +68,4 @@ Data Structure Design Decisions:
 4. JButtons are used for the grid/board. It makes it easier for the user to use and play as well as us to keep track of the placement of plants and zombies
 5. JButtons are also used for chosing they type of plant they user decides to purchace
 6. JOptionPanes are used as pop-ups to alert the user of a win or a loss 
+7. Event Model was utilized to get events from the model and display it in the View.
