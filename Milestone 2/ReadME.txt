@@ -64,9 +64,7 @@ User-visible Changes:
 
 =================================================================================================
 Known Errors:
-- Since the the GUI is event diven, the updation of the amount of sunshine lags by one frame
-    - will be fixed for the next milestone by adding event and action listener
-- The movement of zombies is one frame behind as well, which sometimes causes the status of the game to not match the actaul game
+- 
 - 
 -
 =================================================================================================
