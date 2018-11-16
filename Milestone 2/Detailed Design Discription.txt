@@ -20,13 +20,14 @@ GAMEPLAY Class:
 - The zombies, peashooters, and sunflowers are stored and implented using array lists because there are multiple of each type and 
   the size of the ArrayList grows automatically as elements are added to it.
 - There are methods in gamePlay that notify the player when the zombies have started attacking (zombieTime)
-  and methods that allow the users to pot their plants of their choice (plantTurn). These include error checks such as sufficent sunshines to 
-  buy a plant or if the place they want to place a plant where there is already something there and so on.
+  and methods that allow the users to pot their plants of their choice (plantTurn). These include error checks such as sufficent      
+  sunshines to buy a plant or if the place they want to place a plant where there is already something there and so on.
 - plantOrZombie method keeps track of how many zombies and plants have died for game play. It also keeps track of all the winning
   and loosing cases as well as the movement of the zombie.
 - The game creates pop-ups notifyig the user the game has ended because either the plants or zombies won
-- All in all, the gamePlay is where all the methods used for 'playing' the game are included. Plants are killed by the Zombies
-  if they are not strategically placed on the grid by the user and vice versa.
+- All in all, the gamePlay is where all the methods used for 'playing' the game are included. It includes some smelly code that is to be   fixed in later milestones. Smelly code happens with the zombies and their movements. Plants are killed by the Zombies if they are not 
+  strategically placed on the grid by the user and vice 
+  versa.
 
 View Class:
 - Extends JFrame to use and build a board through a GridLayout (it also helps to keeps track of the board dimensions)
