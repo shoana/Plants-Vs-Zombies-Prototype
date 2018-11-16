@@ -322,7 +322,7 @@ public class gamePlay {
 		//If there are no peashooters left and zombies are still left, zombies win
 		if((peashooters.size() == 0 && sunflowers.size() == 0 && zombies.size() > 0)) {
 			System.out.println("Zombies ate all your plants! Plants LOSE");
-			JOptionPane.showMessageDialog(null, "Zombies ate all your plants! \n YOU WON");
+			JOptionPane.showMessageDialog(null, "Zombies ate all your plants! \n ZOMBIES WON");
 			System.exit(-1);
 			return gameEnum.ZOMBIES_WIN;
 		}
