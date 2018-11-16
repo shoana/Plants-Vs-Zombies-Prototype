@@ -65,6 +65,7 @@ Change Log:
 =================================================================================================
 Chnages to UML from:
  - Class Diagrams:
+This UML differs from the previous UML because it now includes a MVC model based class diagram. It now has an addtional class for controller, view, gamePlayEvent and a gamePlayListener. The view class inerits from the JFrame class from the java biuld-in libraries. The GUI implemetations are also included in the view class with its distinct methods.  
  
  - Sequence Diagrams:
  
