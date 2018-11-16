@@ -44,6 +44,7 @@ GAMEENUM Class:
 
 ZOMBIE, PEASHOOTER & SUNFLOWER Classes:
 - Contains their unique costs and their positions(row and column coordinates) using mutators and accessors in their individual classes.
+- Inheritance will be added for the plants.
   
 Data Structure Design Decisions:
 1. ArrayLists for Zombies, Peashooters, and Sunflowers
