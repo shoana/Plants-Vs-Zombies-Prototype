@@ -77,11 +77,11 @@ public class View extends JFrame implements gamePlayListener {
 		gamePanel.setLayout(new GridLayout(6,6));
 		window.getContentPane().add(gamePanel, BorderLayout.CENTER);
 
-		//gameStatus = new JLabel(gamePlayController.getGameStatus());
-		//scoreStatus = new JLabel("Current Score: " + gamePlayController.getSunshinesLeft());
+		//gameStatus = new JLabel("Game Status is Here");
+		scoreStatus = new JLabel("Sunshines Left: 1000");
 
 		//window.getContentPane().add(gameStatus, BorderLayout.SOUTH);
-		//window.getContentPane().add(scoreStatus, BorderLayout.EAST);
+		window.getContentPane().add(scoreStatus, BorderLayout.EAST);
 
 		board = new JButton[6][6];
 
@@ -128,64 +128,6 @@ public class View extends JFrame implements gamePlayListener {
 		}
 	}
 
-
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		// TODO Auto-generated method stub
-//
-//
-//		if(gamePlayController.getGameState() == gameEnum.PLANT_TIME) {
-//			JButton b = (JButton) e.getSource();
-//
-//			setZombiesOnBoard();
-//
-//			if(b == peashooterButton)
-//			{
-//				gamePlayController.setPlantType('p');
-//				gameStatus.setText(gamePlayController.getGameStatus());
-//				scoreStatus.setText("Current Score: " + gamePlayController.getSunshinesLeft());
-//				System.out.println("PEA");
-//			}
-//
-//			if(b == sunshineButton)
-//			{
-//				gamePlayController.setPlantType('s');
-//				gameStatus.setText(gamePlayController.getGameStatus());
-//				scoreStatus.setText("Current Score: " + gamePlayController.getSunshinesLeft());
-//				System.out.println("SUN");
-//			}
-//
-//
-//			int i, j;
-//			for (i = 0; i < 6; i++) {
-//				for (j = 0; j < 6; j++) {
-//					if(b == board[i][j])
-//					{
-//						System.out.println("Board Button");
-//						board[i][j].setText((String) "" + gamePlayController.getPlantType()); 
-//						gameStatus.setText(gamePlayController.getGameStatus());
-//						scoreStatus.setText("Current Score: " + gamePlayController.getSunshinesLeft());
-//						gamePlayController.setPlantDown(i, j, gamePlayController.getPlantType());
-//						nTurns++; 
-//						board[i][j].setEnabled(false);
-//
-//						if(nTurns - 2 == 0)
-//						{
-//
-//							gamePlayController.setZombieTime(2);
-//							setZombiesOnBoard();
-//							gameStatus.setText(gamePlayController.getGameStatus());
-//							scoreStatus.setText("Current Score: " + gamePlayController.getSunshinesLeft());
-//						}
-//
-//
-//					}
-//				}
-//			}
-//
-//		}
-//	}
-
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
 		int x = e.getX();
@@ -195,6 +137,7 @@ public class View extends JFrame implements gamePlayListener {
 		ArrayList<Zombie> z = e.returnZombie();
 		
 		board[x][y].setText(String.valueOf(plant));
+		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
 		
 		for(Zombie zed: z)
 		{
