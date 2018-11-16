@@ -60,6 +60,7 @@ Change Log:
 - GUI-based version (with the View and the Controller) of the bare-bones version of the game 
 - Utilized the Event Model design pattern to ensure the game followed the previous iteration of the game (loop-based)
 - Unit tests for classes
+- UML diagrams (class and sequence) are modified according to the code (addition of event model, controller, view ...)
 
 =================================================================================================
 User-visible Changes:
@@ -83,7 +84,13 @@ Roadmap Ahead:
 
 We will also include the types of zombies that the user wants to fight and 
 - Milestone 4: Save/Load features.
-
+=================================================================================================
+ZIP folder contains:
+- README file
+- Design Decisions
+- Unit Tests
+- Source Code
+- UML Class and Sequenece Diagrams
 =================================================================================================
 Who did what:
 
