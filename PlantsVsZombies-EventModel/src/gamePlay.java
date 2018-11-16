@@ -25,7 +25,7 @@ public class gamePlay {
 	private gameEnum gameState; // holds the state of the game
 	private static int sunshine; // sunshine to be used as currency to purchase sunflowers, peashooters
 	private static final int plantToZombieLength = 3; //Plant must be >= 3 steps away from zombie or else it will eat it.
-	private static final int startSunshine = 300; //starting money 
+	private static final int startSunshine = 1000; //starting money 
 	private static char plantType; //Type of plant. Used for user input
 	private static int nTurns = 0; //Tracks # of turns
 	
@@ -191,7 +191,7 @@ public class gamePlay {
 		//If there are no peashooters left and zombies are still left, zombies win
 		if((peashooters.size() == 0 && sunflowers.size() == 0 && zombies.size() > 0)) {
 			System.out.println("Zombies ate all your plants! Plants LOSE");
-			JOptionPane.showMessageDialog(null,"ZOMBIES WON");
+			JOptionPane.showMessageDialog(null,"Zombies ate all your plants! \n ZOMBIES WON!");
 			System.exit(-1);
 			return gameEnum.ZOMBIES_WIN;
 		}
@@ -206,7 +206,7 @@ public class gamePlay {
 			//If they reach the end, zombies win
 			if(z.getPositionY() == 0) { 
 				System.out.println("Zombies reached the house. Plants LOSE");
-				JOptionPane.showMessageDialog(null,"ZOMBIES WON");
+				JOptionPane.showMessageDialog(null,"Zombies reached the house! \n ZOMBIES WON");
 				System.exit(-1);
 				return gameEnum.ZOMBIES_WIN;
 			}
@@ -215,8 +215,8 @@ public class gamePlay {
 		//If there are no zombies left, peashooters automatically win
 		if(zombies.size() == 0 && zombiesEaten > numZombies) {
 			System.out.println(toString());
-			System.out.println("456 Plants defeated the zombies! Plants WIN");
-			JOptionPane.showMessageDialog(null,"PLANTS WON");
+			System.out.println("Plants defeated the zombies! Plants WIN");
+			JOptionPane.showMessageDialog(null,"Plants defeated the zombies! \n YOU WON");
 			System.exit(-1);
 			return gameEnum.PLANTS_WIN;
 		}
@@ -240,7 +240,7 @@ public class gamePlay {
 						if(b.getPositionY() == 0) {
 							System.out.println("Zombies reached the house. Plants LOSE!");
 							System.out.println(toString());
-							JOptionPane.showMessageDialog(null,"ZOMBIES WON");
+							JOptionPane.showMessageDialog(null,"Zombies reached the house! \n ZOMBIES WON");
 							System.exit(-1);
 							return gameEnum.ZOMBIES_WIN;
 						}
@@ -288,7 +288,7 @@ public class gamePlay {
 		if(zombies.size() == 0 && zombiesEaten > numZombies) {
 			System.out.println(toString());
 			System.out.println("Plants defeated the zombies! Plants WIN!");
-			JOptionPane.showMessageDialog(null,"PLANTS WON");
+			JOptionPane.showMessageDialog(null,"Plants defeated the zombies! \n YOU WON");
 			System.exit(-1);
 			return gameEnum.PLANTS_WIN;
 		}
@@ -297,7 +297,7 @@ public class gamePlay {
 		//If there are no peashooters left and zombies are still left, zombies win
 		if((peashooters.size() == 0 && sunflowers.size() == 0 && zombies.size() > 0)) {
 			System.out.println("Zombies ate all your plants! Plants LOSE");
-			JOptionPane.showMessageDialog(null, "PLANTS WON");
+			JOptionPane.showMessageDialog(null, "Zombies ate all your plants! \n YOU WON");
 			System.exit(-1);
 			return gameEnum.ZOMBIES_WIN;
 		}
@@ -305,7 +305,7 @@ public class gamePlay {
 		//If you run out of money to buy new plants
 		if (sunshine <= 25) {
 			System.out.println("YOU LOST THE GAME! YOU DON'T HAVE ENOUGH SUNSHINE TO GET NEW PLANTS AND THE ZOMBIES ESCAPED!");
-			JOptionPane.showMessageDialog(null,"Zombies Win");
+			JOptionPane.showMessageDialog(null,"YOU DON'T HAVE ENOUGH SUNSHINE TO GET NEW PLANTS AND THE ZOMBIES ESCAPED! \n ZOMBIES WON");
 			System.exit(-1);
 			return gameEnum.ZOMBIES_WIN;
 		}
