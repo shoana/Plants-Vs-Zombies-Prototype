@@ -9,7 +9,10 @@ import java.util.List;
 
 import javax.swing.*;
 
-
+/**
+ * View class for implementing the Plants vs. Zombies game
+ * @author sarahlamonica
+ */
 public class View extends JFrame implements gamePlayListener {
 
 	
@@ -30,10 +33,13 @@ public class View extends JFrame implements gamePlayListener {
 
 	private List <JMenuItem> menu = new ArrayList<JMenuItem>();
 
+	/**
+	 * Constructs the View
+	 */
 	public View()
 	{
 		gamePlay model = new gamePlay(6,6, 1000);
-        model.addGamePlayListener(this);
+        	model.addGamePlayListener(this);
 
 		window.setSize(500,500);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,16 +82,13 @@ public class View extends JFrame implements gamePlayListener {
 		JPanel gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(6,6));
 		window.getContentPane().add(gamePanel, BorderLayout.CENTER);
-
-		//gameStatus = new JLabel("Game Status is Here");
 		scoreStatus = new JLabel("Sunshines Left: 1000");
-
-		//window.getContentPane().add(gameStatus, BorderLayout.SOUTH);
 		window.getContentPane().add(scoreStatus, BorderLayout.EAST);
 
 		board = new JButton[6][6];
 
 
+		//SETS THE GAME BOARD
 		Font font = new Font("Dialog", Font.BOLD, 24);
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
@@ -99,19 +102,6 @@ public class View extends JFrame implements gamePlayListener {
 
 		window.setVisible(true);
 
-	}
-
-	
-	
-
-	public JButton[][] getBoard()
-	{
-		return board;
-	}
-
-	public JLabel getGameStatusLabel()
-	{
-		return gameStatus;
 	}
 
 
@@ -128,6 +118,9 @@ public class View extends JFrame implements gamePlayListener {
 		}
 	}
 
+	/**
+	 * Game event Handler
+	 */
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
 		int x = e.getX();
@@ -143,25 +136,7 @@ public class View extends JFrame implements gamePlayListener {
 		{
 			board[zed.getPositionX()][zed.getPositionY()].setText("z");;
 		}
-		
-		if(s == gameEnum.PLANT_TIME) return;
-		if(s == gameEnum.ZOMBIE_TIME) {
-			System.out.println("ZOMBIE TIME");
-			for(int i = 0; i < 6; i++)
-			{
-				for(int j = 0; j < 6; j++)
-				{
-					
-				}
-			}
-		}
-		if(s == gameEnum.PLANTS_WIN) {
-			PLANTS_WIN: JOptionPane.showMessageDialog(this, "PLANTS WON");
-		}
-		if(s == gameEnum.ZOMBIES_WIN)
-		{
-			JOptionPane.showMessageDialog(this, "ZOMBIES WON");
-		}		
+				
 	}
 	
 	public static void main(String[] args)
