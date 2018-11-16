@@ -223,7 +223,7 @@ public class gamePlay {
 
 		//Moving the zombie one space when there is nothing ahead of it.
 		for(Zombie z : zombies) {
-			if(grid[z.getPositionX()][(z.getPositionY() - 1)] == ' ' && z.getPositionY() != 1) {
+			if(grid[z.getPositionX()][(z.getPositionY() - 1)] == ' ') {
 				grid[z.getPositionX()][z.getPositionY()] = ' ';
 				z.setPositionY(z.getPositionY() - 1);
 				grid[z.getPositionX()][z.getPositionY()] = 'z';
