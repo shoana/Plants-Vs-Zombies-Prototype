@@ -46,14 +46,16 @@ Classes:
    - peashooter
 - Zombie
 - gamePlay (model)
-- View 
+- View -- the game is run through this class
 - Controller
-- App -- the main of the game, that should be run to play the game
 - gameEnum -- the states of the game
+- gamePlayEvent 
+- gamePlayListener
 
 =================================================================================================
 Change Log:
-- The user will be given a 1000 sunshines to start the game rather than 300 (like the last milestone). It will allow the user to win much easier.
+- The user will be given a 1000 sunshines to start the game rather than 300 (like the last milestone). It will allow the user to win  
+  much easier.
 - This milestone is a visual game rather than a text-base game
 - GUI-based version (with the View and the Controller) of the bare-bones version of the game 
 - Utilized the Event Model design pattern to ensure the game followed the previous iteration of the game (loop-based)
@@ -69,8 +71,7 @@ User-visible Changes:
 
 =================================================================================================
 Known Errors:
-- The 
-- 
+- The intermediate steps are not visible in the GUI, but take a look at the console for them (will be fixed in the next module)
 -
 =================================================================================================
 Roadmap Ahead:
