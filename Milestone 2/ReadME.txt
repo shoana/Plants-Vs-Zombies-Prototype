@@ -72,6 +72,8 @@ Known Errors:
 =================================================================================================
 Roadmap Ahead:
 - Milestone 3: Complete implementation of the game which includes multiple types of zombies, plants, etc. 
-To complete this, we will be utilizing inheritance to group plants and zombies together. They will each have their own behaviour but will act similar on the grid and in the game.
+  To complete this, we will be utilizing inheritance to group plants and zombies together. They will each have their own behaviour but     will act similar on the grid and in the game.
+  Inhertance will be implemented for the plants as we will have multiple plant types in this milestone. 
+
 We will also include the types of zombies that the user wants to fight and 
-- Milestone 4: Save/Load features. 
+- Milestone 4: Save/Load features.
