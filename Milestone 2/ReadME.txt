@@ -8,12 +8,13 @@ Authors:
 
 Plants vs. Zombies
 
-Milestone 1 feedback was given at 11:40pm on Thursday, Nov 16th 2018. 
+Milestone 1 feedback was given at 11:40pm on Thursday, Nov 16th 2018. Therefore, we could not implement all required changes from the feedback file for this milestone, however we will work on adding them to the next iteration (due Nov. 25th)
 
 Milestone 2: 
 - This milestone is a visual game rather than a text-base game
 - GUI-based version (with the View and the Controller) of the bare-bones version of the game 
-- Unit tests for the Model (gamePaly class)
+- Utilized the Event Model design pattern to ensure the game followed the previous iteration of the game (loop-based)
+- Unit tests for the Model (gamePlay class)
 - Game includes sunflowers, one other type of plant (peashooters), one type of zombie at Level 1
 - UML models (class & sequence diagrams)
 
