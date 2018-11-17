@@ -11,7 +11,6 @@ import javax.swing.*;
 
 /**
  * View class for implementing the Plants vs. Zombies game
- * @author Sarah Lamonica, Mounica Pillarisetty
  */
 public class View extends JFrame implements gamePlayListener {
 
