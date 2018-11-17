@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 /**
  * Controller class
- * @author sarahlamonica
- *
  */
 public class Controller implements ActionListener {
 	
