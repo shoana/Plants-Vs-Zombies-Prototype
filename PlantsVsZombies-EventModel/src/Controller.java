@@ -3,7 +3,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * Controller class
+ *Controller class for the MVC model
+ *@author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
+ *@version November 16th, 2018 
+ *
  */
 public class Controller implements ActionListener {
 	
@@ -13,9 +16,9 @@ public class Controller implements ActionListener {
 	
 	/**
 	 * Takes all model variables
-	 * @param model
-	 * @param x
-	 * @param y
+	 * @param model a type gamePlay 
+	 * @param x is an type of integers coordiantes
+	 * @param y is an type of integers corordinates
 	 */
 	public Controller(gamePlay model, int x, int y)
 	{
