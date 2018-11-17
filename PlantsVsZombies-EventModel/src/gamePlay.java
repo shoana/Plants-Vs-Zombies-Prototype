@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 public class gamePlay {
 
 	private static int nRows; //GRID DIMENSIONS
-	private int nColumns;
+	private static int nColumns;
 	private static char grid[][]; //EMPTY, PLANT, SUNFLOWER OR ZOMBIE
 	private static gameEnum gameState; // holds the state of the game
 	private static int sunshine; // sunshine to be used as currency to purchase sunflowers, peashooters
@@ -131,7 +131,7 @@ public class gamePlay {
 				sunshine -= 100;
 				grid[row][column] = plantType; //Place a plant at this grid space
 				nTurns++; //increase turns
-				//System.out.println(toString()); // show the user the current state of the game
+				System.out.println(toString()); // show the user the current state of the game
 				Peashooter p = new Peashooter(100, row, column); 
 				peashooters.add(p); //Add a peashooter to the array list
 			}
@@ -154,7 +154,7 @@ public class gamePlay {
 				sunshine -= 50;
 				grid[row][column] = plantType; //Place a plant at this grid space
 				nTurns++;
-				//System.out.println(toString()); //Show the user the current state of the game
+				System.out.println(toString()); //Show the user the current state of the game
 				Sunflower s = new Sunflower(50, row, column);
 				sunflowers.add(s); //Add a sunflower to the array list
 			}
@@ -199,7 +199,7 @@ public class gamePlay {
 			}
 		}
 		
-		//System.out.println(toString()); //Update the user
+		System.out.println(output()); //Update the user
 		gameState = plantOrZombie();
 		
 	}
@@ -239,7 +239,7 @@ public class gamePlay {
 
 		//If there are no zombies left, peashooters automatically win
 		if(zombies.size() == 0 && zombiesEaten > numZombies) {
-		//	System.out.println(toString());
+			System.out.println(output());
 			System.out.println("Plants defeated the zombies! Plants WIN");
 			JOptionPane.showMessageDialog(null,"Plants defeated the zombies! \n YOU WON");
 			System.exit(-1);
@@ -264,7 +264,7 @@ public class gamePlay {
 
 						if(b.getPositionY() == 0) {
 							System.out.println("Zombies reached the house. Plants LOSE!");
-						//	System.out.println(toString());
+							System.out.println(output());
 							JOptionPane.showMessageDialog(null,"Zombies reached the house! \n ZOMBIES WON");
 							System.exit(-1);
 							return gameEnum.ZOMBIES_WIN;
@@ -311,7 +311,7 @@ public class gamePlay {
 
 		//We need to check the edge cases again since the zombies have moved positions. 
 		if(zombies.size() == 0 && zombiesEaten > numZombies) {
-			//System.out.println(toString());
+			System.out.println(output());
 			System.out.println("Plants defeated the zombies! Plants WIN!");
 			JOptionPane.showMessageDialog(null,"Plants defeated the zombies! \n YOU WON");
 			System.exit(-1);
@@ -401,7 +401,7 @@ public class gamePlay {
 	 * ToString method for textual representation of the game board
 	 * @return String of the gird and the contents contained in the grid
 	 */
-	public String toString() {
+	public static String output() {
 		String s = ("===========================\n");
 		for (int r=0;r < nRows; r++ ) {
 			for (int c=0; c < nColumns; c++) {
