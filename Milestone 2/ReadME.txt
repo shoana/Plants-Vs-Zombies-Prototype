@@ -104,7 +104,6 @@ Who did what:
 Sarah Lamonica: 
 - Worked on implementing the View and Controller classes 
 - Implemented the Event Model pattern in the project so the Model could update the View using event listeners.
-- Worked on JavaDoc
 
 Mounica Pillarisetty:
 - Worked on implementing the View and sunflower classes
