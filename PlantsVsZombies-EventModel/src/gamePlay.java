@@ -21,9 +21,10 @@ import javax.swing.JOptionPane;
 
 public class gamePlay {
 
-	private int nRows, nColumns; //GRID DIMENSIONS
-	private char grid[][]; //EMPTY, PLANT, SUNFLOWER OR ZOMBIE
-	private gameEnum gameState; // holds the state of the game
+	private static int nRows; //GRID DIMENSIONS
+	private int nColumns;
+	private static char grid[][]; //EMPTY, PLANT, SUNFLOWER OR ZOMBIE
+	private static gameEnum gameState; // holds the state of the game
 	private static int sunshine; // sunshine to be used as currency to purchase sunflowers, peashooters
 	private static final int plantToZombieLength = 3; //Plant must be >= 3 steps away from zombie or else it will eat it.
 	private static final int startSunshine = 300; //starting money 
@@ -34,11 +35,11 @@ public class gamePlay {
 	private static ArrayList<Peashooter> peashooters = new ArrayList<Peashooter>(); 
 	private static ArrayList<Sunflower> sunflowers = new ArrayList<Sunflower>();
 	private static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
-	private ArrayList<gamePlayListener> gameListeners;
+	private static ArrayList<gamePlayListener> gameListeners;
 
 	
 	//Keeps track of plants eaten, zombies eaten, and the number of zombies on the grid
-	private int plantsEaten = 0; 
+	private static int plantsEaten = 0; 
 	private static int zombiesEaten = 0;
 	private static int numZombies = 0;
 
@@ -101,7 +102,7 @@ public class gamePlay {
 	 * @param plantType is an int could be a sunflower or a peashooter
 	 * @return gameEnum the gameState
 	 */
-	public gameEnum plantTurn(int row, int column)
+	public  gameEnum plantTurn(int row, int column)
 	{
 		
 		
@@ -124,9 +125,9 @@ public class gamePlay {
 		if(sunshine >= 50) {
 			if(plantType == 'p' && sunshine >= 100) {
 				sunshine -= 100;
-				this.grid[row][column] = plantType; //Place a plant at this grid space
+				grid[row][column] = plantType; //Place a plant at this grid space
 				nTurns++; //increase turns
-				System.out.println(toString()); // show the user the current state of the game
+				//System.out.println(toString()); // show the user the current state of the game
 				Peashooter p = new Peashooter(100, row, column); 
 				peashooters.add(p); //Add a peashooter to the array list
 			}
@@ -147,9 +148,9 @@ public class gamePlay {
 				}
 				
 				sunshine -= 50;
-				this.grid[row][column] = plantType; //Place a plant at this grid space
+				grid[row][column] = plantType; //Place a plant at this grid space
 				nTurns++;
-				System.out.println(toString()); //Show the user the current state of the game
+				//System.out.println(toString()); //Show the user the current state of the game
 				Sunflower s = new Sunflower(50, row, column);
 				sunflowers.add(s); //Add a sunflower to the array list
 			}
@@ -165,7 +166,7 @@ public class gamePlay {
 		gamePlayEvent e = new gamePlayEvent (this, row, column, plantType, zombies, sunshine);
         for (gamePlayListener tttl: gameListeners) tttl.handleGameEvent(e);
         
-		return this.gameState;
+		return gameState;
 	}
 	
 	/**
@@ -173,7 +174,7 @@ public class gamePlay {
 	 * is zombie time.
 	 * @param numZombies the number of zombies in the game at that moment
 	 */
-	public void zombieTime(int numZombies) {
+	public static void zombieTime(int numZombies) {
 
 		System.out.println(" ");
 		System.out.println("========================");
@@ -194,7 +195,7 @@ public class gamePlay {
 			}
 		}
 		
-		System.out.println(toString()); //Update the user
+		//System.out.println(toString()); //Update the user
 		gameState = plantOrZombie();
 		
 	}
@@ -204,7 +205,7 @@ public class gamePlay {
 	 * If plant is less than 2 away, then the zombie will get killed 
 	 * @return gameEnum the gameState
 	 */
-	public gameEnum plantOrZombie() {
+	public static gameEnum plantOrZombie() {
 		//Keeping track of how many zombies and plants have died for game play
 
 		//EDGE CASES:
@@ -234,7 +235,7 @@ public class gamePlay {
 
 		//If there are no zombies left, peashooters automatically win
 		if(zombies.size() == 0 && zombiesEaten > numZombies) {
-			System.out.println(toString());
+		//	System.out.println(toString());
 			System.out.println("Plants defeated the zombies! Plants WIN");
 			JOptionPane.showMessageDialog(null,"Plants defeated the zombies! \n YOU WON");
 			System.exit(-1);
@@ -259,7 +260,7 @@ public class gamePlay {
 
 						if(b.getPositionY() == 0) {
 							System.out.println("Zombies reached the house. Plants LOSE!");
-							System.out.println(toString());
+						//	System.out.println(toString());
 							JOptionPane.showMessageDialog(null,"Zombies reached the house! \n ZOMBIES WON");
 							System.exit(-1);
 							return gameEnum.ZOMBIES_WIN;
@@ -306,7 +307,7 @@ public class gamePlay {
 
 		//We need to check the edge cases again since the zombies have moved positions. 
 		if(zombies.size() == 0 && zombiesEaten > numZombies) {
-			System.out.println(toString());
+			//System.out.println(toString());
 			System.out.println("Plants defeated the zombies! Plants WIN!");
 			JOptionPane.showMessageDialog(null,"Plants defeated the zombies! \n YOU WON");
 			System.exit(-1);
