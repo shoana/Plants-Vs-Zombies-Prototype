@@ -10,7 +10,7 @@ import junit.framework.TestCase;
  *
  */
 public class testGameOver extends TestCase {
-	
+
 	private ArrayList<Zombie> zombies;
 	private ArrayList<Peashooter> peashooters;
 	private ArrayList<Sunflower> sunflowers;
@@ -30,54 +30,52 @@ public class testGameOver extends TestCase {
 		z1 = new Zombie (0,0);
 		z2 = new Zombie (3,4);
 		z3 = new Zombie (3,3);
+		//gamePlay.plantOrZombie();
 	}
-	
+
 	/**
 	 * This test case checks if the plants win
 	 */
 	public void testPlantWins() {
-		
+
 		// Zombies are all killed by peashooters while the game has commenced
-		gamePlay.plantOrZombie();
+
 		assertTrue("Game over: Plant has won.", zombies.size() == 0 && zombieAttack == true);
-		
+
 	}
-	
+
 	/**
 	 * This test case checks if the zombies win, when there are no peashooters/sunflowers left on the grid
 	 */
 	public void testZombieWins1() {
-		
-		zombies.add(z1);
 
-		gamePlay.plantOrZombie();
+		zombies.add(z1);
 		// Zombies have eaten all the plants
 		assertTrue("Game over: Zombie has won.", peashooters.size() == 0 && sunflowers.size()==0 && zombies.size() > 0);
-		
+
 	}
-	
+
 	/**
 	 * This test case checks if the zombies have reached the end and 
 	 * the spaces between the zombie and the plant is no more than 2
 	 */
-public void testZombieWins2() {
-		
+	public void testZombieWins2() {
+
 		zombies.add(z1);
 		zombies.add(z2);
 		zombies.add(z3);
 		peashooters.add(p1);
-		
-		gamePlay.plantOrZombie();
+
 		//Zombies have reached the house
 		assertTrue("Game over: Zombie has won.", z1.getPositionY() == 0);
-		
+
 
 		//Zombie in a row, peashooter not in that row and cannot buy more
 		assertTrue("Game over: Zombie has won.", (z2.getPositionX() == p1.getPositionX() && 
 				(z3.getPositionY() == (p1.getPositionY()) || 
 				(z3.getPositionY() == p1.getPositionY()- 1) || 
 				(z3.getPositionY() == p1.getPositionY()- 2) )));
-	
+
 	}
 
 
