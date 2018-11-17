@@ -2,7 +2,7 @@
  * Sunflower class is a type of plant that produces sunshine(money) when you buy the plant.  
  * It allows the user to buy more plants
  * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version October 27th, 2018
+ * @version November 16th, 2018
  */
 
 public class Sunflower {
