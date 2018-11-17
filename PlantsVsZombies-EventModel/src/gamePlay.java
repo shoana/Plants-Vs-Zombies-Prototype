@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * by the Zombies if they are not strategically placed on the grid by the user and visa-versa.
  *
  * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version October 27th, 2018 
+ * @version November 16, 2018 
  *
  */
 
@@ -37,7 +37,6 @@ public class gamePlay {
 	private static ArrayList<Zombie> zombies = new ArrayList<Zombie>();
 	private static ArrayList<gamePlayListener> gameListeners;
 
-	
 	//Keeps track of plants eaten, zombies eaten, and the number of zombies on the grid
 	private static int plantsEaten = 0; 
 	private static int zombiesEaten = 0;
@@ -364,13 +363,11 @@ public class gamePlay {
 	public String charToPlantType(char s)
 	{
 		String plant = "";
-		if(s == 's')
-		{
+		if(s == 's'){
 			plant += "Sunflower";
 		}
 
-		if(s == 'p')
-		{
+		if(s == 'p'){
 			plant += "Peashooter";
 		}
 
