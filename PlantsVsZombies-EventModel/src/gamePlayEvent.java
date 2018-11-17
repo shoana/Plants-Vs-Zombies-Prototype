@@ -2,8 +2,9 @@ import java.util.ArrayList;
 import java.util.EventObject;
 
 /**
- * Game Play Event handles the event and its model
- * @author sarahlamonica
+ *Event class for the MVC model which used EventObjects
+ *@author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
+ *@version November 16th, 2018 
  *
  */
 public class gamePlayEvent extends EventObject {
@@ -14,15 +15,14 @@ public class gamePlayEvent extends EventObject {
 	private char plantType;
 	private ArrayList<Zombie> z;
 	private int sunshines;
-	
 	/**
-	 * Constructor
-	 * @param source
-	 * @param x
-	 * @param y
-	 * @param plantType
-	 * @param z
-	 * @param sunshines
+	 * The constructor for gamePlayEvent class
+	 * @param source is a type of object 
+	 * @param x is a type of interger corresponding to the coordiantes
+	 * @param y is a type of integer corresponding to the coordinates
+	 * @param plantType is type of character choosen for plant type
+	 * @param z is a type of an array list of zombies
+	 * @param sunshines is type integers for keep track of the money used
 	 */
 	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines) {
 		super(source);
@@ -35,8 +35,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter method to get all the zombies
-	 * @return ArrayList<Zombie> 
+	 * This method returns zombies from an array list 
+	 * @return a type of array list for zombies
 	 */
 	public ArrayList<Zombie> returnZombie()
 	{
@@ -44,8 +44,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter method to get the game Enum value
-	 * @return gameEnum
+	 * This method is a gameEnum type
+	 * @return a gameEnum which is the state of the game
 	 */
 	public gameEnum getGameEnum()
 	{
@@ -53,8 +53,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter method to get the x coordinate
-	 * @return int
+	 * This method gets the x coordinate
+	 * @return a type integer x 
 	 */
 	public int getX()
 	{
@@ -62,8 +62,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter method to get the Y coordinate
-	 * @return int
+	 * This method gets the y coordinate
+	 * @return a type integer y 
 	 */
 	public int getY()
 	{
@@ -71,8 +71,9 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter method for the sunshines
-	 * @return int
+	 * This method gets the sunshine used for 
+	 * keeping track of the money spent
+	 * @return a type integer for the sunshines
 	 */
 	public int getSunshines()
 	{
@@ -80,8 +81,9 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter method for the plantType variale
-	 * @return char
+	 * This method returns a type of char for the plant type
+	 * @return a charater for the type of plant type
+	 * sunflower/peashooter
 	 */
 	public char getPlantType()
 	{
