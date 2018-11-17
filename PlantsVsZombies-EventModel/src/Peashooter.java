@@ -2,7 +2,7 @@
  * Peashooter class is a type of plant that attacks the Zombie and prevents them 
  * from entering the house
  * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version October 27th, 2018
+ * @version November 16th, 2018
  */
 
 public class Peashooter {
