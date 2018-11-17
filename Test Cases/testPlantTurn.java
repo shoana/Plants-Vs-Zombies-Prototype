@@ -18,7 +18,6 @@ public class testPlantTurn extends TestCase{
 	private static int sun = 25; // each sun costs 25
 	private char plantType;
 	private int col, row;
-	//private gameEnum PLANT_TIME, ZOMBIE_TIME, ZOMBIES_WIN, PLANTS_WIN;
 	
 	/**
 	 * This test case sets up the variable for this class
@@ -35,7 +34,7 @@ public class testPlantTurn extends TestCase{
 		
 		// test peashooter in Plant turns
 		plantType = 'p';
-		gamePlay.plantTurn (row, col, 'p');
+		//gamePlay.plantTurn (row, col);
 		assertTrue("Game Over: Zombies win", plantType == 'p' && sunshine >=100);
 	}
 	
@@ -47,7 +46,7 @@ public class testPlantTurn extends TestCase{
 		
 		// test sunflower in Plant turns
 		plantType = 's';
-		gamePlay.plantTurn (row, col, 's');
+		//gamePlay.plantTurn (row, col);
 		assertTrue("Game Over: Zombies win", plantType == 's' && sunshine >=50);
 		
 	}
