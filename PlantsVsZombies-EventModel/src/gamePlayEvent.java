@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.EventObject;
 
 /**
- *Event class for the MVC model which used EventObjects
+ *Event class for the MVC model which extends EventObjects
  *@author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
  *@version November 16th, 2018 
  *
