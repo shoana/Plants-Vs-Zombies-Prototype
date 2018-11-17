@@ -2,7 +2,7 @@
  * Zombie attacks the plants preventing themselves from dying and allowing 
  * them to enter the house.
  * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version October 27th, 2018
+ * @version November 16th, 2018
  */
 
 public class Zombie {
