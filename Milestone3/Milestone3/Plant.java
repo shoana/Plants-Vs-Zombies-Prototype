@@ -9,6 +9,7 @@ public class Plant {
 	protected int cost;
 	protected int positionX;
 	protected int positionY;
+	protected String plantType;
 	
 	/**
 	 * Constructor for the peashooter
@@ -16,11 +17,20 @@ public class Plant {
 	 * @param positionX is an int for x coordinate position on the grid
 	 * @param positionY is an int for y coordinate position on the grip 
 	 */
-	public Plant(int cost, int positionX, int positionY)
+	public Plant(int cost, int positionX, int positionY, String plantType)
 	{
 		this.setCost(cost);
 		this.positionX = positionX;
 		this.positionY = positionY;
+		this.plantType = plantType;
+	}
+	
+	public String getPlantType(){
+		return plantType;
+	}
+	
+	public void setPlantType(){
+		this.plantType = plantType;
 	}
 
 	/**
