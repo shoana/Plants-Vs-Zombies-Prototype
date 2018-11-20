@@ -10,7 +10,7 @@ public class Peashooter extends Plant{
 	public static final int cost = 100;
 	public static int positionX = 0;
 	public static int positionY = 0;
-	
+	public static fianl String plantType = "peashooter";
 	
 	
 	/**
@@ -20,10 +20,11 @@ public class Peashooter extends Plant{
 	 * @param positionY is an int for y coordinate position on the grip 
 	 */
 	public Peashooter() {
-		super(cost, positionX, positionY);
+		super(cost, positionX, positionY, plantType);
 		this.setCost(cost);
 		this.positionX = positionX;
 		this.positionY = positionY;
+		this.plantType = plantType;
 	}
 
 }
