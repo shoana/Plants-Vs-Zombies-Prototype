@@ -8,6 +8,7 @@
 public class Sunflower extends Plant{
 
 	public static final int cost = 50;
+	public static final String plantType = "sunflower";
 	public static int positionX;
 	public static int positionY;
 	
@@ -19,10 +20,7 @@ public class Sunflower extends Plant{
 	 * @param positionY is an int for y coordinate position on the grip 
 	 */
 	public Sunflower() {
-		super(cost, positionX, positionY);
-		this.setCost(cost);
-		this.positionX = positionX;
-		this.positionY = positionY;
+		super(cost, positionX, positionY, plantType);
 	}
 
 }
