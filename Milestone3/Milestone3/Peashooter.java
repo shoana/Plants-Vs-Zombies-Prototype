@@ -21,10 +21,5 @@ public class Peashooter extends Plant{
 	 */
 	public Peashooter() {
 		super(cost, positionX, positionY, plantType);
-		this.setCost(cost);
-		this.positionX = positionX;
-		this.positionY = positionY;
-		this.plantType = plantType;
 	}
-
 }
