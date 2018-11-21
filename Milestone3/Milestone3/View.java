@@ -123,11 +123,13 @@ public class View extends JFrame implements gamePlayListener {
 		
 		board[x][y].setText(String.valueOf(plant));
 		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
+		board[x][y].setEnabled(false);
 		
 		for(Zombie zed: z)
 		{
 			System.out.println("ZOMBIE X: " + zed.getPositionX() + " ZOMBIE Y :" + zed.getPositionY());
 			board[zed.getPositionX()][zed.getPositionY()].setText("z");
+			board[x][y].setEnabled(true);
 			board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
 		}
 		
