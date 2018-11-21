@@ -15,6 +15,7 @@ public class gamePlayEvent extends EventObject {
 	private ArrayList<Zombie> z;
 	private int sunshines;
 	private ArrayList<Peashooter> p;
+	private ArrayList<Sunflower> s;
 	
 	
 	/**
@@ -27,7 +28,7 @@ public class gamePlayEvent extends EventObject {
 	 * @param sunshines
 	 */
 	
-	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines, ArrayList<Peashooter> p) {
+	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines, ArrayList<Peashooter> p, ArrayList<Sunflower> s) {
 		super(source);
 		this.x = x;
 		this.y = y;
@@ -35,11 +36,17 @@ public class gamePlayEvent extends EventObject {
 		this.z = z;
 		this.sunshines = sunshines;
 		this.p = p;
+		this.s = s;
 		
 	}
 	public ArrayList<Peashooter> getPeas()
 	{
 		return this.p;
+	}
+	
+	public ArrayList<Sunflower> getSunF()
+	{
+		return this.s;
 	}
 	/**
 	 * Getter
