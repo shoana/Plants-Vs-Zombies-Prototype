@@ -120,6 +120,7 @@ public class View extends JFrame implements gamePlayListener {
 		gameEnum s = e.getGameEnum();
 		ArrayList<Zombie> z = e.returnZombie();
 		ArrayList<Peashooter> ps = e.getPeas();
+		ArrayList<Sunflower> sf = e.getSunF();
 		
 		board[x][y].setText(String.valueOf(plant));
 		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
@@ -138,11 +139,20 @@ public class View extends JFrame implements gamePlayListener {
 			System.out.println("PEA X: " + peas.getPositionX() + " PEA Y :" + peas.getPositionY() + " EAT: " + peas.getEaten());
 			if(peas.getEaten())
 			{
-				
 				board[peas.getPositionX()][peas.getPositionY()].setText(" ");
+				board[x][y].setEnabled(false);
 			}
 		}
 		
+		for(Sunflower sunF : sf)
+		{
+			System.out.println("PEA X: " + sunF.getPositionX() + " SUN Y :" + sunF.getPositionY() + " EAT: " + sunF.getEaten());
+			if(sunF.getEaten())
+			{
+				board[sunF.getPositionX()][sunF.getPositionY()].setText(" ");
+				board[x][y].setEnabled(false);
+			}
+		}
 		
 		if(s == gameEnum.PLANT_TIME) return;
 		if(s == gameEnum.ZOMBIE_TIME) {
