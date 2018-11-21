@@ -133,7 +133,7 @@ public class gamePlay {
 		}
 
 		
-		gamePlayEvent e = new gamePlayEvent (this, row, column, plantType, zombies, sunshine, peashooters);
+		gamePlayEvent e = new gamePlayEvent (this, row, column, plantType, zombies, sunshine, peashooters, sunflowers);
         for (gamePlayListener tttl: gameListeners) tttl.handleGameEvent(e);
         
         
@@ -303,6 +303,7 @@ public class gamePlay {
 	public gameEnum getGameState() {
 		return this.gameState;
 	}
+	
 
 	/**
 	 * a setter to set the state of the game
