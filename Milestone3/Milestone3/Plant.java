@@ -10,19 +10,20 @@ public class Plant {
 	protected int positionX;
 	protected int positionY;
 	protected String plantType;
-	
+	protected boolean isEaten;
 	/**
 	 * Constructor for the peashooter
 	 * @param cost is an int for the money that is required to buy a peashooter
 	 * @param positionX is an int for x coordinate position on the grid
 	 * @param positionY is an int for y coordinate position on the grip 
 	 */
-	public Plant(int cost, int positionX, int positionY, String plantType)
+	public Plant(int cost, int positionX, int positionY, String plantType, boolean isEaten)
 	{
 		this.setCost(cost);
 		this.positionX = positionX;
 		this.positionY = positionY;
 		this.plantType = plantType;
+		this.isEaten = isEaten;
 	}
 	
 	public String getPlantType(){
@@ -71,5 +72,15 @@ public class Plant {
 
 	public void setCost(int cost) {
 		this.cost = cost;
+	}
+	
+	public boolean getEaten()
+	{
+		return isEaten;
+	}
+	
+	public void setEaten()
+	{
+		this.isEaten = true;
 	}
 }
