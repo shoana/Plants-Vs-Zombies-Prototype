@@ -11,12 +11,10 @@ import javax.swing.*;
 
 /**
  * View class for implementing the Plants vs. Zombies game
- * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version November 16th, 2018
+ * @author sarahlamonica
  */
 public class View extends JFrame implements gamePlayListener {
-
-	
+	int startNum = 4;
 	private String player;
 	private String winner;
 	private JButton board[][];
@@ -24,6 +22,7 @@ public class View extends JFrame implements gamePlayListener {
 	private JLabel gameStatus;
 	private JLabel scoreStatus;
 	private JMenuItem resetItem, quitItem;
+	private ImageIcon grassIcon = new ImageIcon("Background1.jpg");
 
 	private static final String peashooter = "P";
 	private static final String zombie = "S";
@@ -31,6 +30,8 @@ public class View extends JFrame implements gamePlayListener {
 	private static final String EMPTY = "";
 	private int nTurns = 0; //Number of turns the user has taken
 	private JButton peashooterButton, sunshineButton;
+
+	
 
 	private List <JMenuItem> menu = new ArrayList<JMenuItem>();
 
@@ -40,7 +41,7 @@ public class View extends JFrame implements gamePlayListener {
 	public View()
 	{
 		gamePlay model = new gamePlay(6,6, 1000);
-        	model.addGamePlayListener(this);
+        model.addGamePlayListener(this);
 
 		window.setSize(500,500);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,20 +63,6 @@ public class View extends JFrame implements gamePlayListener {
 		JPanel plantType = new JPanel();
 		plantType.setLayout(new BorderLayout());
 
-		//add peashooter actionlistener
-		peashooterButton = new JButton("Peashooter - 100");
-		//peashooterButton.addActionListener(this);
-
-		//add sunshine actionlistener
-		sunshineButton = new JButton("Sunshine - 50");
-		//sunshineButton.addActionListener(this);
-
-
-		peashooterButton.setSize(10, 50);
-		sunshineButton.setSize(10,50);
-
-		plantType.add(peashooterButton, BorderLayout.EAST);
-		plantType.add(sunshineButton, BorderLayout.WEST);
 
 		window.getContentPane().add(plantType, BorderLayout.NORTH);
 
@@ -83,17 +70,20 @@ public class View extends JFrame implements gamePlayListener {
 		JPanel gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(6,6));
 		window.getContentPane().add(gamePanel, BorderLayout.CENTER);
+
+		//gameStatus = new JLabel("Game Status is Here");
 		scoreStatus = new JLabel("Sunshines Left: 1000");
+
+		//window.getContentPane().add(gameStatus, BorderLayout.SOUTH);
 		window.getContentPane().add(scoreStatus, BorderLayout.EAST);
 
 		board = new JButton[6][6];
 
-
-		//SETS THE GAME BOARD
 		Font font = new Font("Dialog", Font.BOLD, 24);
+		
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
-				board[i][j] = new JButton(EMPTY);
+				board[i][j] = new JButton();
 				board[i][j].setFont(font);
 				gamePanel.add(board[i][j]);
 				board[i][j].addActionListener(new Controller(model, i, j));
@@ -104,8 +94,7 @@ public class View extends JFrame implements gamePlayListener {
 		window.setVisible(true);
 
 	}
-
-
+	
 	/**
 	 * Disables all buttons (game over)
 	 */
@@ -124,20 +113,39 @@ public class View extends JFrame implements gamePlayListener {
 	 */
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
+		
 		int x = e.getX();
 		int y = e.getY();
 		char plant = e.getPlantType();
 		gameEnum s = e.getGameEnum();
 		ArrayList<Zombie> z = e.returnZombie();
+		ArrayList<Peashooter> ps = e.getPeas();
 		
 		board[x][y].setText(String.valueOf(plant));
 		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
 		
 		for(Zombie zed: z)
 		{
-			board[zed.getPositionX()][zed.getPositionY()].setText("z");;
+			System.out.println("ZOMBIE X: " + zed.getPositionX() + " ZOMBIE Y :" + zed.getPositionY());
+			board[zed.getPositionX()][zed.getPositionY()].setText("z");
+			board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
 		}
+		
+		for(Peashooter peas : ps)
+		{
+			System.out.println("PEA X: " + peas.getPositionX() + " PEA Y :" + peas.getPositionY() + " EAT: " + peas.getEaten());
+			if(peas.getEaten())
+			{
 				
+				board[peas.getPositionX()][peas.getPositionY()].setText(" ");
+			}
+		}
+		
+		
+		if(s == gameEnum.PLANT_TIME) return;
+		if(s == gameEnum.ZOMBIE_TIME) {
+			System.out.println("ZOMBIE TIME");
+		}	
 	}
 	
 	public static void main(String[] args)
