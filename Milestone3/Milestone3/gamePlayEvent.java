@@ -2,9 +2,8 @@ import java.util.ArrayList;
 import java.util.EventObject;
 
 /**
- *Event class for the MVC model which extends EventObjects
- *@author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- *@version November 16th, 2018 
+ * Game Play Event handles the event and its model
+ * @author sarahlamonica
  *
  */
 public class gamePlayEvent extends EventObject {
@@ -15,37 +14,44 @@ public class gamePlayEvent extends EventObject {
 	private char plantType;
 	private ArrayList<Zombie> z;
 	private int sunshines;
+	private ArrayList<Peashooter> p;
+	
+	
 	/**
-	 * The constructor for gamePlayEvent class
-	 * @param source is a type of object 
-	 * @param x is a type of interger corresponding to the coordiantes
-	 * @param y is a type of integer corresponding to the coordinates
-	 * @param plantType is type of character choosen for plant type
-	 * @param z is a type of an array list of zombies
-	 * @param sunshines is type integers for keep track of the money used
+	 * Constructor
+	 * @param source
+	 * @param x
+	 * @param y
+	 * @param plantType
+	 * @param z
+	 * @param sunshines
 	 */
-	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines) {
+	
+	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines, ArrayList<Peashooter> p) {
 		super(source);
 		this.x = x;
 		this.y = y;
 		this.plantType = plantType;
 		this.z = z;
 		this.sunshines = sunshines;
+		this.p = p;
 		
 	}
-	
+	public ArrayList<Peashooter> getPeas()
+	{
+		return this.p;
+	}
 	/**
-	 * This method returns zombies from an array list 
-	 * @return a type of array list for zombies
+	 * Getter
+	 * @return
 	 */
 	public ArrayList<Zombie> returnZombie()
 	{
 		return this.z;
 	}
-	
 	/**
-	 * This method is a gameEnum type
-	 * @return a gameEnum which is the state of the game
+	 * Getter
+	 * @return
 	 */
 	public gameEnum getGameEnum()
 	{
@@ -53,8 +59,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * This method gets the x coordinate
-	 * @return a type integer x 
+	 * Getter
+	 * @return
 	 */
 	public int getX()
 	{
@@ -62,8 +68,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * This method gets the y coordinate
-	 * @return a type integer y 
+	 * Getter
+	 * @return
 	 */
 	public int getY()
 	{
@@ -71,9 +77,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * This method gets the sunshine used for 
-	 * keeping track of the money spent
-	 * @return a type integer for the sunshines
+	 * Getter
+	 * @return
 	 */
 	public int getSunshines()
 	{
@@ -81,9 +86,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * This method returns a type of char for the plant type
-	 * @return a charater for the type of plant type
-	 * sunflower/peashooter
+	 * Getter method
+	 * @return
 	 */
 	public char getPlantType()
 	{
