@@ -1,30 +1,28 @@
 /**
- * Peashooter class is a type of plant that attacks the Zombie and prevents them 
- * from entering the house
- * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version October 27th, 2018
+ * Zombie attacks the plants preventing themselves from dying and allowing 
+ * them to enter the house.
+ * @author sarahlamonica
+ * @version MILESTONE 3
  */
 
-public class Peashooter {
-	private int cost;
-	private int positionX;
-	private int positionY;
-	private boolean isEaten;
+public class Zombie {
+	private int positionX; // zombie position
+	private boolean isEaten; //isEaten true or false
+	private int positionY;  // zombie position
+	private int damagePoints;
 	
 	/**
-	 * Constructor for the peashooter
-	 * @param cost is an int for the money that is required to buy a peashooter
+	 * Constructor for Zombie class
 	 * @param positionX is an int for x coordinate position on the grid
 	 * @param positionY is an int for y coordinate position on the grip 
 	 */
-	public Peashooter(int cost, int positionX, int positionY, boolean isEaten)
-	{
-		this.cost = cost;
+	public Zombie(int positionX, int positionY, boolean isEaten, int damagePoints) {
 		this.positionX = positionX;
 		this.positionY = positionY;
-		this.isEaten = false;
+		this.isEaten = isEaten;
+		this.damagePoints = damagePoints;
 	}
-
+	
 	/**
 	 * Getter method for position x
 	 * @return int for the position for x
@@ -32,14 +30,17 @@ public class Peashooter {
 	public int getPositionX(){
 		return positionX;
 	}
+	
 	public boolean getEaten()
 	{
 		return isEaten;
 	}
+	
 	public void setEaten()
 	{
-		this.isEaten = true;
+		isEaten = true;
 	}
+	
 	/**
 	 * Setter method for position x
 	 * @param positionX is an that allows to set the x coordinate on the grid
@@ -62,5 +63,21 @@ public class Peashooter {
 	 */
 	public void setPositionY(int positionY){
 		this.positionY = positionY;
+	}	
+	
+	public int getDmg()
+	{
+		return damagePoints;
+	}
+	
+	public void setDmg(int dmg)
+	{
+		damagePoints = dmg;
+	}
+	
+	
+	public void move()
+	{
+		positionY = positionY - 1;
 	}
 }
