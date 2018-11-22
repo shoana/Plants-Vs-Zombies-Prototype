@@ -8,14 +8,13 @@ import java.util.EventObject;
  */
 public class gamePlayEvent extends EventObject {
 
-	private gameEnum e;
+	
 	private int x;
 	private int y;
 	private char plantType;
 	private ArrayList<Zombie> z;
 	private int sunshines;
-	private ArrayList<Peashooter> p;
-	private ArrayList<Sunflower> s;
+	private ArrayList<Plant> p;
 	
 	
 	/**
@@ -28,7 +27,7 @@ public class gamePlayEvent extends EventObject {
 	 * @param sunshines
 	 */
 	
-	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines, ArrayList<Peashooter> p, ArrayList<Sunflower> s) {
+	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines, ArrayList<Plant> p) {
 		super(source);
 		this.x = x;
 		this.y = y;
@@ -36,17 +35,11 @@ public class gamePlayEvent extends EventObject {
 		this.z = z;
 		this.sunshines = sunshines;
 		this.p = p;
-		this.s = s;
 		
 	}
-	public ArrayList<Peashooter> getPeas()
+	public ArrayList<Plant> getPeas()
 	{
 		return this.p;
-	}
-	
-	public ArrayList<Sunflower> getSunF()
-	{
-		return this.s;
 	}
 	/**
 	 * Getter
@@ -56,14 +49,7 @@ public class gamePlayEvent extends EventObject {
 	{
 		return this.z;
 	}
-	/**
-	 * Getter
-	 * @return
-	 */
-	public gameEnum getGameEnum()
-	{
-		return this.e;
-	}
+
 	
 	/**
 	 * Getter
