@@ -1,24 +1,26 @@
 /**
  * Zombie attacks the plants preventing themselves from dying and allowing 
  * them to enter the house.
- * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version October 27th, 2018
+ * @author sarahlamonica
+ * @version MILESTONE 3
  */
 
 public class Zombie {
 	private int positionX; // zombie position
-	private boolean isEaten;
+	private boolean isEaten; //isEaten true or false
 	private int positionY;  // zombie position
+	private int damagePoints;
 	
 	/**
 	 * Constructor for Zombie class
 	 * @param positionX is an int for x coordinate position on the grid
 	 * @param positionY is an int for y coordinate position on the grip 
 	 */
-	public Zombie(int positionX, int positionY, boolean isEaten) {
+	public Zombie(int positionX, int positionY, boolean isEaten, int damagePoints) {
 		this.positionX = positionX;
 		this.positionY = positionY;
 		this.isEaten = isEaten;
+		this.damagePoints = damagePoints;
 	}
 	
 	/**
@@ -63,9 +65,19 @@ public class Zombie {
 		this.positionY = positionY;
 	}	
 	
+	public int getDmg()
+	{
+		return damagePoints;
+	}
+	
+	public void setDmg(int dmg)
+	{
+		damagePoints = dmg;
+	}
+	
+	
 	public void move()
 	{
-		this.positionY = positionY - 1;
-		
+		positionY = positionY - 1;
 	}
 }
