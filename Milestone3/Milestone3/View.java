@@ -117,47 +117,38 @@ public class View extends JFrame implements gamePlayListener {
 		int x = e.getX();
 		int y = e.getY();
 		char plant = e.getPlantType();
-		gameEnum s = e.getGameEnum();
+		
 		ArrayList<Zombie> z = e.returnZombie();
-		ArrayList<Peashooter> ps = e.getPeas();
-		ArrayList<Sunflower> sf = e.getSunF();
+		ArrayList<Plant> ps = e.getPeas();
 		
 		board[x][y].setText(String.valueOf(plant));
-		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
 		board[x][y].setEnabled(false);
+		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
 		
 		for(Zombie zed: z)
 		{
-			System.out.println("ZOMBIE X: " + zed.getPositionX() + " ZOMBIE Y :" + zed.getPositionY());
-			board[zed.getPositionX()][zed.getPositionY()].setText("z");
-			board[x][y].setEnabled(true);
-			board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
+			
+			if(zed.getDmg() <= 0) //if the zombies reach 0 dmg points, they die
+			{
+				System.out.println("DMG");
+				board[zed.getPositionX()][zed.getPositionY()].setText(" ");
+			}
+			else { //move the zombies if they are still on the grid
+				board[zed.getPositionX()][zed.getPositionY()].setText("z");
+				board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
+				System.out.println("ON GRID");
+			}
 		}
 		
-		for(Peashooter peas : ps)
+		for(Plant peas : ps)
 		{
-			System.out.println("PEA X: " + peas.getPositionX() + " PEA Y :" + peas.getPositionY() + " EAT: " + peas.getEaten());
-			if(peas.getEaten())
+			if(peas.getEaten()) // if the plant is eaten then remove it off the board
 			{
 				board[peas.getPositionX()][peas.getPositionY()].setText(" ");
-				board[x][y].setEnabled(false);
+				System.out.println("PLANTS");
 			}
 		}
 		
-		for(Sunflower sunF : sf)
-		{
-			System.out.println("PEA X: " + sunF.getPositionX() + " SUN Y :" + sunF.getPositionY() + " EAT: " + sunF.getEaten());
-			if(sunF.getEaten())
-			{
-				board[sunF.getPositionX()][sunF.getPositionY()].setText(" ");
-				board[x][y].setEnabled(false);
-			}
-		}
-		
-		if(s == gameEnum.PLANT_TIME) return;
-		if(s == gameEnum.ZOMBIE_TIME) {
-			System.out.println("ZOMBIE TIME");
-		}	
 	}
 	
 	public static void main(String[] args)
