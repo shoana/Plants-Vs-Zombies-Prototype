@@ -1,37 +1,29 @@
+
 /**
  * Peashooter class is a type of plant that attacks the Zombie and prevents them 
  * from entering the house
- * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version November 16th, 2018
+ * @author sarahlamonica
+ * @version MILESTONE 3
  */
 
 public class Plant {
-	protected int cost;
-	protected int positionX;
-	protected int positionY;
-	protected String plantType;
-	protected boolean isEaten;
+	private int cost;
+	private int positionX;
+	private int positionY;
+	private boolean isEaten;
+	
 	/**
 	 * Constructor for the peashooter
 	 * @param cost is an int for the money that is required to buy a peashooter
 	 * @param positionX is an int for x coordinate position on the grid
 	 * @param positionY is an int for y coordinate position on the grip 
 	 */
-	public Plant(int cost, int positionX, int positionY, String plantType, boolean isEaten)
+	public Plant(int cost, int positionX, int positionY, boolean isEaten)
 	{
-		this.setCost(cost);
+		this.cost = cost;
 		this.positionX = positionX;
 		this.positionY = positionY;
-		this.plantType = plantType;
-		this.isEaten = isEaten;
-	}
-	
-	public String getPlantType(){
-		return plantType;
-	}
-	
-	public void setPlantType(){
-		this.plantType = plantType;
+		this.isEaten = false;
 	}
 
 	/**
@@ -41,7 +33,14 @@ public class Plant {
 	public int getPositionX(){
 		return positionX;
 	}
-	
+	public boolean getEaten()
+	{
+		return isEaten;
+	}
+	public void setEaten()
+	{
+		this.isEaten = true;
+	}
 	/**
 	 * Setter method for position x
 	 * @param positionX is an that allows to set the x coordinate on the grid
@@ -64,23 +63,5 @@ public class Plant {
 	 */
 	public void setPositionY(int positionY){
 		this.positionY = positionY;
-	}
-
-	public int getCost() {
-		return cost;
-	}
-
-	public void setCost(int cost) {
-		this.cost = cost;
-	}
-	
-	public boolean getEaten()
-	{
-		return isEaten;
-	}
-	
-	public void setEaten()
-	{
-		this.isEaten = true;
 	}
 }
