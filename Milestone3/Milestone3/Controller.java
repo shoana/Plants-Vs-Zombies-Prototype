@@ -36,7 +36,7 @@ public class Controller implements ActionListener {
 		//model.moveZombies();
 		model.plantTurn(x, y); //take a plant turn
 		model.zombieTime(2); //set zombie time (from model)
-		model.plantOrZombie();
+		model.plantsOrZombies();
 		JButton o = (JButton) e.getSource();
 		
 		
