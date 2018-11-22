@@ -25,8 +25,8 @@ public class View extends JFrame implements gamePlayListener {
 	private ImageIcon grassIcon = new ImageIcon("Background1.jpg");
 
 	private static final String peashooter = "P";
-	private static final String zombie = "S";
-	private static final String sunshine = "S";
+	private static final String zombie = "Z";
+	private static final String sunflower = "S";
 	private static final String EMPTY = "";
 	private int nTurns = 0; //Number of turns the user has taken
 	private JButton peashooterButton, sunshineButton;
