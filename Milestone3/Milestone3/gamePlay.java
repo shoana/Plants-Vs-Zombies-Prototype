@@ -57,17 +57,27 @@ public class gamePlay {
 			nTurns = 0;
 		}
 		
-		Object[] options = {"Peashooter", "Sunflower"};
-		int n = JOptionPane.showOptionDialog(null, "Choose your plant type!", "Choice", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+		Object[] options = {"Peashooter", "Sunflower","CherryBomb", "Walnut"};
+		int n = JOptionPane.showOptionDialog(null, "Choose your plant type!", "Choice", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[3]);
 		
-		if(n == JOptionPane.YES_OPTION)
+		if(n == 0)
 		{
 			plantType = 'p';
 		}
 		
-		if(n == JOptionPane.NO_OPTION)
+		if(n == 1)
 		{
 			plantType = 's';
+		}
+		if(n == 2)
+		{
+			plantType = 'c';
+			System.out.println("CHERRYBOMB");
+		}
+		if(n == 3)
+		{
+			plantType = 'w';
+			System.out.println("WALNUT");
 		}
 		
 		
@@ -76,6 +86,18 @@ public class gamePlay {
 				sunshine -= 100;
 				Peashooter p = new Peashooter(100, row, column, false); 
 				plants.add(p); //Add a peashooter to the array list
+			}
+			if(plantType == 'c' && sunshine >= 200)
+			{
+				sunshine -= 200;
+				CherryBomb c = new CherryBomb(200, row, column, false);
+				plants.add(c);
+			}
+			if(plantType == 'w' && sunshine >= 200)
+			{
+				sunshine -= 200;
+				Walnut w = new Walnut(200, row, column, false);
+				plants.add(w);
 			}
 
 			if(plantType == 's' && sunshine >= 50) {
@@ -127,6 +149,25 @@ public class gamePlay {
 				{
 					for(Plant p : plants)
 					{
+						if(p instanceof CherryBomb)
+						{
+							//NEED TO FIGURE OUT HOW TO CHECK if within the 4 square
+							if(p.getPositionX() - z.getPositionX() == 1 || p.getPositionY() - z.getPositionY() <= 1)
+							{
+								System.out.println("WE HAVE A BOMB!! kill all the plants in the area");
+								System.out.println("Killed: " + z.getPositionX());
+								z.setDmg(0);
+								p.setEaten();
+							}
+						}
+						if(p instanceof Walnut)
+						{
+							if(p.getPositionX() == z.getPositionX() && p.getPositionY() == z.getPositionY())
+							{
+								//need to halt the zombies if in the same grid space. thinking of
+								//implementing a boolean variable!
+							}
+						}
 						if(z.getPositionX() == p.getPositionX())
 						{
 							z.setDmg(z.getDmg() - 100);
@@ -186,7 +227,7 @@ public class gamePlay {
 
 		//Random variable for placing zombies at a random grid space
 		Random r = new Random();
-
+		
 		if(!startGame) {
 			for(int i = 0; i < numZombies; i++) {
 				int random = r.nextInt(nRows);
@@ -194,8 +235,26 @@ public class gamePlay {
 				zombies.add(z);
 			}
 			
+			for(int i = 0; i < numZombies; i++) {
+				int random = r.nextInt(nRows);
+				NormalZombie z = new NormalZombie(random, (nRows -1), false, 100);
+				zombies.add(z);
+			}
+			
 			startGame = true;
 		}
+	}
+	
+	
+	
+	public void flagZombieIncoming()
+	{
+		if(!startGame)
+		{
+			FlagZombie f = new FlagZombie(2,5, false, 100);
+			zombies.add(f);
+		}
+		
 	}
 	
 	/**
