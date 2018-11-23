@@ -25,8 +25,8 @@ public class View extends JFrame implements gamePlayListener {
 	private ImageIcon grassIcon = new ImageIcon("Background1.jpg");
 
 	private static final String peashooter = "P";
-	private static final String zombie = "Z";
-	private static final String sunflower = "S";
+	private static final String zombie = "S";
+	private static final String sunshine = "S";
 	private static final String EMPTY = "";
 	private int nTurns = 0; //Number of turns the user has taken
 	private JButton peashooterButton, sunshineButton;
@@ -128,14 +128,28 @@ public class View extends JFrame implements gamePlayListener {
 		for(Zombie zed: z)
 		{
 			
+			
 			if(zed.getDmg() <= 0) //if the zombies reach 0 dmg points, they die
 			{
 				System.out.println("DMG");
 				board[zed.getPositionX()][zed.getPositionY()].setText(" ");
 			}
 			else { //move the zombies if they are still on the grid
-				board[zed.getPositionX()][zed.getPositionY()].setText("z");
-				board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
+				if(zed instanceof PylonZombie)
+				{
+					board[zed.getPositionX()][zed.getPositionY()].setText("x");
+					board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
+				}
+				if(zed instanceof FlagZombie)
+				{
+					board[zed.getPositionX()][zed.getPositionY()].setText("f");
+					board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
+				}
+				if(zed instanceof NormalZombie)
+				{
+					board[zed.getPositionX()][zed.getPositionY()].setText("z");
+					board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
+				}
 				System.out.println("ON GRID");
 			}
 		}
