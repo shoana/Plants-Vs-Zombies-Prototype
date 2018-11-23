@@ -159,6 +159,7 @@ public class View extends JFrame implements gamePlayListener {
 			if(peas.getEaten()) // if the plant is eaten then remove it off the board
 			{
 				board[peas.getPositionX()][peas.getPositionY()].setText(" ");
+				board[peas.getPositionX()][peas.getPositionY()].setEnabled(true);
 				System.out.println("PLANTS");
 			}
 		}
