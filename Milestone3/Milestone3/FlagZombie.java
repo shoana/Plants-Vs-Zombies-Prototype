@@ -12,6 +12,9 @@ public class FlagZombie extends Zombie{
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public void move()
+	{
+		super.setPositionY(super.getPositionY() - 1);
+	}
 
 }
