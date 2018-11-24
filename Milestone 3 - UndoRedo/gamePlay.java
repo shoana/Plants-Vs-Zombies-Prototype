@@ -4,11 +4,6 @@ import java.util.Random;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-/**
- * Game Play class to represent the game being played
- * @author sarahlamonica
- *
- */
 public class gamePlay {
 	private ArrayList<Plant> plants = new ArrayList<Plant>();
 	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
@@ -342,11 +337,21 @@ public class gamePlay {
 		private char[][] nextGridState;
 		private int previousScore, nextScore;
 		
+		
 		private placePlantCommand(gamePlay model, int row, int col)
 		{
 			this.model = model;
 			previousGridState = new char[6][6];
 			nextGridState = new char[6][6];
+			if (plantType == 'w' || plantType == 'c') {
+				previousScore = sunshine + 200;
+			}
+			if (plantType == 'p') {
+				previousScore = sunshine + 100;
+			}
+			if (plantType == 's') {
+				previousScore = sunshine + 50;
+			}
 			
 			for(int i = 0; i < 6; i++)
 			{
@@ -377,8 +382,7 @@ public class gamePlay {
 		}
 		
 		@Override
-		public void redo()
-		{
+		public void redo() {
 			model.board = nextGridState;
 		}
 		
