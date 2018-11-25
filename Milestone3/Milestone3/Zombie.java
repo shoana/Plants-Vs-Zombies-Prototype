@@ -10,17 +10,40 @@ public class Zombie {
 	private boolean isEaten; //isEaten true or false
 	private int positionY;  // zombie position
 	private int damagePoints;
-	
+	private char zombieType;
+	private boolean isWalnut;
+
 	/**
 	 * Constructor for Zombie class
 	 * @param positionX is an int for x coordinate position on the grid
 	 * @param positionY is an int for y coordinate position on the grip 
 	 */
-	public Zombie(int positionX, int positionY, boolean isEaten, int damagePoints) {
+	public Zombie(int positionX, int positionY, boolean isEaten, int damagePoints, char zombieType, boolean isWalnut) {
 		this.positionX = positionX;
 		this.positionY = positionY;
 		this.isEaten = isEaten;
 		this.damagePoints = damagePoints;
+		this.zombieType = zombieType;
+		this.isWalnut = isWalnut;
+	}
+	/**
+	 * True if the zombie is in the same grid space as the walnut
+	 */
+	public void setWalnutStatus(boolean a)
+	{
+		isWalnut = a;
+	}
+	/**
+	 * Checks the walnut status
+	 * @return
+	 */
+	public boolean walnutStatus()
+	{
+		return isWalnut;
+	}
+	public char getType()
+	{
+		return zombieType;
 	}
 	
 	/**
@@ -65,19 +88,33 @@ public class Zombie {
 		this.positionY = positionY;
 	}	
 	
+	/**
+	 * Getting the zombie's dmg points
+	 * @return
+	 */
 	public int getDmg()
 	{
 		return damagePoints;
 	}
 	
+	/**
+	 * Setting the zombies' dmg points
+	 * @param dmg
+	 */
 	public void setDmg(int dmg)
 	{
 		damagePoints = dmg;
 	}
 	
-	
+	/**
+	 * Move the zombie 1 grid space
+	 */
 	public void move()
 	{
-		positionY = positionY - 1;
+		if(!isWalnut)
+		{
+			positionY = positionY - 1;
+		}
+		
 	}
 }
