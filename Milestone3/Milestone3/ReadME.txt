@@ -9,7 +9,7 @@ Authors:
 Plants vs. Zombies
 
 Milestone 3: 
-- This milestone is a visual game that is fully-featured with various types of plants and zombies, and unlimited undo/redo feature
+- This milestone is a visual game that is fully-featured with various types of plants and zombies, and unlimited undo/redo feature of user moves (in other words, the user can undo or redo the placement of the plants and the sunshine works along with the choice but not the zombies -- to keep the game more interesting)
 - GUI-based version (with the View and the Controller) 
 - Utilized the Event Model design pattern to ensure the game followed the previous iteration of the game (loop-based)
 - Unit tests for the complete model, view and controller. They run using JUnit to test egde cases and parameters
