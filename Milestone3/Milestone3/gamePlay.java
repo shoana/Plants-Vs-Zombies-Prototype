@@ -12,19 +12,20 @@ import javax.swing.JOptionPane;
  */
 public class gamePlay {
 	
-	private ArrayList<Plant> plants = new ArrayList<Plant>(); //array list for all plants on the board
-	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();  //array list for all zombies on the board
+	private static ArrayList<Plant> plants = new ArrayList<Plant>(); //array list for all plants on the board
+	private static ArrayList<Zombie> zombies = new ArrayList<Zombie>();  //array list for all zombies on the board
 	private static char plantType;
 	private int nTurns = 0;
-	private boolean isAllZombiesDead = true;
+	private static boolean isAllZombiesDead = true;
 	private ArrayList<gamePlayListener> gameListeners; //List of listeners for event model design pattern
 	private boolean startGame = false;
-	private int nRows, nColumns, sunshine;
-	private char[][] board; //board variable, the view reads this when it's updated
+	private int nRows, nColumns;
+	private static int sunshine;
+	private static char[][] board; //board variable, the view reads this when it's updated
 	
 	//These stacks take care of undo/redo. 
-	private Stack<Plant> plantUndoStack;
-	private Stack<Plant> plantRedoStack;
+	private static Stack<Plant> plantUndoStack;
+	private  static Stack<Plant> plantRedoStack;
 	
 	/**
 	 * Constructor
@@ -148,7 +149,7 @@ public class gamePlay {
 	/**
 	 * Checks if the plants or zombies win
 	 */
-	public void plantsOrZombies()
+	public static void plantsOrZombies()
 	{
 				//variable to check if all the zombies' damage is < 0
 				isAllZombiesDead = true;
@@ -283,15 +284,13 @@ public class gamePlay {
 			for(int i = 0; i < numZombies; i++) {
 				int random = r.nextInt(nRows);
 				PylonZombie z = new PylonZombie(random, (nRows -1), false, 200, 'x', false);
-				
 				board[random][nRows - 1] = 'x';
 				zombies.add(z);
 			}
 			
 			for(int i = 0; i < numZombies; i++) {
 				int random = r.nextInt(nRows);
-				NormalZombie z = new NormalZombie(random, (nRows -1), false, 100, 'z', false);
-				
+				NormalZombie z = new NormalZombie(random, (nRows -1), false, 100, 'z', false);	
 				board[random][nRows - 1] = 'z';
 				zombies.add(z);
 			}
@@ -318,7 +317,7 @@ public class gamePlay {
 	/**
 	 * Undoes the latest player move
 	 */
-	public void undo()
+	public static void undo()
 	{
 		//Different plants need to update score
 		if(plantUndoStack.peek() instanceof Peashooter)
@@ -392,3 +391,4 @@ public class gamePlay {
 
 
 }
+
