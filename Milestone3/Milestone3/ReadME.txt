@@ -10,7 +10,6 @@ Plants vs. Zombies
 
 Milestone 3: 
 - This milestone is a visual game that is fully-featured with various types of plants and zombies, and unlimited undo/redo feature
-
 - GUI-based version (with the View and the Controller) 
 - Utilized the Event Model design pattern to ensure the game followed the previous iteration of the game (loop-based)
 - Unit tests for the complete model, view and controller. They run using JUnit to test egde cases and parameters
@@ -24,9 +23,9 @@ Milestone 3:
 	- Walnut - Pauses the movement of a zombie in the same grid for 2 turns (a red light for the zombie) --- 200 Sunshines
 	- Cherry Bomb - blows up all the zombies in the area --- 200 Sunshines
  - Zombies:
-	- Normal (z): They are randomly genrated onto the board form the rightside of the grid. The normal zombies start with 200 life points. 
-	- Pylon (x): They are randomly genrated onto the board form the rightside of the grid. It is harder to kill this zombie as it starts with 200 life points. 
-	- Flag (f): Is placed in the center of board at the beginning of the game. It starts with 100 life points. Will see the purpose of this zombie when we implement the levels
+	- Normal (z): They are randomly genrated onto the board form the rightside of the grid. The normal zombies start with 200 life 			points. 
+	- Pylon (x): They are randomly genrated onto the board form the rightside of the grid. It is harder to kill this zombie as it 			starts with 200 life points. 
+	- Flag (f): Is placed in the center of board at the beginning of the game. It starts with 100 life points. Will see the purpose 		of this zombie when we implement the levels
  - Sunshine(Money) -- starts with 1000
 
 =================================================================================================
