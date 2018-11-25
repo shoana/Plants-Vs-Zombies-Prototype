@@ -66,7 +66,7 @@ Changes to UML from:
 
  
  - Sequence Diagrams:
- 
+  The sequence digrams now includes new methods that were added to the model 'gamePlay' class such as 'flagZombieComing' & 'moveZombie' as well as the same MVC EventModel driven seqence diagram from Milestone 2. All edge cases for the methods 'plantTurn', 'zombieTime', 'plantOrZombie', 'flagZombieComing' & 'moveZombie' are also present from the gamePlay class.
  
 ==================================================================================================
 User-visible Changes:
