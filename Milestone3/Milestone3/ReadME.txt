@@ -84,6 +84,7 @@ Known Errors:
 - Zombies and Plants sometimes disappear from the board and reappear when the user takes another turn. This happens rarely but it happens because our game is event based
 - Undo/Redo funstionalities work one frame late as it an event based game. So when the next plant is placed, the changes can be viewed (changes are only reflected when the user takes another turn). 
 - If you press undo more that the times you placed a plant, it gives an EvenQueue error, this will be fixed. Same goes with redoing, if you redo without undoing, eclipse gives an error but the game can continue to play.
+- We will be changing the class names from "gamePlay" into "GamePlay" for better Java conventions
 =================================================================================================
 Roadmap Ahead:
 Milestone 4: Level implemetation and get rid of the known errors and make it more of a challenging game. Save/Load features. 
