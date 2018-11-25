@@ -13,7 +13,7 @@ public class Controller implements ActionListener {
 	gamePlay model;
 	private int x;
 	private int y;
-
+	
 	
 	/**
 	 * Takes all model variables
@@ -26,6 +26,7 @@ public class Controller implements ActionListener {
 		this.model = model;
 		this.x = x;
 		this.y = y;
+		
 	}
 	
 	/**
@@ -33,12 +34,11 @@ public class Controller implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//model.moveZombies();
 		model.flagZombieIncoming();
 		model.plantTurn(x, y); //take a plant turn
 		model.zombieTime(2); //set zombie time (from model)
-		model.plantsOrZombies();
-		JButton o = (JButton) e.getSource();
+		model.plantsOrZombies(); //check for wins
+		
 	}
 	
 }
