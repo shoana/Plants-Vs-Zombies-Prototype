@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 
 /**
  * View class for implementing the Plants vs. Zombies game
@@ -31,7 +32,7 @@ public class View extends JFrame implements gamePlayListener {
 	private int nTurns = 0; //Number of turns the user has taken
 	private JButton peashooterButton, sunshineButton;
 
-	
+	private JButton undo, redo;
 
 	private List <JMenuItem> menu = new ArrayList<JMenuItem>();
 
@@ -52,29 +53,36 @@ public class View extends JFrame implements gamePlayListener {
 
 		resetItem = new JMenuItem("Reset"); // create a menu item called "Reset"
 		fileMenu.add(resetItem); // and add to our menu 
-		//resetItem.addActionListener(this);
+		
 
 		quitItem = new JMenuItem("Quit"); // create a menu item called "Quit"
 		fileMenu.add(quitItem); // and add to our menu 
-		//quitItem.addActionListener(this);
 
 		window.getContentPane().setLayout(new BorderLayout()); // default so not required
 
 		JPanel plantType = new JPanel();
 		plantType.setLayout(new BorderLayout());
 
-
+		undo = new JButton("Undo");
+		redo = new JButton("Redo");
+		undo.setEnabled(false);
+		redo.setEnabled(false);
+		undo.addActionListener(e -> model.undo());
+		redo.addActionListener(e -> model.redo());
+		JTextField gameLegend = new JTextField();
+		gameLegend.setEditable(false);
+		gameLegend.setText(" X: PYLON ZOMBIE Z: NORMAL ZOMBIE F: FLAG ZOMBIE");
+		gameLegend.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Zombie Types"), gameLegend.getBorder()));
+		plantType.add(undo, BorderLayout.WEST);
+		plantType.add(redo, BorderLayout.EAST);
+		plantType.add(gameLegend, BorderLayout.SOUTH);
 		window.getContentPane().add(plantType, BorderLayout.NORTH);
 
 
 		JPanel gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(6,6));
-		window.getContentPane().add(gamePanel, BorderLayout.CENTER);
-
-		//gameStatus = new JLabel("Game Status is Here");
+		window.getContentPane().add(gamePanel, BorderLayout.CENTER);		
 		scoreStatus = new JLabel("Sunshines Left: 1000");
-
-		//window.getContentPane().add(gameStatus, BorderLayout.SOUTH);
 		window.getContentPane().add(scoreStatus, BorderLayout.EAST);
 
 		board = new JButton[6][6];
@@ -117,53 +125,23 @@ public class View extends JFrame implements gamePlayListener {
 		int x = e.getX();
 		int y = e.getY();
 		char plant = e.getPlantType();
+		char[][] grid = e.getBoard();
+		undo.setEnabled(true);
+		redo.setEnabled(true);
 		
 		ArrayList<Zombie> z = e.returnZombie();
 		ArrayList<Plant> ps = e.getPeas();
 		
-		board[x][y].setText(String.valueOf(plant));
-		board[x][y].setEnabled(false);
 		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
 		
-		for(Zombie zed: z)
+		for(int i = 0; i < 6; i++)
 		{
-			
-			
-			if(zed.getDmg() <= 0) //if the zombies reach 0 dmg points, they die
+			for(int j = 0; j < 6; j++)
 			{
-				System.out.println("DMG");
-				board[zed.getPositionX()][zed.getPositionY()].setText(" ");
-			}
-			else { //move the zombies if they are still on the grid
-				if(zed instanceof PylonZombie)
-				{
-					board[zed.getPositionX()][zed.getPositionY()].setText("x");
-					board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
-				}
-				if(zed instanceof FlagZombie)
-				{
-					board[zed.getPositionX()][zed.getPositionY()].setText("f");
-					board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
-				}
-				if(zed instanceof NormalZombie)
-				{
-					board[zed.getPositionX()][zed.getPositionY()].setText("z");
-					board[zed.getPositionX()][zed.getPositionY() + 1].setText(" ");
-				}
-				System.out.println("ON GRID");
+				board[i][j].setText(String.valueOf(grid[i][j]));
 			}
 		}
-		
-		for(Plant peas : ps)
-		{
-			if(peas.getEaten()) // if the plant is eaten then remove it off the board
-			{
-				board[peas.getPositionX()][peas.getPositionY()].setText(" ");
-				board[peas.getPositionX()][peas.getPositionY()].setEnabled(true);
-				System.out.println("PLANTS");
-			}
-		}
-		
+
 	}
 	
 	public static void main(String[] args)
