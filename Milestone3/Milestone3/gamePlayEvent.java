@@ -15,6 +15,7 @@ public class gamePlayEvent extends EventObject {
 	private ArrayList<Zombie> z;
 	private int sunshines;
 	private ArrayList<Plant> p;
+	private char[][] board;
 	
 	
 	/**
@@ -27,7 +28,7 @@ public class gamePlayEvent extends EventObject {
 	 * @param sunshines
 	 */
 	
-	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines, ArrayList<Plant> p) {
+	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines, ArrayList<Plant> p, char[][] board) {
 		super(source);
 		this.x = x;
 		this.y = y;
@@ -35,6 +36,7 @@ public class gamePlayEvent extends EventObject {
 		this.z = z;
 		this.sunshines = sunshines;
 		this.p = p;
+		this.board = board;
 		
 	}
 	public ArrayList<Plant> getPeas()
@@ -50,6 +52,14 @@ public class gamePlayEvent extends EventObject {
 		return this.z;
 	}
 
+	/**
+	 * get the current state of the board
+	 * @return
+	 */
+	public char[][] getBoard()
+	{
+		return board;
+	}
 	
 	/**
 	 * Getter
