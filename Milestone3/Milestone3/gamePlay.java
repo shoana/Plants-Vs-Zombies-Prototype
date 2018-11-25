@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Stack;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -10,14 +11,20 @@ import javax.swing.JOptionPane;
  *
  */
 public class gamePlay {
-	private ArrayList<Plant> plants = new ArrayList<Plant>();
-	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
+	
+	private ArrayList<Plant> plants = new ArrayList<Plant>(); //array list for all plants on the board
+	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();  //array list for all zombies on the board
 	private static char plantType;
 	private int nTurns = 0;
 	private boolean isAllZombiesDead = true;
-	private ArrayList<gamePlayListener> gameListeners;
+	private ArrayList<gamePlayListener> gameListeners; //List of listeners for event model design pattern
 	private boolean startGame = false;
 	private int nRows, nColumns, sunshine;
+	private char[][] board; //board variable, the view reads this when it's updated
+	
+	//These stacks take care of undo/redo. 
+	private Stack<Plant> plantUndoStack;
+	private Stack<Plant> plantRedoStack;
 	
 	/**
 	 * Constructor
@@ -27,11 +34,14 @@ public class gamePlay {
 	 */
 	public gamePlay(int nRows, int nColumns, int sunshine)
 	{
+		plantUndoStack = new Stack<Plant>();
+		plantRedoStack = new Stack<Plant>();
 		this.nRows = nRows;
 		this.nColumns = nColumns;
 		this.sunshine = sunshine;
 		plantType = 'p';
 		gameListeners = new ArrayList<gamePlayListener>();
+		board = new char[6][6];
 	}
 	
 	/**
@@ -50,16 +60,18 @@ public class gamePlay {
 	public void plantTurn(int row, int column)
 	{
 		nTurns++;
-		System.out.println(nTurns);
+		
+		//We move the zombies each move.
 		if(nTurns == 1)
 		{
 			moveZombies();
 			nTurns = 0;
 		}
 		
-		Object[] options = {"Peashooter", "Sunflower","CherryBomb", "Walnut"};
+		Object[] options = {"Peashooter - 100", "Sunflower - 50","CherryBomb - 200", "Walnut - 200"};
 		int n = JOptionPane.showOptionDialog(null, "Choose your plant type!", "Choice", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[3]);
 		
+		//Option Dialog so the user can choose their plants.
 		if(n == 0)
 		{
 			plantType = 'p';
@@ -72,31 +84,36 @@ public class gamePlay {
 		if(n == 2)
 		{
 			plantType = 'c';
-			System.out.println("CHERRYBOMB");
 		}
 		if(n == 3)
 		{
 			plantType = 'w';
-			System.out.println("WALNUT");
+			
 		}
 		
-		
+		//EACH plant has different behaviour! We also have to add to the board[][] variable
 		if(sunshine >= 50) {
 			if(plantType == 'p' && sunshine >= 100) {
 				sunshine -= 100;
 				Peashooter p = new Peashooter(100, row, column, false); 
+				plantUndoStack.push(p);
+				board[row][column] = 'p';
 				plants.add(p); //Add a peashooter to the array list
 			}
 			if(plantType == 'c' && sunshine >= 200)
 			{
 				sunshine -= 200;
 				CherryBomb c = new CherryBomb(200, row, column, false);
+				board[row][column] = 'c';
+				plantUndoStack.push(c);
 				plants.add(c);
 			}
 			if(plantType == 'w' && sunshine >= 200)
 			{
 				sunshine -= 200;
 				Walnut w = new Walnut(200, row, column, false);
+				plantUndoStack.push(w);
+				board[row][column] = 'w';
 				plants.add(w);
 			}
 
@@ -117,12 +134,14 @@ public class gamePlay {
 				
 				sunshine -= 50;
 				Sunflower s = new Sunflower(50, row, column, false);
+				board[row][column] = 's';
+				plantUndoStack.push(s);
 				plants.add(s); //Add a sunflower to the array list
 			}
 		}
 		
-
-		gamePlayEvent e = new gamePlayEvent (this, row, column, plantType, zombies, sunshine, plants);
+		//EVENT MODEL DESIGN PATTERN
+		gamePlayEvent e = new gamePlayEvent (this, row, column, plantType, zombies, sunshine, plants, board);
         for (gamePlayListener tttl: gameListeners) tttl.handleGameEvent(e);
 	}
 	
@@ -131,6 +150,7 @@ public class gamePlay {
 	 */
 	public void plantsOrZombies()
 	{
+				//variable to check if all the zombies' damage is < 0
 				isAllZombiesDead = true;
 				for(Zombie z : zombies) {
 					//If they reach the house, zombies win
@@ -149,31 +169,48 @@ public class gamePlay {
 				{
 					for(Plant p : plants)
 					{
+						//Need to check what kind of plant it is?
 						if(p instanceof CherryBomb)
 						{
-							//NEED TO FIGURE OUT HOW TO CHECK if within the 4 square
+							//Kills all the zombies in the area.
 							if(p.getPositionX() - z.getPositionX() == 1 || p.getPositionY() - z.getPositionY() <= 1)
 							{
-								System.out.println("WE HAVE A BOMB!! kill all the plants in the area");
-								System.out.println("Killed: " + z.getPositionX());
 								z.setDmg(0);
 								p.setEaten();
 							}
 						}
 						if(p instanceof Walnut)
 						{
+							//checking if the zombie is in the same grid space
 							if(p.getPositionX() == z.getPositionX() && p.getPositionY() == z.getPositionY())
 							{
-								//need to halt the zombies if in the same grid space. thinking of
-								//implementing a boolean variable!
+								
+								Walnut w = (Walnut) p;
+								//Pauses the zombie for two full turns
+								if(w.getLife() < 2)
+								{
+									z.setWalnutStatus(true);
+									w.setLife();
+									z.setPositionX(p.getPositionX());
+									z.setPositionY(p.getPositionY());
+								}
+								else {
+									z.setWalnutStatus(false);
+								}
 							}
 						}
+						
+						//If the zombies and peashooters are in the same row, plants will shoot at the zombies &
+						//Decrease their lives
 						if(z.getPositionX() == p.getPositionX())
 						{
-							z.setDmg(z.getDmg() - 100);
-							if(z.getPositionY() == p.getPositionY())
+							if(p instanceof Peashooter)
 							{
-								p.setEaten();
+								z.setDmg(z.getDmg() - 100);
+								if(z.getPositionY() == p.getPositionY())
+								{
+									p.setEaten();
+								}
 							}
 						}
 					}
@@ -194,9 +231,23 @@ public class gamePlay {
 	{
 		for(Zombie p: zombies)
 		{
-			p.move();
-			System.out.println("Zombie @: " + p.getPositionY());
+			if(!p.walnutStatus()) {
+				p.move();
+				board[p.getPositionX()][p.getPositionY()] = p.getType();
+				board[p.getPositionX()][p.getPositionY() + 1] = ' ';
+			}
+			
+	
 		}
+	}
+	
+	/**
+	 * Getter method for the board
+	 * @return
+	 */
+	public char[][] getBoard()
+	{
+		return board;
 	}
 	
 	
@@ -231,13 +282,17 @@ public class gamePlay {
 		if(!startGame) {
 			for(int i = 0; i < numZombies; i++) {
 				int random = r.nextInt(nRows);
-				PylonZombie z = new PylonZombie(random, (nRows -1), false, 200);
+				PylonZombie z = new PylonZombie(random, (nRows -1), false, 200, 'x', false);
+				
+				board[random][nRows - 1] = 'x';
 				zombies.add(z);
 			}
 			
 			for(int i = 0; i < numZombies; i++) {
 				int random = r.nextInt(nRows);
-				NormalZombie z = new NormalZombie(random, (nRows -1), false, 100);
+				NormalZombie z = new NormalZombie(random, (nRows -1), false, 100, 'z', false);
+				
+				board[random][nRows - 1] = 'z';
 				zombies.add(z);
 			}
 			
@@ -246,25 +301,94 @@ public class gamePlay {
 	}
 	
 	
-	
+	/**
+	 * Places a flag zombie at the beginning of the game in the centre of the board
+	 */
 	public void flagZombieIncoming()
 	{
 		if(!startGame)
 		{
-			FlagZombie f = new FlagZombie(2,5, false, 100);
+			FlagZombie f = new FlagZombie(2,5, false, 100, 'f', false);
+			board[2][5] = 'f';
 			zombies.add(f);
 		}
 		
 	}
 	
 	/**
-	 * CLR THE ARRAY OF ALL PLANTS AND ZOMBIES
+	 * Undoes the latest player move
+	 */
+	public void undo()
+	{
+		//Different plants need to update score
+		if(plantUndoStack.peek() instanceof Peashooter)
+		{
+			sunshine += 100;
+		}
+		if(plantUndoStack.peek() instanceof Sunflower)
+		{
+			sunshine += 50;
+		}
+		if(plantUndoStack.peek() instanceof Walnut)
+		{
+			sunshine += 200;
+		}
+		if(plantUndoStack.peek() instanceof CherryBomb)
+		{
+			sunshine += 200;
+		}
+		
+		//Taking the plant off the board and placing it into the stack.
+		board[plantUndoStack.peek().getPositionX()][plantUndoStack.peek().getPositionY()] = ' ';
+		plants.remove(plantUndoStack.peek());
+		plantRedoStack.push(plantUndoStack.pop());
+	}
+	
+	/**
+	 * Places the previously undid plants back in the game
+	 */
+	public void redo()
+	{
+		//Different plants need to redo certain behaviours on the board, so we're checking that here and
+		//updating the board accordingly
+		if(plantRedoStack.peek() instanceof Peashooter)
+		{
+			board[plantRedoStack.peek().getPositionX()][plantRedoStack.peek().getPositionY()] = 'p';
+			sunshine -= 100;
+		}
+		if(plantRedoStack.peek() instanceof Sunflower)
+		{
+			board[plantRedoStack.peek().getPositionX()][plantRedoStack.peek().getPositionY()] = 's';
+			sunshine -= 50;
+		}
+		if(plantRedoStack.peek() instanceof Walnut)
+		{
+			board[plantRedoStack.peek().getPositionX()][plantRedoStack.peek().getPositionY()] = 'w';
+			sunshine -= 200;
+		}
+		if(plantRedoStack.peek() instanceof CherryBomb)
+		{
+			board[plantRedoStack.peek().getPositionX()][plantRedoStack.peek().getPositionY()] = 'c';
+			sunshine -= 200;
+		}
+		
+		
+		plants.add(plantRedoStack.peek());
+		plantUndoStack.push(plantRedoStack.pop());
+	}
+
+	
+	
+	/**
+	 * CLR THE ARRAY OF ALL PLANTS AND ZOMBIES, use this later for levels
 	 */
 	public void clr()
 	{
 		plants.removeAll(plants); 
 		zombies.removeAll(zombies);
 	}
+	
+
 
 
 }
