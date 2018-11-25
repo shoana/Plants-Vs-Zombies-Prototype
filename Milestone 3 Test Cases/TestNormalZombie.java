@@ -1,11 +1,10 @@
-package TestCases;
+
 import static org.junit.Assert.*;
 import java.util.*;
 import org.junit.*;
 
 import junit.framework.TestCase;
-import model.NormalZombie;
-import model.Plant;
+
 
 /**
  * This class a part of the test cases which is used to test the functionality of a Normal Zombies and it's edge cases
@@ -20,7 +19,7 @@ public class TestNormalZombie extends TestCase{
 	private NormalZombie n1, n2, n3;
 	private ArrayList<NormalZombie> normalZombies;
 	private ArrayList<Plant> plants;
-	private boolean isEaten = false; //isEaten true or false 
+	private boolean isEaten, walnutStatus = false; //isEaten true or false 
 	private int damagePoints;
 	private char plantType;
 	@Before
@@ -30,9 +29,9 @@ public class TestNormalZombie extends TestCase{
 	public void setUp() throws Exception {
 		normalZombies = new ArrayList<NormalZombie>();
 		plants = new ArrayList<Plant>();
-		n1 = new NormalZombie(10, 10, isEaten, damagePoints, 'z' );
-		n2 = new NormalZombie(20, 20, isEaten, damagePoints, 'z');
-		n3 = new NormalZombie(30, 30, isEaten, damagePoints, 'z');
+		n1 = new NormalZombie(10, 10, isEaten, damagePoints, 'z', walnutStatus );
+		n2 = new NormalZombie(20, 20, isEaten, damagePoints, 'z', walnutStatus );
+		n3 = new NormalZombie(30, 30, isEaten, damagePoints, 'z', walnutStatus);
 		
 	}
 	
@@ -99,9 +98,11 @@ public class TestNormalZombie extends TestCase{
 					assertEquals("The damage points are 0", damagePoints, NormalZombie.getDmg());	
 				}
 				//edge case check for walnut
-				if(plantType == 'w' && (p.getPositionX() - n.getPositionX() == 1 || p.getPositionY() - n.getPositionY() <= 1)) {
-					damagePoints = 0;
-					assertEquals("The damage points are 0", damagePoints, NormalZombie.getDmg());	
+				if(plantType == 'w' && (p.getPositionX() == n.getPositionX() && p.getPositionY() == n.getPositionY())) {
+					if (walnutStatus == true) {
+						assertTrue("It is walnut status", PylonZombie.walnutStatus());	
+					}
+					assertFalse("It is not walnut status", PylonZombie.walnutStatus());	
 				}
 			}	
 				
