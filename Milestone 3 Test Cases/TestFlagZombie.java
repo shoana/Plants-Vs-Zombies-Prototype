@@ -1,12 +1,9 @@
-package TestCases;
+
 import static org.junit.Assert.*;
 import java.util.*;
 import org.junit.*;
 
 import junit.framework.TestCase;
-import model.FlagZombie;
-import model.NormalZombie;
-import model.Plant;
 
 /**
  * This class a part of the test cases which is used to test the functionality of a Flag Zombies and it's edge cases
@@ -20,9 +17,10 @@ public class TestFlagZombie extends TestCase{
 	private FlagZombie f1, f2, f3;
 	private ArrayList<FlagZombie> flagZombies;
 	private ArrayList<Plant> plants;
-	private boolean isEaten = false; //isEaten true or false 
+	private boolean isEaten, walnutStatus = false; //isEaten true or false 
 	private int damagePoints;
 	private char plantType;
+
 	@Before
 	/**
 	 * This method set's up the array list and the zombies
@@ -30,9 +28,9 @@ public class TestFlagZombie extends TestCase{
 	public void setUp() throws Exception {
 		flagZombies = new ArrayList<FlagZombie>();
 		plants = new ArrayList<Plant>();
-		f1 = new FlagZombie(10, 10, isEaten, damagePoints, 'f' );
-		f2 = new FlagZombie(20, 20, isEaten, damagePoints, 'f');
-		f3 = new FlagZombie(30, 30, isEaten, damagePoints, 'f');
+		f1 = new FlagZombie(10, 10, isEaten, damagePoints, 'f', walnutStatus );
+		f2 = new FlagZombie(20, 20, isEaten, damagePoints, 'f', walnutStatus);
+		f3 = new FlagZombie(30, 30, isEaten, damagePoints, 'f', walnutStatus);
 		
 	}
 	
@@ -99,9 +97,11 @@ public class TestFlagZombie extends TestCase{
 					assertEquals("The damage points are 0", damagePoints, NormalZombie.getDmg());	
 				}
 				//edge case for plant type walnut
-				if(plantType == 'w' && (p.getPositionX() - f.getPositionX() == 1 || p.getPositionY() - f.getPositionY() <= 1)) {
-					damagePoints = 0;
-					assertEquals("The damage points are 0", damagePoints, NormalZombie.getDmg());	
+				if(plantType == 'w' && (p.getPositionX() == f.getPositionX() && p.getPositionY() == f.getPositionY())) {
+					if (walnutStatus == true) {
+						assertTrue("It is walnut status", PylonZombie.walnutStatus());	
+					}
+					assertFalse("It is not walnut status", PylonZombie.walnutStatus());	
 				}
 			}	
 				
