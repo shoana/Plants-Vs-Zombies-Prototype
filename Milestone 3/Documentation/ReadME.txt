@@ -14,7 +14,7 @@ Milestone 3:
 - Utilized the Event Model design pattern to ensure the game followed the previous iteration of the game (loop-based)
 - Unit tests for the complete model, view and controller. They run using JUnit to test edge cases and parameters
 - UML models (class & sequence diagrams)
-- Separated the source code into packages (plants, zombies, ...) to better organize the code and avoid "smell"
+- Separated the source code into packages (model, controller, ...) to better organize the code and avoid "smell"
 
 =================================================================================================
  Specifications to better understand the game:
