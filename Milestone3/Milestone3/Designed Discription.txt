@@ -1,0 +1,70 @@
+Here is our take on the classic Plant vs Zombies Game:
+
+We broke our game into the following classes: 
+- gamePlay, focusses on the main play of the game -- the model
+- Super Class: Zombie - includes the position (x and y coordinates), boolean value if the zombie is dead or still on the board, damage point, and a char of the type of zombie
+	- Sub Classes: NormalZombie (z), PylonZombie (x) and FlagZombie (f)
+- Super Class: Plant - includes 
+	- Sub Classes: Peashooter (p), Sunflower (s), Walnut (w), CherryBomb (c)
+- View, the layout and visual display of the game (buttons, windows, panels...) -- where the game is run
+- Controller, controls the user actions and flow of application execution to return a response to the actions
+- gamePlayEvent, extends EventObject. Handles the event in the view
+- gamePlayListener, an interface that handles the gamePlayEvent
+
+GAMEPLAY Class:
+- gamePlay is the model of the MVC for the PvZ game. 
+- The variable sunshine is the money that accumulates when collecting suns, this is also the currency used to buy plants.
+- We have made a design decision to kill a zombie if the plant is 2 spaces or more away from the zombie as we have no way of showing the slow demise of the zombie as the peashooter shoots its peas. 
+- If the zombie is less than 2 spaces away from the plant, the plant will be eaten by the zombie.
+- The zombies, peashooters, and sunflowers are stored and implented using array lists because there are multiple of each type and the size of the ArrayList grows automatically as elements are added to it.
+- There are methods in gamePlay that notify the player when the zombies have started attacking (zombieTime) and methods that allow the users to pot their plants of their choice (plantTurn). These include error checks such as sufficent sunshines to buy a plant or if the place they want to place a plant where there is already something there and so on.
+- plantOrZombie method keeps track of how many zombies and plants have died for game play. It also keeps track of all the winning and loosing cases as well as the movement of the zombie.
+- The game creates pop-ups notifyig the user the game has ended because either the plants or zombies won
+- Within gamePlay we have implemented the undo and redo funcionalities using stacks
+- All in all, the gamePlay is where all the methods used for 'playing' the game are included. It includes some smelly code that is to be   fixed in later milestones. Smelly code happens with the zombies and their movements. Plants are killed by the Zombies if they are not strategically placed on the grid by the user and vice versa.
+
+VIEW Class:
+- Extends JFrame to use and build a board through a GridLayout (it also helps to keeps track of the board dimensions)
+- board[nRows][nColumns] -- using the specific cordinate on the board, the user can place a peashooter or a sunflower by using JButtons. 
+- This grid also helped us to randomly place zombies on the board.
+- It also displays the status of the game as well as the amount of sunshine left to buy plants
+- JButtons are used for the board as well as choosing the type of plants
+- The View class reads from the 2D array grid that is created in the model class
+
+CONTROLLER Class:
+- creates a gamePlay model and uses action performer for events
+- it controls the user's actions and flow of application execution to return a response to the actions
+
+Event and Listener Classes:
+- The event class extends EventObject and handles the events that occur in the view. While the listener class (an interface) that handles the gamePlayEvent
+
+ZOMBIE:
+- Contains their unique costs 
+- Has their positions(row and column coordinates) 
+- isEaten boolean variable which holds true if the zombie is dead or false if the zombie is still on the board
+- a char variable to hold the type of zombie
+- a variable to keep track of the damage of the zombie
+- isWalnut is a boolean variable to see if there is a walnut infront of the zombie to avoid the movement of the zombie for 2 turns
+- Has mutators and accessors in the class so the subclasses can use it
+
+PLANT:
+- Contains their unique costs and their positions(row and column coordinates) using mutators and accessors in their individual classes.
+- isEaten boolean variable which holds true if the plant is eaten or false if the plant is still on the board
+
+Data Structure Design Decisions:
+1. ArrayLists for Zombies and Plants
+  - Can be used to compare X and Y values in order to determine how "close" they are to each other. 
+2. Inheritance has been implemented for the different types of zombies and plants. 
+	Super Class: Zombie
+		- Sub Classes: NormalZombie (z), PylonZombie (x) and FlagZombie (f)
+	Super Class: Plant
+		- Sub Classes: Peashooter (p), Sunflower (s), Walnut (w), CherryBomb (c)
+3. JFrame is used to create a display for the game and builds on with JButton, JLabel, JMenu...
+4. JButtons are used for the grid/board. It makes it easier for the user to use and play as well as us to keep track of the placement of plants and zombies
+5. JOptionPanes are used for chosing the type of plant the user decides to purchase
+6. JOptionPanes are also used as pop-ups to alert the user of a win or a loss and gaining suns
+7. When the user gets prompted with a pop-up for choosing a plant type, they have 4 options, sunflower, walnut, cherry or peashooter. If they do not pick an option and close the pop-up, it auto selects a peashooter to place on the board.
+8. Event Model was utilized to get events from the model and display it in the View.
+9. For the functionalities of undo and redo we used stacks to keep track and store a "copy" of the board each turn the functionalities are used. One stack is used to store the undo and one stack is used to store the redo. We made a design descision to just undo the plants and the score and leave the zobies as is for a more challenging game. 
+10. Implented a "life bar" for the zombies using damage points rather than the distance between the zombie and plant
+11. Packaging is also added to seperate the source code into packages (plants, zombies, ...) to better organize the code and avoid "smell"
