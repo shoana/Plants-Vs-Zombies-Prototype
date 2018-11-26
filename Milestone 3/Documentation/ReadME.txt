@@ -104,7 +104,7 @@ Mounica Pillarisetty:
 	- Worked on Undo/Redo Functionalities in gamePlay class
 	- Wrote the ReadMe file
 	- Wrote the User Manual
-	- Worked on implementing different types of zombies/plants
+	- Worked on implementing some of the types of zombies/plants
 	- Wrote the Design Description
   
 Shoana Sharma:
