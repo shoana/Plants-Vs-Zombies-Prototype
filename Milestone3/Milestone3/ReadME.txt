@@ -101,6 +101,11 @@ Who did what:
 Sarah Lamonica: 
 
 Mounica Pillarisetty:
+	- Worked on Undo/Redo Functionalities in gamePlay class
+	- Wrote the ReadMe file
+	- Wrote the User Manual
+	- Worked on implementing different types of zombies/plants
+	- Wrote the Design Description
   
 Shoana Sharma:
 	- Javadocs for all classes and testcases
