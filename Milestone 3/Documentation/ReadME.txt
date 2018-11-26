@@ -99,6 +99,14 @@ ZIP folder contains:
 Who did what:
 
 Sarah Lamonica: 
+- Implemented undo/redo functionality using 2 stacks: undoPlantStack, redoPlantStack
+- Implemented walnut & cherrybomb plants and their functionality
+- Implemented flag zombie and pylon zombie and their functionality
+- Refactored gameplay class with a 2d array to represent the grid and
+updated the view to display based on the model's grid array
+- Refactored the zombie class to add damage points
+- Refactored the win (plantOrZombie) function to decrease zombie's
+damage points and check for plant wins based on the zombie's damage points
 
 Mounica Pillarisetty:
 	- Worked on Undo/Redo Functionalities in gamePlay class
