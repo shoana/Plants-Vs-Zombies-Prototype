@@ -63,7 +63,7 @@ Change Log:
 =================================================================================================
 Changes to UML from:
  - Class Diagrams:
-
+   The class diagrams have not changed much from last time. In this milestone we included a plant super class and a zombie super class. This was also added in the uml class diagram using the specific arrow heads to show inheritanc of the subs-classes sunflower, cherry bomb, walnut peashooter to the plants class. And sub-classes normal zombie, flag zombie and pylon zombie to the zommbie super class. We also removed the gameEnum class as we use an GUI and show no console logs as a game form. 
  
  - Sequence Diagrams:
   The sequence digrams now includes new methods that were added to the model 'gamePlay' class such as 'flagZombieComing' & 'moveZombie' as well as the same MVC EventModel driven seqence diagram from Milestone 2. All edge cases for the methods 'plantTurn', 'zombieTime', 'plantOrZombie', 'flagZombieComing' & 'moveZombie' are also present from the gamePlay class. The diagram also considers the addition of new plants (cherrybomb & walnut) as well as new zombies (flagzombie, pylonzombie).
@@ -103,5 +103,10 @@ Sarah Lamonica:
 Mounica Pillarisetty:
   
 Shoana Sharma:
+	- Javadocs for all classes and testcases
+	- Class diagram for the classes using MVC
+	- All test cases required to test the model, view and controller
+	- Resturctured the gamePlay class
+	- Tried to implement a timer for the zombies to make the game more user friendly, will continue contructing for 	milestone 4
 
 Fatima Hashi:
