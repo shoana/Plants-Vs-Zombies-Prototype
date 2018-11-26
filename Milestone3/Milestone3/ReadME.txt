@@ -14,7 +14,7 @@ Milestone 3:
 - Utilized the Event Model design pattern to ensure the game followed the previous iteration of the game (loop-based)
 - Unit tests for the complete model, view and controller. They run using JUnit to test egde cases and parameters
 - UML models (class & sequence diagrams)
-- Seperated the source code into packages (plants, zombies, ...) to better organize the code and avoid "smell"
+- Seperated the source code into packages (model, view, ....) to better organize the code and avoid "smell"
 
 =================================================================================================
  Specifications to better understand the game:
@@ -104,7 +104,7 @@ Mounica Pillarisetty:
 	- Worked on Undo/Redo Functionalities in gamePlay class
 	- Wrote the ReadMe file
 	- Wrote the User Manual
-	- Worked on implementing different types of zombies/plants
+	- Worked on implementing some of the different types of zombies/plants
 	- Wrote the Design Description
   
 Shoana Sharma:
