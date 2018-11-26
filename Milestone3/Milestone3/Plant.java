@@ -1,6 +1,6 @@
 
 /**
- * This class is any of the 3 types of plant sunflower, peashooter and cherry bomb
+ * This class is any of the 3 types of plant sunflower, peashooter, walnut and cherry bomb
  * type of plant that attacks the Zombie and prevents them from entering the house
  * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
  * @version November 25th, 2018
