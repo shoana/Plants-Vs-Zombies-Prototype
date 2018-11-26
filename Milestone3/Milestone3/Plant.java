@@ -1,9 +1,9 @@
 
 /**
- * Peashooter class is a type of plant that attacks the Zombie and prevents them 
- * from entering the house
- * @author sarahlamonica
- * @version MILESTONE 3
+ * This class is any of the 3 types of plant sunflower, peashooter and cherry bomb
+ * type of plant that attacks the Zombie and prevents them from entering the house
+ * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
+ * @version November 25th, 2018
  */
 
 public class Plant {
@@ -11,7 +11,7 @@ public class Plant {
 	private int positionX;
 	private int positionY;
 	private boolean isEaten;
-	
+
 	/**
 	 * Constructor for the peashooter
 	 * @param cost is an int for the money that is required to buy a peashooter
@@ -27,38 +27,48 @@ public class Plant {
 	}
 
 	/**
-	 * Getter method for position x
+	 * This method is a getter method for position x
 	 * @return int for the position for x
 	 */
 	public int getPositionX(){
 		return positionX;
 	}
+
+	/**
+	 * This method checks if the plant is eaten or not
+	 * by the zombie
+	 * @return a boolean if plant isEast as true, false otherwise
+	 */
 	public boolean getEaten()
 	{
 		return isEaten;
 	}
+
+	/**
+	 * The method sets the desired boolean of the plant
+	 */
 	public void setEaten()
 	{
 		this.isEaten = true;
 	}
 	/**
-	 * Setter method for position x
+	 * This methos is a setter method for position x
 	 * @param positionX is an that allows to set the x coordinate on the grid
 	 */
 	public void setPositionX(int positionX){
 		this.positionX = positionX;
 	}
-	
+
 	/**
-	 * Getter method for position y
+	 * This method is a getter method for position y
 	 * @return int for the position for y
 	 */
 	public int getPositionY(){
 		return positionY;
 	}
-	
+
 	/**
-	 * Setter method for position y 
+	 * This is a setter method for position y 
 	 * @param positionX is an that allows to set the y coordinate on the grid
 	 */
 	public void setPositionY(int positionY){
