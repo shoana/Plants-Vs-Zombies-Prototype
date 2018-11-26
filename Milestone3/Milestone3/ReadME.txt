@@ -115,3 +115,7 @@ Shoana Sharma:
 	- Tried to implement a timer for the zombies to make the game more user friendly, will continue contructing for 	milestone 4
 
 Fatima Hashi:
+	- Sequence diagram for the classes using MVC
+	- All test cases required to test the model, view and controller
+	- Resturctured the gamePlay class
+	- Tried to implement a timer for the zombies to make the game more user friendly, will continue contructing for 	milestone 4
