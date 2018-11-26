@@ -12,7 +12,8 @@ import javax.swing.border.CompoundBorder;
 
 /**
  * View class for implementing the Plants vs. Zombies game
- * @author sarahlamonica
+ * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
+ * @version November 25th, 2018
  */
 public class View extends JFrame implements gamePlayListener {
 	int startNum = 4;
@@ -42,7 +43,7 @@ public class View extends JFrame implements gamePlayListener {
 	public View()
 	{
 		gamePlay model = new gamePlay(6,6, 1000);
-        model.addGamePlayListener(this);
+		model.addGamePlayListener(this);
 
 		window.setSize(500,500);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +54,7 @@ public class View extends JFrame implements gamePlayListener {
 
 		resetItem = new JMenuItem("Reset"); // create a menu item called "Reset"
 		fileMenu.add(resetItem); // and add to our menu 
-		
+
 
 		quitItem = new JMenuItem("Quit"); // create a menu item called "Quit"
 		fileMenu.add(quitItem); // and add to our menu 
@@ -88,7 +89,7 @@ public class View extends JFrame implements gamePlayListener {
 		board = new JButton[6][6];
 
 		Font font = new Font("Dialog", Font.BOLD, 24);
-		
+
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				board[i][j] = new JButton();
@@ -102,7 +103,7 @@ public class View extends JFrame implements gamePlayListener {
 		window.setVisible(true);
 
 	}
-	
+
 	/**
 	 * Disables all buttons (game over)
 	 */
@@ -121,19 +122,19 @@ public class View extends JFrame implements gamePlayListener {
 	 */
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
-		
+
 		int x = e.getX();
 		int y = e.getY();
 		char plant = e.getPlantType();
 		char[][] grid = e.getBoard();
 		undo.setEnabled(true);
 		redo.setEnabled(true);
-		
+
 		ArrayList<Zombie> z = e.returnZombie();
 		ArrayList<Plant> ps = e.getPeas();
-		
+
 		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
-		
+
 		for(int i = 0; i < 6; i++)
 		{
 			for(int j = 0; j < 6; j++)
@@ -143,7 +144,7 @@ public class View extends JFrame implements gamePlayListener {
 		}
 
 	}
-	
+
 	public static void main(String[] args)
 	{
 		new View();
