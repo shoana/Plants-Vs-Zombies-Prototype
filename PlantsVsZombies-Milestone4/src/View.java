@@ -116,7 +116,7 @@ public class View extends JFrame implements gamePlayListener {
 
 		board = new JButton[6][6];
 
-		Font font = new Font("Dialog", Font.BOLD, 24);
+		Font font = new Font("Monospaced", Font.BOLD, 30);
 		
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
