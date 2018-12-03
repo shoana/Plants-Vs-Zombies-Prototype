@@ -34,9 +34,9 @@ public class Controller implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		model.flagZombieIncoming();
+		//model.flagZombieIncoming();
 		model.plantTurn(x, y); //take a plant turn
-		model.zombieTime(2); //set zombie time (from model)
+		//model.zombieTime(2); //set zombie time (from model)
 		model.plantsOrZombies(); //check for wins
 		
 	}
