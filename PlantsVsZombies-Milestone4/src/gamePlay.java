@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -27,11 +30,19 @@ public class gamePlay implements Serializable {
 	private ArrayList<gamePlayListener> gameListeners; //List of listeners for event model design pattern
 	private boolean startGame = false;
 	private int nRows, nColumns, sunshine;
+	
 	private char[][] board; //board variable, the view reads this when it's updated
+	//private JButton[][] boardImage; //used for inputing pictures
+
 	
 	//These stacks take care of undo/redo. 
 	private Stack<Plant> plantUndoStack;
 	private Stack<Plant> plantRedoStack;
+	
+	private static ImageIcon peashooterIcon = new ImageIcon("images/peashooter.jpg");
+	private static ImageIcon sunflowerIcon = new ImageIcon("images/sunflower.jpg");
+	private static ImageIcon img;
+
 	
 	/**
 	 * Constructor
@@ -48,7 +59,14 @@ public class gamePlay implements Serializable {
 		this.sunshine = sunshine;
 		plantType = 'p';
 		gameListeners = new ArrayList<gamePlayListener>();
+		
 		board = new char[6][6];
+		//boardImage = new JButton[6][6];
+		
+		// for resizing 
+		//sunflowerIcon = new ImageIcon(sunflowerIcon.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+		//peashooterIcon = new ImageIcon(peashooterIcon.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+
 	}
 	
 	/**
@@ -105,6 +123,8 @@ public class gamePlay implements Serializable {
 				Peashooter p = new Peashooter(100, row, column, false); 
 				plantUndoStack.push(p);
 				board[row][column] = 'p';
+				img = getImage();
+				//boardImage[row][column].setIcon(peashooterIcon);
 				plants.add(p); //Add a peashooter to the array list
 			}
 			if(plantType == 'c' && sunshine >= 200)
@@ -142,6 +162,8 @@ public class gamePlay implements Serializable {
 				sunshine -= 50;
 				Sunflower s = new Sunflower(50, row, column, false);
 				board[row][column] = 's';
+				img = getImage();
+				//boardImage[row][column].setIcon(sunflowerIcon);
 				plantUndoStack.push(s);
 				plants.add(s); //Add a sunflower to the array list
 			}
@@ -152,11 +174,12 @@ public class gamePlay implements Serializable {
         for (gamePlayListener tttl: gameListeners) tttl.handleGameEvent(e);
 	}
 	
+	
+	
 	/**
 	 * Checks if the plants or zombies win
 	 */
-	public void plantsOrZombies()
-	{
+	public void plantsOrZombies() {
 				//variable to check if all the zombies' damage is < 0
 				isAllZombiesDead = true;
 				for(Zombie z : zombies) {
@@ -166,19 +189,15 @@ public class gamePlay implements Serializable {
 						JOptionPane.showMessageDialog(null,"Zombies reached the house! \n ZOMBIES WON");
 						System.exit(-1);
 					}
-					if(z.getDmg() > 0)
-					{
+					if(z.getDmg() > 0) {
 						isAllZombiesDead = false;
 					}
 				}
 				
-				for(Zombie z : zombies)
-				{
-					for(Plant p : plants)
-					{
+				for(Zombie z : zombies) {
+					for(Plant p : plants) {
 						//Need to check what kind of plant it is?
-						if(p instanceof CherryBomb)
-						{
+						if(p instanceof CherryBomb) {
 							//Kills all the zombies in the area.
 							if(p.getPositionX() - z.getPositionX() == 1 || p.getPositionY() - z.getPositionY() <= 1)
 							{
@@ -186,8 +205,7 @@ public class gamePlay implements Serializable {
 								p.setEaten();
 							}
 						}
-						if(p instanceof Walnut)
-						{
+						if(p instanceof Walnut) {
 							//checking if the zombie is in the same grid space
 							if(p.getPositionX() == z.getPositionX() && p.getPositionY() == z.getPositionY())
 							{
@@ -209,40 +227,41 @@ public class gamePlay implements Serializable {
 						
 						//If the zombies and peashooters are in the same row, plants will shoot at the zombies &
 						//Decrease their lives
-						if(z.getPositionX() == p.getPositionX())
-						{
-							if(p instanceof Peashooter)
-							{
+						if(z.getPositionX() == p.getPositionX()) {
+							if(p instanceof Peashooter) {
 								z.setDmg(z.getDmg() - 100);
-								if(z.getDmg() <= 0)
-								{
+								if(z.getDmg() <= 0) {
 									z.setEaten();
 									board[z.getPositionX()][z.getPositionY()] = ' ';
 								}
-								if(z.getPositionY() == p.getPositionY())
-								{
+								if(z.getPositionY() == p.getPositionY()) {
 									p.setEaten();
 								}
 							}
 						}
 					}
 				}
-				
-				if(isAllZombiesDead)
-				{
+				if(isAllZombiesDead) {
 					JOptionPane.showMessageDialog(null,"Plants defeated all the zombies! \n PLANTS WON");
 					System.exit(-1);
-				}
-				
+				}			
 	}
 	
+	public static ImageIcon getImage() {
+		if(plantType == 'p') {
+			return peashooterIcon;
+		}
+		if(plantType == 's') {
+			return sunflowerIcon;
+		}
+		return img;
+	}
+
 	/**
 	 * Moves every zombie one space 
 	 */
-	public void moveZombies()
-	{
-		for(Zombie p: zombies)
-		{
+	public void moveZombies() {
+		for(Zombie p: zombies) {
 			if(!p.walnutStatus() && !p.getEaten()) {
 				p.move();
 				board[p.getPositionX()][p.getPositionY()] = p.getType();
@@ -255,8 +274,7 @@ public class gamePlay implements Serializable {
 	 * Getter method for the board
 	 * @return
 	 */
-	public char[][] getBoard()
-	{
+	public char[][] getBoard() {
 		return board;
 	}
 	
@@ -273,8 +291,7 @@ public class gamePlay implements Serializable {
 	 * a setter for the plant type
 	 * @param char s
 	 */
-	public void setPlantType(char s)
-	{
+	public void setPlantType(char s) {
 		this.plantType = s;
 	}
 
