@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Point;
@@ -24,27 +25,28 @@ public class View extends JFrame implements gamePlayListener {
 	private JLabel gameStatus;
 	private JLabel scoreStatus;
 	private JMenuItem resetItem, quitItem;
-	private ImageIcon grassIcon = new ImageIcon("Background1.jpg");
-
+	
 	private static final String peashooter = "P";
 	private static final String zombie = "S";
 	private static final String sunshine = "S";
 	private static final String EMPTY = "";
 	private int nTurns = 0; //Number of turns the user has taken
-	private JButton peashooterButton, sunshineButton;
 
 	private JButton undo, redo, save, load;
 
 	private List <JMenuItem> menu = new ArrayList<JMenuItem>();
+	
+	//private ImageIcon peashooterIcon = new ImageIcon("images/peashooter.jpg");
+	//private ImageIcon sunflowerIcon = new ImageIcon("images/sunflower.jpg");
+
 
 	/**
 	 * Constructs the View
 	 */
 	
-	public View()
-	{
-		gamePlay model = new gamePlay(6,6, 1000);
-        model.addGamePlayListener(this);
+	public View() {
+		gamePlay model = new gamePlay(6,5, 1000);
+       		model.addGamePlayListener(this);
 
 		window.setSize(500,500);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,39 +109,48 @@ public class View extends JFrame implements gamePlayListener {
 		plantType.add(gameLegend, BorderLayout.SOUTH);
 		window.getContentPane().add(plantType, BorderLayout.NORTH);
 
-
 		JPanel gamePanel = new JPanel();
-		gamePanel.setLayout(new GridLayout(6,6));
+		gamePanel.setLayout(new GridLayout(6,5));
 		window.getContentPane().add(gamePanel, BorderLayout.CENTER);		
 		scoreStatus = new JLabel("Sunshines Left: 1000");
 		window.getContentPane().add(scoreStatus, BorderLayout.EAST);
 
-		board = new JButton[6][6];
-
+		board = new JButton[6][5];
+		
 		Font font = new Font("Monospaced", Font.BOLD, 30);
 		
+		JTextField zombieLife = new JTextField();
+		JPanel zl = new JPanel();
+		zl.setLayout(new BorderLayout());
+		zl.add(zombieLife, BorderLayout.SOUTH);
+		zombieLife.setEditable(false);
+		zombieLife.setText(" Zombie Life Left: ");
+		zombieLife.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Zombie Life"), zombieLife.getBorder()));
+		window.getContentPane().add(zombieLife, BorderLayout.SOUTH);
+
+		/*// for resizing 
+		sunflowerIcon = new ImageIcon(sunflowerIcon.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+		peashooterIcon = new ImageIcon(peashooterIcon.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+		*/
 		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 6; j++) {
+			for (int j = 0; j < 5; j++) {
 				board[i][j] = new JButton();
 				board[i][j].setFont(font);
+				board[i][j].setBackground(Color.GREEN);
 				gamePanel.add(board[i][j]);
 				board[i][j].addActionListener(new Controller(model, i, j));
 			}
 		}
-
-
 		window.setVisible(true);
-
 	}
 	
 	/**
 	 * Disables all buttons (game over)
 	 */
 	private void disableAll() {
-
 		int i, j;
 		for (i = 0; i < 6; i++) {
-			for (j = 0; j < 6; j++) {
+			for (j = 0; j < 5; j++) {
 				board[i][j].setEnabled(false);
 			}
 		}
@@ -163,18 +174,21 @@ public class View extends JFrame implements gamePlayListener {
 		
 		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
 		
-		for(int i = 0; i < 6; i++)
-		{
-			for(int j = 0; j < 6; j++)
-			{
+		for(int i = 0; i < 6; i++) {
+			for(int j = 0; j < 5; j++){
+				/*if(plant == 'p') {
+					board[i][j].setIcon(peashooterIcon);
+				}
+				if(plant == 's') {
+					board[i][j].setIcon(sunflowerIcon);
+				}*/
+				
 				board[i][j].setText(String.valueOf(grid[i][j]));
 			}
 		}
-
 	}
 	
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		new View();
 	}
 }
