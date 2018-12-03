@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
-
+import java.awt.color.*;
 /**
  * View class for implementing the Plants vs. Zombies game
  * @author sarahlamonica
@@ -24,43 +24,28 @@ public class View extends JFrame implements gamePlayListener {
 	private JFrame window = new JFrame("Plants vs. Zombies"); //JBUTTONS FOR GRID
 	private JLabel gameStatus;
 	private JLabel scoreStatus;
-	private JMenuItem resetItem, quitItem;
-	
+	private JMenuItem one, two, three;
+	private ImageIcon grassIcon = new ImageIcon("Background1.jpg");
+
 	private static final String peashooter = "P";
 	private static final String zombie = "S";
 	private static final String sunshine = "S";
 	private static final String EMPTY = "";
 	private int nTurns = 0; //Number of turns the user has taken
+	private JButton peashooterButton, sunshineButton;
 
 	private JButton undo, redo, save, load;
-
+	private gamePlay model;
 	private List <JMenuItem> menu = new ArrayList<JMenuItem>();
-	
-	//private ImageIcon peashooterIcon = new ImageIcon("images/peashooter.jpg");
-	//private ImageIcon sunflowerIcon = new ImageIcon("images/sunflower.jpg");
-
 
 	/**
 	 * Constructs the View
 	 */
 	
-	public View() {
-		gamePlay model = new gamePlay(6,5, 1000);
-       		model.addGamePlayListener(this);
-
-		window.setSize(500,500);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		JMenuBar menuBar = new JMenuBar();
-		JMenu fileMenu = new JMenu("Game");
-		menuBar.add(fileMenu);
-
-		resetItem = new JMenuItem("Reset"); // create a menu item called "Reset"
-		fileMenu.add(resetItem); // and add to our menu 
-		
-
-		quitItem = new JMenuItem("Quit"); // create a menu item called "Quit"
-		fileMenu.add(quitItem); // and add to our menu 
+	public View()
+	{
+		model = new gamePlay(6,6, 1000);
+        model.addGamePlayListener(this);
 
 		window.getContentPane().setLayout(new BorderLayout()); // default so not required
 
@@ -78,16 +63,24 @@ public class View extends JFrame implements gamePlayListener {
 		save.setEnabled(true);
 		load.setEnabled(true);
 		save.setSize(100, 50);
+		
 		load.addActionListener(e -> {
 			try {
 				model.load();
+				updateBoard();
 			} catch (ClassNotFoundException | IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
 		});
-		undo.addActionListener(e -> model.undo());
-		redo.addActionListener(e -> model.redo());
+		
+		undo.addActionListener(e -> 
+		{
+			model.undo();
+			updateBoard();
+		});
+		
+		redo.addActionListener(e -> { model.redo(); updateBoard(); });
 		save.addActionListener(e -> {
 			try {
 				model.save();
@@ -109,49 +102,110 @@ public class View extends JFrame implements gamePlayListener {
 		plantType.add(gameLegend, BorderLayout.SOUTH);
 		window.getContentPane().add(plantType, BorderLayout.NORTH);
 
+
 		JPanel gamePanel = new JPanel();
-		gamePanel.setLayout(new GridLayout(6,5));
+		gamePanel.setLayout(new GridLayout(6,6));
 		window.getContentPane().add(gamePanel, BorderLayout.CENTER);		
 		scoreStatus = new JLabel("Sunshines Left: 1000");
 		window.getContentPane().add(scoreStatus, BorderLayout.EAST);
 
-		board = new JButton[6][5];
-		
-		Font font = new Font("Monospaced", Font.BOLD, 30);
+		board = new JButton[6][6];
 		
 		JTextField zombieLife = new JTextField();
-		JPanel zl = new JPanel();
-		zl.setLayout(new BorderLayout());
-		zl.add(zombieLife, BorderLayout.SOUTH);
-		zombieLife.setEditable(false);
-		zombieLife.setText(" Zombie Life Left: ");
-		zombieLife.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Zombie Life"), zombieLife.getBorder()));
-		window.getContentPane().add(zombieLife, BorderLayout.SOUTH);
+ 		JPanel zl = new JPanel();
+ 		zl.setLayout(new BorderLayout());
+ 		zl.add(zombieLife, BorderLayout.SOUTH);
+ 		zombieLife.setEditable(false);
+ 		zombieLife.setText(" Zombie Life Left: ");
+ 		zombieLife.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Zombie Life"), zombieLife.getBorder()));
+ 		window.getContentPane().add(zombieLife, BorderLayout.SOUTH);
+ 		
 
-		/*// for resizing 
-		sunflowerIcon = new ImageIcon(sunflowerIcon.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
-		peashooterIcon = new ImageIcon(peashooterIcon.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
-		*/
+		Font font = new Font("Dialog", Font.BOLD, 24);
+		
 		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 5; j++) {
+			for (int j = 0; j < 6; j++) {
 				board[i][j] = new JButton();
 				board[i][j].setFont(font);
 				board[i][j].setBackground(Color.GREEN);
 				gamePanel.add(board[i][j]);
+				board[i][j].setEnabled(true);
 				board[i][j].addActionListener(new Controller(model, i, j));
 			}
 		}
+
+		window.setSize(500,500);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JMenuBar menuBar = new JMenuBar();
+		JMenu fileMenu = new JMenu("Game");
+		
+
+		one = new JMenuItem("Level 1"); // create a menu item called "Reset"
+		one.addActionListener(e -> 
+		{
+			enableAll();
+			model.lvlOne();
+			updateBoard();
+		});
+		fileMenu.add(one); // and add to our menu 
+		two = new JMenuItem("Level 2"); // create a menu item called "Quit"
+		two.setEnabled(true);
+		two.addActionListener(e -> {
+			model.lvlTwo();
+			updateBoard();
+		});
+		
+		fileMenu.add(two); // and add to our menu 
+		three = new JMenuItem("Level 3");
+		three.setEnabled(true);
+		three.addActionListener(e -> {
+			model.zombieTime(3);
+			updateBoard();
+		});
+		fileMenu.add(three);
+		
+		menuBar.add(fileMenu);
+		window.setJMenuBar(menuBar);
+		//disableAll();
 		window.setVisible(true);
+		
 	}
 	
 	/**
 	 * Disables all buttons (game over)
 	 */
-	private void disableAll() {
+	public void disableAll() {
+
 		int i, j;
 		for (i = 0; i < 6; i++) {
-			for (j = 0; j < 5; j++) {
+			for (j = 0; j < 6; j++) {
 				board[i][j].setEnabled(false);
+			}
+		}
+	}
+	
+	/**
+	 * Enables all buttons
+	 */
+	public void enableAll()
+	{
+		int i, j;
+		for (i = 0; i < 6; i++) {
+			for (j = 0; j < 6; j++) {
+				board[i][j].setEnabled(true);
+			}
+		}
+	}
+	
+	public void updateBoard()
+	{
+		char grid[][] = model.getBoard();
+		for(int i = 0; i < 6; i++)
+		{
+			for(int j = 0; j < 6; j++)
+			{
+				board[i][j].setText(String.valueOf(grid[i][j]));
 			}
 		}
 	}
@@ -161,7 +215,16 @@ public class View extends JFrame implements gamePlayListener {
 	 */
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
-		
+		//THIS DOESNT WORK. NEED TO FIGURE OUT HOW TO IMPLEMENT!
+		if(model.getLvl2()) {
+			System.out.println("WON");
+			two.setEnabled(true);
+		}
+		if(model.getLvl3())
+		{
+			three.setEnabled(true);
+		}
+		// ===================================================== //
 		int x = e.getX();
 		int y = e.getY();
 		char plant = e.getPlantType();
@@ -174,21 +237,20 @@ public class View extends JFrame implements gamePlayListener {
 		
 		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
 		
-		for(int i = 0; i < 6; i++) {
-			for(int j = 0; j < 5; j++){
-				/*if(plant == 'p') {
-					board[i][j].setIcon(peashooterIcon);
-				}
-				if(plant == 's') {
-					board[i][j].setIcon(sunflowerIcon);
-				}*/
-				
+		for(int i = 0; i < 6; i++)
+		{
+			for(int j = 0; j < 6; j++)
+			{
 				board[i][j].setText(String.valueOf(grid[i][j]));
 			}
 		}
+		
+		
+
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		new View();
 	}
 }
