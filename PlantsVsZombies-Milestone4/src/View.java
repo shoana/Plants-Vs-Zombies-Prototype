@@ -41,11 +41,11 @@ public class View extends JFrame implements gamePlayListener {
 	/**
 	 * Constructs the View
 	 */
-	
+
 	public View()
 	{
 		model = new gamePlay(6,6, 1000);
-        model.addGamePlayListener(this);
+		model.addGamePlayListener(this);
 
 		window.getContentPane().setLayout(new BorderLayout()); // default so not required
 
@@ -63,7 +63,7 @@ public class View extends JFrame implements gamePlayListener {
 		save.setEnabled(true);
 		load.setEnabled(true);
 		save.setSize(100, 50);
-		
+
 		load.addActionListener(e -> {
 			try {
 				model.load();
@@ -73,13 +73,13 @@ public class View extends JFrame implements gamePlayListener {
 				e2.printStackTrace();
 			}
 		});
-		
+
 		undo.addActionListener(e -> 
 		{
 			model.undo();
 			updateBoard();
 		});
-		
+
 		redo.addActionListener(e -> { model.redo(); updateBoard(); });
 		save.addActionListener(e -> {
 			try {
@@ -89,7 +89,7 @@ public class View extends JFrame implements gamePlayListener {
 				e1.printStackTrace();
 			}
 		});
-		
+
 		JTextField gameLegend = new JTextField();
 		gameLegend.setEditable(false);
 		gameLegend.setText(" X: PYLON ZOMBIE Z: NORMAL ZOMBIE F: FLAG ZOMBIE");
@@ -110,19 +110,19 @@ public class View extends JFrame implements gamePlayListener {
 		window.getContentPane().add(scoreStatus, BorderLayout.EAST);
 
 		board = new JButton[6][6];
-		
+
 		JTextField zombieLife = new JTextField();
- 		JPanel zl = new JPanel();
- 		zl.setLayout(new BorderLayout());
- 		zl.add(zombieLife, BorderLayout.SOUTH);
- 		zombieLife.setEditable(false);
- 		zombieLife.setText(" Zombie Life Left: ");
- 		zombieLife.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Zombie Life"), zombieLife.getBorder()));
- 		window.getContentPane().add(zombieLife, BorderLayout.SOUTH);
- 		
+		JPanel zl = new JPanel();
+		zl.setLayout(new BorderLayout());
+		zl.add(zombieLife, BorderLayout.SOUTH);
+		zombieLife.setEditable(false);
+		zombieLife.setText(" Zombie Life Left: ");
+		zombieLife.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Zombie Life"), zombieLife.getBorder()));
+		window.getContentPane().add(zombieLife, BorderLayout.SOUTH);
+
 
 		Font font = new Font("Dialog", Font.BOLD, 24);
-		
+
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				board[i][j] = new JButton();
@@ -139,24 +139,27 @@ public class View extends JFrame implements gamePlayListener {
 
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("Game");
-		
 
-		one = new JMenuItem("Level 1"); // create a menu item called "Reset"
-		one.addActionListener(e -> 
-		{
+
+		one = new JMenuItem("Level 1");
+		one.addActionListener(e -> {
 			enableAll();
 			model.lvlOne();
 			updateBoard();
 		});
 		fileMenu.add(one); // and add to our menu 
-		two = new JMenuItem("Level 2"); // create a menu item called "Quit"
+		
+		//if ((model.getLvl1())) { 
+		two = new JMenuItem("Level 2"); 
 		two.setEnabled(true);
 		two.addActionListener(e -> {
 			model.lvlTwo();
 			updateBoard();
 		});
-		
 		fileMenu.add(two); // and add to our menu 
+		//	}
+
+		//if ((model.getLvl2())) {
 		three = new JMenuItem("Level 3");
 		three.setEnabled(true);
 		three.addActionListener(e -> {
@@ -164,14 +167,15 @@ public class View extends JFrame implements gamePlayListener {
 			updateBoard();
 		});
 		fileMenu.add(three);
-		
+		//}
+
 		menuBar.add(fileMenu);
 		window.setJMenuBar(menuBar);
-		//disableAll();
+		disableAll();
 		window.setVisible(true);
-		
+
 	}
-	
+
 	/**
 	 * Disables all buttons (game over)
 	 */
@@ -184,7 +188,7 @@ public class View extends JFrame implements gamePlayListener {
 			}
 		}
 	}
-	
+
 	/**
 	 * Enables all buttons
 	 */
@@ -197,7 +201,7 @@ public class View extends JFrame implements gamePlayListener {
 			}
 		}
 	}
-	
+
 	public void updateBoard()
 	{
 		char grid[][] = model.getBoard();
@@ -216,6 +220,15 @@ public class View extends JFrame implements gamePlayListener {
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
 		//THIS DOESNT WORK. NEED TO FIGURE OUT HOW TO IMPLEMENT!
+
+		/*if((model.getLvl1())) {
+			System.out.println("WON");
+			two.setEnabled(true);
+		}
+		if(model.getLvl1() && model.getLvl2()) {
+			three.setEnabled(true);
+		}*/
+		
 		if(model.getLvl2()) {
 			System.out.println("WON");
 			two.setEnabled(true);
@@ -224,6 +237,7 @@ public class View extends JFrame implements gamePlayListener {
 		{
 			three.setEnabled(true);
 		}
+
 		// ===================================================== //
 		int x = e.getX();
 		int y = e.getY();
@@ -231,12 +245,12 @@ public class View extends JFrame implements gamePlayListener {
 		char[][] grid = e.getBoard();
 		undo.setEnabled(true);
 		redo.setEnabled(true);
-		
+
 		ArrayList<Zombie> z = e.returnZombie();
 		ArrayList<Plant> ps = e.getPeas();
-		
+
 		scoreStatus.setText("Sunshines Left: " + String.valueOf(e.getSunshines()));
-		
+
 		for(int i = 0; i < 6; i++)
 		{
 			for(int j = 0; j < 6; j++)
@@ -244,13 +258,11 @@ public class View extends JFrame implements gamePlayListener {
 				board[i][j].setText(String.valueOf(grid[i][j]));
 			}
 		}
-		
-		
-
 	}
-	
-	public static void main(String[] args)
-	{
+
+	public static void main(String[] args) {
 		new View();
+		JOptionPane.showMessageDialog(null,"Press on 'Game' and Level 1 to start the game!");
+
 	}
 }
