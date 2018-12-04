@@ -240,12 +240,12 @@ public class gamePlay implements Serializable {
 						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 1!");
 						lvlOneWon = true;
 					}
-					if(lvl == 2)
+					if(lvl == 2 && lvlOneWon)
 					{
 						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 2! Plants defeated all the zombies!");
 						lvlTwoWon = true;
 					}
-					if(lvl == 3)
+					if(lvl == 3&& lvlTwoWon)
 					{
 						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 3! Plants defeated all the zombies!");
 						lvlThreeWon = true;
