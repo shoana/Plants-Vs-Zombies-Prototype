@@ -121,7 +121,7 @@ public class View extends JFrame implements gamePlayListener {
 		window.getContentPane().add(zombieLife, BorderLayout.SOUTH);
 
 
-		Font font = new Font("Dialog", Font.BOLD, 24);
+		Font font = new Font("AR DARLING", Font.PLAIN, 30);
 
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
@@ -219,7 +219,6 @@ public class View extends JFrame implements gamePlayListener {
 	 */
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
-		//THIS DOESNT WORK. NEED TO FIGURE OUT HOW TO IMPLEMENT!
 
 		/*if((model.getLvl1())) {
 			System.out.println("WON");
@@ -230,15 +229,13 @@ public class View extends JFrame implements gamePlayListener {
 		}*/
 		
 		if(model.getLvl2()) {
-			System.out.println("WON");
+			//System.out.println("WON");
 			two.setEnabled(true);
 		}
-		if(model.getLvl3())
-		{
+		if(model.getLvl3()) {
 			three.setEnabled(true);
 		}
 
-		// ===================================================== //
 		int x = e.getX();
 		int y = e.getY();
 		char plant = e.getPlantType();
