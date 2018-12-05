@@ -74,6 +74,7 @@ public class View extends JFrame implements gamePlayListener {
 			try {
 				model.load();
 				updateBoard();
+				enableAll();
 			} catch (ClassNotFoundException | IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
