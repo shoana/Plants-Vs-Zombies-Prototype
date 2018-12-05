@@ -475,7 +475,7 @@ public class gamePlay implements Serializable {
 		lvl = 1;
 		sunshine = 800;
 		clr();
-		
+		Random r = new Random();
 		for(int i = 0; i < board.length; i++)
 		{
 			for(int j = 0; j < board.length; j++) 
@@ -484,10 +484,14 @@ public class gamePlay implements Serializable {
 			}
 		}
 		
-		flagZombieIncoming();
-		NormalZombie z = new NormalZombie(1,5, false, 100, 'z', false);
-		board[z.getPositionX()][z.getPositionY()] = 'z';
-		zombies.add(z);
+		//flagZombieIncoming();
+		for(int i = 0; i < 2; i++) {
+			int random = r.nextInt(nRows);
+			NormalZombie z = new NormalZombie(random, (nRows -1), false, 100, 'z', false);
+			
+			board[random][nRows - 1] = 'z';
+			zombies.add(z);
+		}
 		
 	}
 	
@@ -510,7 +514,7 @@ public class gamePlay implements Serializable {
 		
 		flagZombieIncoming();
 		Random r = new Random();
-		for(int i = 0; i < 2; i++) {
+		for(int i = 0; i < 3; i++) {
 			int random = r.nextInt(nRows);
 			NormalZombie z = new NormalZombie(random, (nRows -1), false, 100, 'z', false);
 			
@@ -527,8 +531,4 @@ public class gamePlay implements Serializable {
 		plants.removeAll(plants); 
 		zombies.removeAll(zombies);
 	}
-	
-
-
-
 }
