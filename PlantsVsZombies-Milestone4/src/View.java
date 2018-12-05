@@ -44,7 +44,7 @@ public class View extends JFrame implements gamePlayListener {
 
 	public View()
 	{
-		model = new gamePlay(6,6, 1000);
+		model = new gamePlay(6,6, 800);
 		model.addGamePlayListener(this);
 
 		window.getContentPane().setLayout(new BorderLayout()); // default so not required
