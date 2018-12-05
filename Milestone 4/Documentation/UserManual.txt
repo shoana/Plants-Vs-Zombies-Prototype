@@ -1,0 +1,39 @@
+USER MANUAL:
+-------------------
+Inorder for the game to begin, run the View.java class. 
+1) You have a current score of 800 sunshines
+2) Follow the pop-up that appears. (Press on Game on the top-left corner of the window, then choose Level 1 to begin)
+3) When done, a pop-up will appear to tell you the type of zombies you will fight this round.
+4) For Level 1: Upto 2 normal zombies randomly positioned on the grid. Place your plants to kill these zombies to successfully go to the next level.
+5) To place plants, start by choosing a position on the board by pressing a button on the grid. 
+6) A pop-up will appear for you to choose the type of plant that you would like to place on the 6 by 6 grid
+   ex. if you would like to plant a sunflower (50 sunshines), click on the Sunflower button to place the plant you purchased. -- If you chose to plant a sunflower you         will be asked if you would like to collect the sun to get 25 sunshines.
+   ex. if you would like to place a plantshooter (100 sunshines), click on the Plantshooter button to place the plant you purchased. Same follows for the rest of the        plants (Yes cherry and walnut are plants in this case!)
+7) A 'p' is placed for a Peashooter,  's' is placed in the position of the Sunflower, 'c' in the palce of a Cherry Bomb and 'w' is placed in the place of a Walnut. *
+8) Assuming you beat Level 1, a pop-up will apear with your next instructions. (Press on Game on the top-left corner of the window, then choose Level 2 to begin). 
+9) When done, a pop-up will appear to tell you the type of zombies you will fight this round.
+10) For Level 2: Upto 4 zombies, 3 normal zombies randomly positioned on the grid and a flag zombie will comeup. Try to strategically place your peashooters, walnuts and cherries to kill the zombies. Plant sunflowers to collect suns to purchase more plants. (One sunflower produces one sun worth 25 sunshines)
+11) Assuming you beat Level 2, a pop-up will apear with your next instructions. (Press on Game on the top-left corner of the window, then choose Level 3 to begin). 
+12) When done, a pop-up will appear to tell you the type of zombies you will fight this round.
+13) For Level 3: All types of zombies **, noted with 'z' , 'x' and 'f' start to creep up as you place your plants. Try to strategically place your peashooters, walnuts and cherries to kill the zombies. Plant sunflowers to collect suns to purchase more plants. (One sunflower produces one sun worth 25 sunshines)
+14) Zombies begin at the end of the board (rightmost positon). After each turn (planting), zombies will move forward. Make sure you are placing your plants so that the zombies cannot reach the house or eat the plants. 
+15) You have the ability to undo or redo any of your steps like placing and replacing the plants. But do not count on redoing the zombies, because they have a mind of their own. 
+16) You can save and load your game as well, no matter the level. 
+17) If the zombies reach the house then the zombies will win. If the zombies eat all of the plants and no plants are on the grid, the zombies will also win. Lastly, if you use all your sunshine and can not plant anymore plants onto the grid, the zombies can win that way too.
+18) For the plants to win, you must defeat all the zombies and still have sunshine leftover. 
+19) The sunshines (used to buy plants) doesn't restock after each level, so place plants carefully and play stratigically.
+20) DON'T DIE!!
+
+
+* Types of Plants to choose from:
+	- Peashooter - Kills the zombies with its peas by decreasing the damage points of the 	zombie (-100 damage points) --- 100 Sunshines
+ 	- Sunflowers - Produces a sun (+25 sunshines) when bought --- 50 Sunshines
+	- Cherry Bomb - blows up all the zombies on the board after a frame --- 200 Sunshines
+	- Walnut - Pauses the movement of a zombie in the same grid for 2 turns (a red light 	for the zombie) --- 200 Sunshines
+
+** Types of  Zombies:
+	- Normal (z): They are randomly genrated onto the board form the rightside of the grid. The normal zombies start with 200 life points. 
+	- Pylon (x): They are randomly genrated onto the board form the rightside of the grid. It is harder to kill this zombie as it starts with 200 life points. 
+	- Flag (f): Is placed in the center of board at the beginning of the game. It starts with 100 life points. Will see the purpose of this zombie when we implement the levels
+
+-- the pop-ups throughout the game are informative and helps you play the game smoothly
