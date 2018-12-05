@@ -39,7 +39,7 @@ Level 2:The player fights upto 4 zombies, 3 normal zombies randomly positioned o
 
 Level 3: The player fights multiple zombies of all types. This is the more challenging level as the sunshines are low and possibly more zombies are attacking
 
-Follow the instructions on the pop-ups to access all the levels. Also the sunshines (used to buy plants) doesn't restock after each level, so be careful and play stratigically. 
+When you select a level, there are pop-ups to inform about the types of zombies you are playing against. Follow the instructions on the pop-ups to access all the levels. Also the sunshines (used to buy plants) doesn't restock after each level, so be careful and play stratigically. 
 
 =================================================================================================
 Visual Representation (GUI):
@@ -90,6 +90,7 @@ User-visible Changes:
 - Pop-ups are also used to collect suns, to notify if a game is finished (either the plants or the zombies win)
 - The starting sunshine is now 800 rather than 1000 to make the game more interesting
 - More buttons are added to the top, the load and save buttons along side undo, redo. 
+- There are pop-ups to inform about the types of zombies you are playing against before they start a new level.
 =================================================================================================
 Known Errors:
 - 
