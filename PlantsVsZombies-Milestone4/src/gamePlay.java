@@ -233,21 +233,21 @@ public class gamePlay implements Serializable {
 				}
 				
 				if(isAllZombiesDead)
-				{
-					
+				{				
 					if(lvl == 1)
 					{
-						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 1!");
+						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 1!\nPress on 'Game' to play Level 2");
 						lvlOneWon = true;
+						
 					}
 					if(lvl == 2 && lvlOneWon)
 					{
-						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 2! Plants defeated all the zombies!");
+						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 2!\nPress on 'Game' to play Level 3");
 						lvlTwoWon = true;
 					}
 					if(lvl == 3&& lvlTwoWon)
 					{
-						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 3! Plants defeated all the zombies!");
+						JOptionPane.showMessageDialog(null,"YOU BEAT LEVEL 3!\nPlants defeated all the zombies!");
 						lvlThreeWon = true;
 					}
 				}
