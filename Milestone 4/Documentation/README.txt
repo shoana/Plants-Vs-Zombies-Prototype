@@ -68,7 +68,7 @@ Change Log:
 - The Undo and Redo implementations were lagging one frame last milestone, and that is now fixed
 - The zombies sometimes started from the second rightmost square rather than starting at the rightmost square. This is now fixed and all the zombies start at the righmost square and try to reach the house (leftmost square)
 - Created packages for the code to organize the classes and avoid smell
-- Save/Load feautures are now implemented in the model. The methods use throw exceptions. 
+- Save/Load feautures are now implemented in the model. The methods use throw exceptions. Saving the board is like taking a snapshot of all the elements of the board (not including the score) and when load is pressed, that saved board is what you will be playing. We decided to not make the score change to make the game more chalenging and follow the rules of classic games.
 - Levels are added onto this milestone as well. For better understanding, read the thorough explaination of levels above. 
 =================================================================================================
 Changes to UML from:
