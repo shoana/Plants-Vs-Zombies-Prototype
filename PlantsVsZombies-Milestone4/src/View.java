@@ -145,6 +145,7 @@ public class View extends JFrame implements gamePlayListener {
 		one.addActionListener(e -> {
 			enableAll();
 			model.lvlOne();
+			JOptionPane.showMessageDialog(null,"LEVEL 1 ZOMBIES: Normal Zombies");
 			updateBoard();
 		});
 		fileMenu.add(one); // and add to our menu 
@@ -154,6 +155,7 @@ public class View extends JFrame implements gamePlayListener {
 		two.setEnabled(true);
 		two.addActionListener(e -> {
 			model.lvlTwo();
+			JOptionPane.showMessageDialog(null,"LEVEL 2 ZOMBIES: Normal Zombies & Flag Zombies");
 			updateBoard();
 		});
 		fileMenu.add(two); // and add to our menu 
@@ -164,7 +166,9 @@ public class View extends JFrame implements gamePlayListener {
 		three.setEnabled(true);
 		three.addActionListener(e -> {
 			model.zombieTime(3);
+			JOptionPane.showMessageDialog(null,"LEVEL 3 ZOMBIES: Flag Zombie, Pylon Zombie & Normal Zombie");
 			updateBoard();
+			
 		});
 		fileMenu.add(three);
 		//}
@@ -219,14 +223,6 @@ public class View extends JFrame implements gamePlayListener {
 	 */
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
-
-		/*if((model.getLvl1())) {
-			System.out.println("WON");
-			two.setEnabled(true);
-		}
-		if(model.getLvl1() && model.getLvl2()) {
-			three.setEnabled(true);
-		}*/
 		
 		if(model.getLvl2()) {
 			//System.out.println("WON");
