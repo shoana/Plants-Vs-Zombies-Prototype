@@ -111,14 +111,6 @@ public class View extends JFrame implements gamePlayListener {
 
 		board = new JButton[6][6];
 
-		JTextField zombieLife = new JTextField();
-		JPanel zl = new JPanel();
-		zl.setLayout(new BorderLayout());
-		zl.add(zombieLife, BorderLayout.SOUTH);
-		zombieLife.setEditable(false);
-		zombieLife.setText(" Zombie Life Left: ");
-		zombieLife.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Zombie Life"), zombieLife.getBorder()));
-		window.getContentPane().add(zombieLife, BorderLayout.SOUTH);
 
 
 		Font font = new Font("AR DARLING", Font.PLAIN, 30);
