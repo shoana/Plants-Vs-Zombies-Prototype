@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 import model.gamePlay;
-/**
- * Controller class
- * @author sarahlamonica
- *
+
+/** 
+ * This class sets up Controller of MVC pattern
+ * @author Fatima Hashi, Sarah Lamonica, Shoana Sharma,  Mounica Pillarisetty
+ * @version December 5th, 2018
  */
 public class Controller implements ActionListener {
 	
@@ -17,12 +18,11 @@ public class Controller implements ActionListener {
 	private int x;
 	private int y;
 	
-	
 	/**
 	 * Takes all model variables
-	 * @param model
-	 * @param x
-	 * @param y
+	 * @param model is type of game play  
+	 * @param x an integer for x co-ordinate
+	 * @param y an integer for y co-ordinate
 	 */
 	public Controller(gamePlay model, int x, int y)
 	{
