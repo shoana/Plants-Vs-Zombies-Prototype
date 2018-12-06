@@ -2,10 +2,10 @@ package model;
 import java.io.Serializable;
 
 /**
- * Peashooter class is a type of plant that attacks the Zombie and prevents them 
- * from entering the house
- * @author sarahlamonica
- * @version MILESTONE 3
+ * This class is any of the 3 types of plant sunflower, peashooter, walnut and cherry bomb
+ * type of plant that attacks the Zombie and prevents them from entering the house
+ * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
+ * @version December 5th, 2018
  */
 
 public class Plant implements Serializable {
@@ -29,22 +29,33 @@ public class Plant implements Serializable {
 	}
 
 	/**
-	 * Getter method for position x
+	 * This method is a getter method for position x
 	 * @return int for the position for x
 	 */
 	public int getPositionX(){
 		return positionX;
 	}
+	
+	/**
+	 * This method checks if the plant is eaten or not
+	 * by the zombie
+	 * @return a boolean if plant isEast as true, false otherwise
+	 */
 	public boolean getEaten()
 	{
 		return isEaten;
 	}
+	
+	/**
+	 * The method sets the desired boolean of the plant
+	 */
 	public void setEaten()
 	{
 		this.isEaten = true;
 	}
+	
 	/**
-	 * Setter method for position x
+	 * This methos is a setter method for position x
 	 * @param positionX is an that allows to set the x coordinate on the grid
 	 */
 	public void setPositionX(int positionX){
@@ -52,7 +63,7 @@ public class Plant implements Serializable {
 	}
 	
 	/**
-	 * Getter method for position y
+	 * This method is a getter method for position y
 	 * @return int for the position for y
 	 */
 	public int getPositionY(){
@@ -60,7 +71,7 @@ public class Plant implements Serializable {
 	}
 	
 	/**
-	 * Setter method for position y 
+	 * This is a setter method for position y 
 	 * @param positionX is an that allows to set the y coordinate on the grid
 	 */
 	public void setPositionY(int positionY){
