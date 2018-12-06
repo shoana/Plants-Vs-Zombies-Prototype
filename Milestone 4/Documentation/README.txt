@@ -17,6 +17,16 @@ Milestone 4:
 - Separated the source code into packages (model, controller, ...) to better organize the code and avoid "smell"
 
 =================================================================================================
+Reflection On The Design 
+- During the first milestone, we deecided to make individual classes for all the different types of plants and zombies. We then chose to use inheritance instead to make our code more user friendly and less smelly.
+
+
+Reflection On The Process
+- 
+and what you like or don’t like about your code. Also reflection on the over process with the project, i.e., what you liked and what you did not.
+
+ 
+ ========================================================================================================
  Specifications to better understand the game:
  
 -Plants:
