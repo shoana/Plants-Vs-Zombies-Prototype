@@ -14,8 +14,12 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
- * Game Play class to represent the game being played
- * @author sarahlamonica
+ * The gamePlay is where all the methods used for 'playing' the game are included.
+ * The main function in this class allows this game to be user interactive. Plants are killed 
+ * by the Zombies if they are not strategically placed on the grid by the user and visa-versa.
+ *
+ * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
+ * @version December 5th, 2018 
  *
  */
 public class gamePlay implements Serializable {
@@ -36,10 +40,10 @@ public class gamePlay implements Serializable {
 	private Stack<Plant> plantRedoStack;
 	
 	/**
-	 * Constructor
-	 * @param nRows
-	 * @param nColumns
-	 * @param sunshine
+	 * Constructor for the game play
+	 * @param nRows is an int that sets the row on the gird
+	 * @param nColumns is an int that sets the column on the grid
+	 * @param sunshine is an int that shows the sunshine left in the game
 	 */
 	public gamePlay(int nRows, int nColumns, int sunshine)
 	{
@@ -57,17 +61,18 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * Gameplay event model method
-	 * @param tttl
+	 * This method adds Gameplay listener event 
+	 * @param tttl is a type of game play listener added according to the occured event 
 	 */
 	public void addGamePlayListener(gamePlayListener tttl) {
         gameListeners.add(tttl);
-    }
+   	 }
 	
 	/**
-	 * place a plant in the space
-	 * @param row
-	 * @param column
+	 * This method checks for the plant's turn 
+	 * @param row is an int sets the row on the gird when the plant is placed
+	 * @param column is an int sets the column on the grid where the plant is placed
+	 * @param plantType is an int could be a sunflower or a peashooter
 	 */
 	public void plantTurn(int row, int column)
 	{
@@ -158,7 +163,7 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * Checks if the plants or zombies win
+	 * This method checks if the plants or zombies win
 	 */
 	public void plantsOrZombies()
 	{
@@ -254,19 +259,32 @@ public class gamePlay implements Serializable {
 				}
 	}
 	
+	/**
+	 * This is getter method for level 1
+	 * @return a boolean true if level 1 won, false otherwise
+	 */
 	public boolean getLvl1() {
 		return lvlOneWon;
 	}
 	
+	/**
+	 * This is getter method for level 2
+	 * @return a boolean true if level 2 won, false otherwise
+	 */
 	public boolean getLvl2() {
 		return lvlTwoWon;
 	}
+	
+	/**
+	 * This is getter method for level 3
+	 * @return a boolean true if level 3 won, false otherwise
+	 */
 	public boolean getLvl3() {
 		return lvlThreeWon;
 	}
 		
 	/**
-	 * Moves every zombie one space 
+	 * This method moves every zombie one space 
 	 */
 	public void moveZombies() {
 		for(Zombie p: zombies) {
@@ -279,29 +297,28 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * Getter method for the board
-	 * @return
+	 * This is a getter method for the board
+	 * @return a gird of character
 	 */
 	public char[][] getBoard() {
 		return board;
 	}
 	
-		/**
-	 * A getter to get the type of plant that is being placed into the grid
-	 * @return char containing a peashooter or a sunflower
+	/**
+	 * This is a getter method to get the type of plant that is being placed into the grid
+	 * @return char containing a peashooter, a sunflower or a cherry bomb 
 	 */
 	public char getPlantType() {
 		return plantType;
 	}
 
 	/**
-	 * a setter for the plant type
-	 * @param char s
+	 * This is a setter method for the plant type
+	 * @param char s returns the sunflower in this case
 	 */
 	public void setPlantType(char s) {
 		this.plantType = s;
 	}
-
 
 	/**
 	 * This method keeps track of the affects on zombie when the game state
@@ -346,7 +363,7 @@ public class gamePlay implements Serializable {
 	
 	
 	/**
-	 * Places a flag zombie at the beginning of the game in the centre of the board
+	 * This method laces a flag zombie at the beginning of the game in the centre of the board
 	 */
 	public void flagZombieIncoming() {
 		if(!startGame) {
@@ -358,7 +375,7 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * Undoes the latest player move
+	 * This method undoes the latest player move
 	 */
 	public void undo()
 	{
@@ -387,7 +404,7 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * Places the previously undid plants back in the game
+	 * This method places the previously undid plants back in the game
 	 */
 	public void redo()
 	{
@@ -420,7 +437,7 @@ public class gamePlay implements Serializable {
 	}
 
 	/**
-	 * Save feature.
+	 * This method saves the current state of the game
 	 * @throws IOException
 	 */
 	public void save() throws IOException
@@ -437,7 +454,7 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * Load feature.
+	 * This ethod loads the saved feature.
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
@@ -459,7 +476,7 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * Code for initialization of level one
+	 * This method initializes level one
 	 */
 	public void lvlOne()
 	{
@@ -486,7 +503,7 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * Code for initialization of level two
+	 * This method intializes level two
 	 */
 	public void lvlTwo()
 	{
@@ -514,7 +531,7 @@ public class gamePlay implements Serializable {
 	}
 	
 	/**
-	 * CLR THE ARRAY OF ALL PLANTS AND ZOMBIES, use this later for levels
+	 * This method clr the array of all plants and zombies, use this later for levels 
 	 */
 	public void clr()
 	{
