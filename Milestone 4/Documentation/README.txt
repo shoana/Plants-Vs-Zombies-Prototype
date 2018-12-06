@@ -17,14 +17,32 @@ Milestone 4:
 - Separated the source code into packages (model, controller, ...) to better organize the code and avoid "smell"
 
 =================================================================================================
+
 Reflection On The Design 
-- During the first milestone, we deecided to make individual classes for all the different types of plants and zombies. We then chose to use inheritance instead to make our code more user friendly and less smelly.
+- During the first milestone, individual classes for all the different types of plants and zombies was used. Inheritance was then implemented in the next iteration to promote better organization of the classes. 
+
+- All zombies and plants were stored in two array lists. This design process was useful as it was able to keep track of all the zombie and plant positions, and also if they were eaten or not. This was useful in determining which zombies/plants to take off the board (when eaten) and determining if the zombies and plants won. The plantsOrZombies() method in gamePlay is a good example of how the arraylists were utilized to check for win/lose.  
+
+- The model contained a 6X6 2d array which contained all the zombies and plants present on the board. The grid used chars to store the plant and zombie 'types' which was useful when the view displayed the plants and zombies on a grid of JButtons. We just checked what the char was in each grid space and displayed it accordingly.  
+
+- The event model design pattern was useful in updating the view every time the user takes a turn. Whenever a user placed a plant, the model updates the position of the zombies and check if the zombies or plants had won. It was a valid MVC design pattern where the model updates the view whenever there is a change, which was a very big topic in the SYSC 3110 course this semester. 
 
 
-Reflection On The Process
-- 
-and what you like or don’t like about your code. Also reflection on the over process with the project, i.e., what you liked and what you did not.
+Reflection On The Process and what you like or don’t like about your code. Also reflection on the over process with the project, i.e., what you liked and what you did not.
 
+Likes: 
+- The array lists were a great data structure to use to keep track of all the plants and zombies. The arraylist was unchanged since the first milestone and proved to be extremely useful as more methods were added. The arraylists were of type "Plant" and "Zombie", which were superclasses so they were able to store each different subclass of zombie and plant. 
+- Updating the view from the "grid" inside of the model was a good idea as it was very easy to iterate over the grid and display each char on the buttons in the view. Since the grid changed each turn it was useful to have the model keep track of its own grid and just update it on the view each turn.
+- The event model pattern was useful in making sure that the view ONLY changed when the user takes a turn (i.e the model "changes"). This way keeps the implementation of the view & model separate and delegation occurs in the controller. 
+
+Dislikes:
+- The event model sometimes caused a "lag" between frames of the game. Sometimes, the plant or zombie is eaten but it doesn't dissappear off the board until the next turn. This is because of the event model pattern and the fact that it only updates when the user takes a turn. So, it is not "real time" and can be confusing to the user. 
+
+The process: The code was refactored multiple times after each iteration. Some major changes are:
+- Having a grid[][] array in the model which updates in the view. Originally, the view changed by iterating through the array lists and placing a plant or zombie based on their x and y coordinates. This was very long code and it was shortened to a few lines just by having the model's grid array. 
+- Checking if a zombie or plant won was changed by adding damage points to the zombie. Originally, the zombies won by being two spaces away from the plants and killing the plant. We changed this by only having the zombies win by reaching the end of the board (reaches the house) and the zombies can only be killed by peashooters and cherrybombs. 
+
+ Overall, the process was a good learning experience in software development. 
  
  ========================================================================================================
  Specifications to better understand the game:
