@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.EventObject;
 
 /**
- * Game Play Event handles the event and its model
- * @author sarahlamonica
- *
+ *Event class for the MVC model which extends EventObjects
+ *@author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
+ *@version December 5th, 2018 
  */
 public class gamePlayEvent extends EventObject {
 
@@ -18,15 +18,14 @@ public class gamePlayEvent extends EventObject {
 	private ArrayList<Plant> p;
 	private char[][] board;
 	
-	
 	/**
-	 * Constructor
-	 * @param source
-	 * @param x
-	 * @param y
-	 * @param plantType
-	 * @param z
-	 * @param sunshines
+	 * The constructor for gamePlayEvent class
+	 * @param source is a type of object 
+	 * @param x is a type of interger corresponding to the coordiantes
+	 * @param y is a type of integer corresponding to the coordinates
+	 * @param plantType is type of character choosen for plant type
+	 * @param z is a type of an array list of zombies
+	 * @param sunshines is type integers for keep track of the money used
 	 */
 	
 	public gamePlayEvent(Object source, int x, int y, char plantType, ArrayList<Zombie> z, int sunshines, ArrayList<Plant> p, char[][] board) {
@@ -37,16 +36,21 @@ public class gamePlayEvent extends EventObject {
 		this.z = z;
 		this.sunshines = sunshines;
 		this.p = p;
-		this.board = board;
-		
+		this.board = board;	
 	}
+	
+	/**
+	 * This method returns plant from an array list 
+	 * @return a type of array list for plants
+	 */
 	public ArrayList<Plant> getPeas()
 	{
 		return this.p;
 	}
+	
 	/**
-	 * Getter
-	 * @return
+	 * This method returns zombies from an array list 
+	 * @return a type of array list for zombies
 	 */
 	public ArrayList<Zombie> returnZombie()
 	{
@@ -54,8 +58,8 @@ public class gamePlayEvent extends EventObject {
 	}
 
 	/**
-	 * get the current state of the board
-	 * @return
+	 * This method gets the current state of the board
+	 * @return a gird of char
 	 */
 	public char[][] getBoard()
 	{
@@ -63,8 +67,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter
-	 * @return
+	 * This method gets the x coordinate
+	 * @return a type integer x 
 	 */
 	public int getX()
 	{
@@ -72,8 +76,8 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter
-	 * @return
+	 * This method gets the y coordinate
+	 * @return a type integer y 
 	 */
 	public int getY()
 	{
@@ -81,8 +85,9 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter
-	 * @return
+	 * This method gets the sunshine used for 
+	 * keeping track of the money spent
+	 * @return a type integer for the sunshines
 	 */
 	public int getSunshines()
 	{
@@ -90,8 +95,9 @@ public class gamePlayEvent extends EventObject {
 	}
 	
 	/**
-	 * Getter method
-	 * @return
+	 * This method returns a type of char for the plant type
+	 * @return a charater for the type of plant type
+	 * sunflower/peashooter
 	 */
 	public char getPlantType()
 	{
