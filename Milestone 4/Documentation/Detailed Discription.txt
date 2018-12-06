@@ -1,6 +1,6 @@
 Here is our take on the classic Plant vs Zombies Game:
 
-We broke our game into the following classes: 
+We organised our game into the following classes: 
 - gamePlay, focusses on the main play of the game -- the model
 - Super Class: Zombie - includes the position (x and y coordinates), boolean value if the zombie is dead or still on the board, damage point, and a char of the type of zombie
 	- Sub Classes: NormalZombie (z), PylonZombie (x) and FlagZombie (f)
