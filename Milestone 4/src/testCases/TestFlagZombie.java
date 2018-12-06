@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 /**
  * This class a part of the test cases which is used to test the functionality of a Flag Zombies and it's edge cases
  * @author Fatima Hashi, Sarah Lamonica, Shoana Sharma,  Mounica Pillarisetty
- * @version November 25th, 2018
+ * @version December 5th, 2018
  *
  */
 
