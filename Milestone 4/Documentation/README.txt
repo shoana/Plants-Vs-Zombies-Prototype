@@ -77,7 +77,8 @@ Changes to UML from:
 
  
  - Sequence Diagrams:
-The sequence diagrams now includes newly added implemetations in the game such as levels, save, load, undo & redo features. All edge cases are shown for when a user invokes one of the following methods in the game: 'plantTurn', 'zombieTime', 'plantOrZombie', 'flagZombieComing', 'moveZombie', 'save', 'load', 'redo', 'undo', 'lvlOne', 'lvlTwo' & 'lvlThree' from the gamePlay class.
+The sequence diagrams now includes newly added implemetations in the game such as levels, save, load, undo & redo features. 
+All edge cases are shown for when a user invokes one of the following methods in the game: 'plantTurn', 'plantOrZombie', 'flagZombieComing', 'moveZombie', 'save', 'load', 'redo', 'undo', 'lvlOne', 'lvlTwo' & 'lvlThree' from the gamePlay class.
 
 ==================================================================================================
 User-visible Changes:
