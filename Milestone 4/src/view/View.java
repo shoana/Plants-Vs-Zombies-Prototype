@@ -18,9 +18,11 @@ import model.*;
 
 
 import java.awt.color.*;
+
 /**
  * View class for implementing the Plants vs. Zombies game
- * @author sarahlamonica
+ * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
+ * @version November 25th, 2018
  */
 public class View extends JFrame implements gamePlayListener {
 	int startNum = 4;
@@ -45,7 +47,7 @@ public class View extends JFrame implements gamePlayListener {
 	private List <JMenuItem> menu = new ArrayList<JMenuItem>();
 
 	/**
-	 * Constructs the View
+	 * Constructor for the View
 	 */
 
 	public View()
@@ -177,7 +179,7 @@ public class View extends JFrame implements gamePlayListener {
 	}
 
 	/**
-	 * Disables all buttons (game over)
+	 * This method disables all buttons (game over)
 	 */
 	public void disableAll() {
 
@@ -190,7 +192,7 @@ public class View extends JFrame implements gamePlayListener {
 	}
 
 	/**
-	 * Enables all buttons
+	 * This method enables all buttons
 	 */
 	public void enableAll()
 	{
@@ -215,7 +217,7 @@ public class View extends JFrame implements gamePlayListener {
 	}
 
 	/**
-	 * Game event Handler
+	 * This method is the game event Handler
 	 */
 	@Override
 	public void handleGameEvent(gamePlayEvent e) {
