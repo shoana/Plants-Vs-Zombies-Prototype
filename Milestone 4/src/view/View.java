@@ -22,7 +22,7 @@ import java.awt.color.*;
 /**
  * View class for implementing the Plants vs. Zombies game
  * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version November 25th, 2018
+ * @version December 5th, 2018n 
  */
 public class View extends JFrame implements gamePlayListener {
 	int startNum = 4;
