@@ -5,7 +5,7 @@ import java.io.Serializable;
  * Flag zombies attacks the plants preventing themselves from dying and allowing 
  * them to enter the house.
  * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version Novemeber 25th, 2018
+ * @version December 5th , 2018
  */
 public class FlagZombie extends Zombie implements Serializable{
 	/**
