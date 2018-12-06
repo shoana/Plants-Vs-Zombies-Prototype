@@ -18,7 +18,7 @@ import junit.framework.TestCase;
  * This class a part of the test cases which is used to test the functionality of 
  * how a game is over and it's edge cases. It checks if the plants win or zombies win.
  * @author Fatima Hashi, Sarah Lamonica, Shoana Sharma,  Mounica Pillarisetty
- * @version November 25th, 2018
+ * @version December 5th, 2018
  *
  */
 public class TestGamePlay extends TestCase {
@@ -149,8 +149,8 @@ public class TestGamePlay extends TestCase {
 	}
 
 	/**
-	 * @throws IOException 
-	 * 
+	 * This test case checks the save's functionality
+	 *  @throws IOException 
 	 */
 	public void testSave() throws IOException {
 
@@ -164,7 +164,8 @@ public class TestGamePlay extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * This test case checks the load's functinality
+	 * @throws IOException 
 	 */
 	public void testLoad() throws IOException, ClassNotFoundException {
 		
@@ -178,7 +179,7 @@ public class TestGamePlay extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * This test case checks the implementation of level 1
 	 */
 	public void testLvlOne(){
 	
@@ -188,7 +189,7 @@ public class TestGamePlay extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * This test case checks the implementtion of level 2
 	 */
 	public void testLvlTwo(){
 		
@@ -199,7 +200,7 @@ public class TestGamePlay extends TestCase {
 		
 	}
 	/**
-	 * 
+	 * This test case checks the implementation of level 3
 	 */
 	public void testLvlThree() {
 		Zombie z = new Zombie(1, 5, false, 100, 'z', false);
@@ -210,10 +211,6 @@ public class TestGamePlay extends TestCase {
 		assertEquals("Pylon Zombies are present.", pz.getType(), 'x');
 	}
 
-	/**
-	 * Code for initialization of level two
-	 */
-	
 	@Test
 	public static void main(String[] args) {
 		junit.textui.TestRunner.run(TestGamePlay.class);
