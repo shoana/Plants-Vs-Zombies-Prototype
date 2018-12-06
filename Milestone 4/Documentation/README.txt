@@ -106,6 +106,10 @@ ZIP folder contains:
 Who did what:
 
 Sarah Lamonica: 
+- Implemented Save/Load functionality using Java Serialization
+- Implemented level builder by including different functions for different levels and logic for switching between levels
+- Added buttons for save/load and multi-level menu bar and its implementation in gamePlay
+
 
 Mounica Pillarisetty:
 
