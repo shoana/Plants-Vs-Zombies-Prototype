@@ -176,3 +176,6 @@ _ Test Cases for MVC
 _ Refactoring gamePlay class
 
 Fatima Hashi:
+- Sequence Diagram
+- Test Cases for MVC
+- Refactoring gamePlay class
