@@ -73,8 +73,7 @@ Change Log:
 =================================================================================================
 Changes to UML from:
  - Class Diagrams:
-
-
+The class duagrams does not include any major changes from the previous milestone. The only changes in the class diagram are including the new methods save, load and level implemtations. The class digrams still are based on a MVC pattern. All the varied types of plants inherits from the super class plants and all the different zombies inherit from super class zombies.
  
  - Sequence Diagrams:
 The sequence diagrams now includes newly added implemetations in the game such as levels, save, load, undo & redo features. 
@@ -111,5 +110,9 @@ Sarah Lamonica:
 Mounica Pillarisetty:
 
 Shoana Sharma:
+- Class Diagrams 
+- Java Documentation
+_ Test Cases for MVC
+_ Refactoring gamePlay class
 
 Fatima Hashi:
