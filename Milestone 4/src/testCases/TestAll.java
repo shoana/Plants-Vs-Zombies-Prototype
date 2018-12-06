@@ -5,7 +5,7 @@ import junit.framework.Test;
 /**
  * This class contains all the test cases created to check the functionality of the game
  * @author Sarah Lamonica, Mounica Pillarisetty, Fatima Hashi, Shoana Sharma 
- * @version November 25th, 2018 
+ * @version December 5th, 2018 
  *
  */
 public class TestAll extends TestSuite{
