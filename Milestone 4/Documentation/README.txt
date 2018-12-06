@@ -38,19 +38,15 @@ Whenever a user placed a plant, the model updates the position of the zombies an
 zombies or plants had won. It was a valid MVC design pattern where the model updates the view 
 whenever there is a change, which was a very big topic in the SYSC 3110 course this semester. 
 
-
-Reflection On The Process and what you like or don’t like about your code. 
-Also reflection on the over process with the project, i.e., what you liked and what you did not.
-
 Likes: 
 - The array lists were a great data structure to use to keep track of all the plants and 
 zombies. The arraylist was unchanged since the first milestone and proved to be extremely
 useful as more methods were added. The arraylists were of type "Plant" and "Zombie", which 
 were superclasses so they were able to store each different subclass of zombie and plant. 
 - Updating the view from the "grid" inside of the model was a good idea as it was very easy 
-to iterate over the grid and display each char on the buttons in the view. Since the grid 
-changed each turn it was useful to have the model keep track of its own grid and just update
-it on the view each turn.
+to iterate over the grid and display each char on the buttons in the view. It was useful to have 
+the model keep track of its own grid since the grid changed after each event (to only update 
+the grid on the view after an event).
 - The event model pattern was useful in making sure that the view ONLY changed 
 when the user takes a turn (i.e the model "changes"). This way keeps the 
 implementation of the view & model separate and delegation occurs in the controller. 
@@ -61,7 +57,8 @@ or zombie is eaten but it doesn't dissappear off the board until the next turn. 
 the event model pattern and the fact that it only updates when the user takes a turn. So, it is not 
 "real time" and can be confusing to the user. 
 
-The process: The code was refactored multiple times after each iteration. Some major changes are:
+Reflection on the process
+The code was refactored multiple times after each iteration. Some major changes are:
 - Having a grid[][] array in the model which updates in the view. Originally, the view changed by 
 iterating through the array lists and placing a plant or zombie based on their x and y coordinates.
 This was very long code and it was shortened to a few lines just by having the model's grid array. 
@@ -70,7 +67,18 @@ the zombies won by being two spaces away from the plants and killing the plant. 
 only having the zombies win by reaching the end of the board (reaches the house) and the zombies 
 can only be killed by peashooters and cherrybombs. 
 
- Overall, the process was a good learning experience in software development. 
+Likes:
+- As a group, we were easily able to communicate and collabroate with each other. 
+- As this course was a first project development course, we've learned foundations of a MVC implementation as well as UML digrams. 
+- As we were documenting each milestone, it became easier to make new and improved modifications on the next iterations. 
+- Documentation is also a skill we've improved on throughout this course.  
+- We were not familiar with the game, so it pushed us out of our comfort zome. 
+
+Dislikes:
+- At the start of the course, we were hoping to choose our game (project). 
+- The Plant vs. Zombie game was not particularly appealing to us as a group. 
+
+Overall, the process was a good learning experience in software development. 
  
  ========================================================================================================
  Specifications to better understand the game:
@@ -119,7 +127,7 @@ Classes:
 Change Log:
 
 - Unit tests for all methods in the model, view and controller. They run using JUnit to test edge cases and parameters. Test the new classes (new plants and new zombies) and the save/load feature. Test case "gameover" is now changed to "gameplay". 
-- UML diagrams (class and sequence) are modified according to the code 
+- UML diagrams (class and sequence) are modified according to the changes from Milestone 3 to Milestone 4. 
 - Changed the way zombies are killed. In the previous milestone, the zombies were killed according to the distance between the plant and zombie but now we have implemented a life counter for the zombies. Different zombies are given different life values (explained above). ie. when the peashooter "shoots" its peas the life decreases by 100. When the life (damagePoints) reaches 0, the zombie is dead. The Cherry Bomb kills all the zombies off the board. 
 - The Undo and Redo implementations were lagging one frame last milestone, and that is now fixed
 - The zombies sometimes started from the second rightmost square rather than starting at the rightmost square. This is now fixed and all the zombies start at the righmost square and try to reach the house (leftmost square)
