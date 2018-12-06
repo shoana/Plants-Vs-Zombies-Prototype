@@ -169,8 +169,14 @@ public class TestGamePlay extends TestCase {
 	 */
 	public void testLoad() throws IOException, ClassNotFoundException {
 		
-		 int readArr[] = {lvl, sunshine};
-		 InputStream in = new FileInputStream("testSave.txt");
+		int writeArr[] = {lvl, sunshine}; //writing to a file
+		OutputStream out = new FileOutputStream("testLoad.txt");
+		for(int i = 0; i < writeArr.length ; i++) {
+			out.write (writeArr[i]);  
+		}
+		
+		 int readArr[] = {lvl, sunshine}; //reading from the file
+		 InputStream in = new FileInputStream("testLoad.txt");
 			for(int i = 0; i < readArr.length ; i++) {
 				in.read();  
 			}
