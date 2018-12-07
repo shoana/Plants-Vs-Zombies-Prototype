@@ -94,7 +94,7 @@ Overall, the process was a good learning experience in software development.
 	- Normal (z): They are randomly generated onto the board form the rightside of the grid. The normal zombies start with 200 life 			points. 
 	- Pylon (x): They are randomly generated onto the board form the rightside of the grid. It is harder to kill this zombie as it 			starts with 200 life points. 
 	- Flag (f): Is placed in the center of board at the beginning of the game. It starts with 100 life points. Allways in the same position.
- - Sunshine(Money) -- starts with 800
+ - Sunshine(Money) -- starts with 800 in every level
 =================================================================================================
 LEVEL REPRESENTATION:
 There are 3 levels that are of different difficulties and different zombies to kill
