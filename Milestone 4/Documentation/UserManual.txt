@@ -1,7 +1,7 @@
 USER MANUAL:
 -------------------
 Inorder for the game to begin, run the View.java class. 
-1) You have a current score of 800 sunshines
+1) You have a current score of 800 sunshines (at the begining of each level)
 2) Follow the pop-up that appears. (Press on Game on the top-left corner of the window, then choose Level 1 to begin)
 3) When done, a pop-up will appear to tell you the type of zombies you will fight this round.
 4) For Level 1: Upto 2 normal zombies randomly positioned on the grid. Place your plants to kill these zombies to successfully go to the next level.
@@ -21,7 +21,7 @@ Inorder for the game to begin, run the View.java class.
 16) You can save and load your game as well, no matter the level. 
 17) If the zombies reach the house then the zombies will win. If the zombies eat all of the plants and no plants are on the grid, the zombies will also win. Lastly, if you use all your sunshine and can not plant anymore plants onto the grid, the zombies can win that way too.
 18) For the plants to win, you must defeat all the zombies and still have sunshine leftover. 
-19) The sunshines (used to buy plants) doesn't restock after each level, so place plants carefully and play stratigically.
+19) The sunshines (used to buy plants) restocks after each level, place plants carefully and play stratigically.
 20) DON'T DIE!!
 
 
