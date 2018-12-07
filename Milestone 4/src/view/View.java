@@ -115,7 +115,7 @@ public class View extends JFrame implements gamePlayListener {
 		JPanel gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(6,6));
 		window.getContentPane().add(gamePanel, BorderLayout.CENTER);		
-		scoreStatus = new JLabel("Sunshines Left: 1000");
+		scoreStatus = new JLabel("Sunshines Left: 800");
 		window.getContentPane().add(scoreStatus, BorderLayout.EAST);
 
 		board = new JButton[6][6];
