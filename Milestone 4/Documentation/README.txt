@@ -56,6 +56,8 @@ Dislikes:
 or zombie is eaten but it doesn't dissappear off the board until the next turn. This is because of 
 the event model pattern and the fact that it only updates when the user takes a turn. So, it is not 
 "real time" and can be confusing to the user. 
+- As we're unsure if whether we needed to implement multiple levels (we kept is as 3), having a 'Level' class would make 
+including multiple levels easier. 
 
 Reflection on the process
 The code was refactored multiple times after each iteration. Some major changes are:
