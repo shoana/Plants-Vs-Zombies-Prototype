@@ -59,6 +59,7 @@ the event model pattern and the fact that it only updates when the user takes a 
 - As we're unsure if whether we needed to implement multiple levels (we kept is as 3), having a 'Level' class would make 
 including multiple levels easier. 
 
+
 Reflection on the process
 The code was refactored multiple times after each iteration. Some major changes are:
 - Having a grid[][] array in the model which updates in the view. Originally, the view changed by 
@@ -74,7 +75,7 @@ Likes:
 - As this course was a first project development course, we've learned foundations of a MVC implementation as well as UML digrams. 
 - As we were documenting each milestone, it became easier to make new and improved modifications on the next iterations. 
 - Documentation is also a skill we've improved on throughout this course.  
-- We were not familiar with the game, so it pushed us out of our comfort zome. 
+- We were not familiar with the game, so it pushed us out of our comfort zone. 
 
 Dislikes:
 - At the start of the course, we were hoping to choose our game (project). 
@@ -82,8 +83,8 @@ Dislikes:
 
 Overall, the process was a good learning experience in software development. 
  
- ========================================================================================================
- Specifications to better understand the game:
+=========================================================================================================
+Specifications to better understand the game:
  
 -Plants:
 	- Peashooter(p): Kills the zombies with its peas by decreasing the damage points of the zombie (-100 damage points) --- 100 Sunshines
@@ -94,7 +95,7 @@ Overall, the process was a good learning experience in software development.
 	- Normal (z): They are randomly generated onto the board form the rightside of the grid. The normal zombies start with 200 life 			points. 
 	- Pylon (x): They are randomly generated onto the board form the rightside of the grid. It is harder to kill this zombie as it 			starts with 200 life points. 
 	- Flag (f): Is placed in the center of board at the beginning of the game. It starts with 100 life points. Allways in the same position.
- - Sunshine(Money) -- starts with 800 at the begining of every level
+ - Sunshine(Money) -- starts with 800 at the begining of each level
 =================================================================================================
 LEVEL REPRESENTATION:
 There are 3 levels that are of different difficulties and different zombies to kill
@@ -105,9 +106,10 @@ Level 2:The player fights upto 4 zombies, 3 normal zombies randomly positioned o
 
 Level 3: The player fights multiple zombies of all types. This is the more challenging level as the sunshines are low and possibly more zombies are attacking
 
-When you select a level, there are pop-ups to inform about the types of zombies you are playing against. Follow the instructions on the pop-ups to access all the levels. Also the sunshines (used to buy plants) doesn't restock after each level, so be careful and play stratigically. 
+When you select a level, there are pop-ups to inform about the types of zombies you are playing against. Follow the instructions on the pop-ups to access all the levels. Also the sunshines (used to buy plants) restocks after each level, be careful and play stratigically. 
 
 =================================================================================================
+
 Visual Representation (GUI):
 - sunshine counter -- used like money
 - planting sunflowers allow users to gain more sunshine
@@ -115,9 +117,10 @@ Visual Representation (GUI):
 - undo and redo buttons to unlimitedly undo and redo the user moves (planting plants) 
 - save and load buttons -- saving the board is like taking a snapshot of all the elements of the board (not including the score) and when load is pressed, that saved board is what you will be playing. 
 - pop up when the user presses on the grid to place a plant with the various choice of plants to plant
-=================================================================================================
-Classes:
 
+=================================================================================================
+
+Classes:
 - Plant: Sunflower, Peashooter, Walnut, CherryBomb
 - Zombie: NormalZombie, PylonZombie, FlagZombie
 - gamePlay (model)
@@ -125,6 +128,8 @@ Classes:
 - Controller
 - gamePlayEvent 
 - gamePlayListener
+- multiple test classes 
+
 =================================================================================================
 Change Log:
 
@@ -135,8 +140,10 @@ Change Log:
 - The zombies sometimes started from the second rightmost square rather than starting at the rightmost square. This is now fixed and all the zombies start at the righmost square and try to reach the house (leftmost square)
 - Created packages for the code to organize the classes and avoid smell
 - Save/Load feautures are now implemented in the model. The methods use throw exceptions. Saving the board is like taking a snapshot of all the elements of the board (not including the score) and when load is pressed, that saved board is what you will be playing. We decided to not make the score change to make the game more chalenging and follow the rules of classic games.
-- Levels are added onto this milestone as well. For better understanding, read the thorough explaination of levels above. 
+- Levels are added onto this milestone as well. For better understanding, read the thorough explaination of levels above.
+
 =================================================================================================
+
 Changes to UML from:
  - Class Diagrams:
 The class duagrams does not include any major changes from the previous milestone. The only changes in the class diagram are including the new methods save, load and level implemtations. The class digrams still are based on a MVC pattern. All the varied types of plants inherits from the super class plants and all the different zombies inherit from super class zombies.
@@ -147,6 +154,7 @@ All edge cases are shown for when a user invokes one of the following methods in
 'moveZombie', 'save', 'load', 'redo', 'undo', 'lvlOne', 'lvlTwo' & 'lvlThree' from the gamePlay class.
 
 ==================================================================================================
+
 User-visible Changes:
 - JFrame is used as the display and GridLayout using JButton is used for choosing and placing different type of plants. 
 - JButton is used for the undo and redo functionalities
@@ -157,11 +165,15 @@ User-visible Changes:
 - The starting sunshine is now 800 rather than 1000 to make the game more interesting
 - More buttons are added to the top, the load and save buttons along side undo, redo. 
 - There are pop-ups to inform about the types of zombies you are playing against before they start a new level.
+
 =================================================================================================
+
 Known Errors:
 - Our visual representation of the zombeis in the game is lagging a frame behind for Save/Load. So when you save a frame, you are actually saving the next frame (that is not visible to the user). Then when you load, it loads the frame that is actaully saved. So the Save/Load feature works but the visual representation of the save functoinality is lagging. 
 	For example, when the user clicks on Save, the frame that is visually shown might have a zombie that should be dead in the next 	turn, but the saved frame is the frame when that zombie is dead so when you load that frame, it will not show that particular 		zombie because it is actually dead. 
+	
 =================================================================================================
+
 ZIP folder contains:
 - User Manual
 - README file
@@ -169,7 +181,9 @@ ZIP folder contains:
 - Unit Tests
 - Source Code
 - UML Class and Sequence Diagrams
+
 =================================================================================================
+
 Who did what:
 
 Sarah Lamonica: 
