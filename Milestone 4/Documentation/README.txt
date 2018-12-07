@@ -159,7 +159,8 @@ User-visible Changes:
 - There are pop-ups to inform about the types of zombies you are playing against before they start a new level.
 =================================================================================================
 Known Errors:
-- 
+- Our visual representation of the zombeis in the game is lagging a frame behind for Save/Load. So when you save a frame, you are actually saving the next frame (that is not visible to the user). Then when you load, it loads the frame that is actaully saved. So the Save/Load feature works but the visual representation of the save functoinality is lagging. 
+	For example, when the user clicks on Save, the frame that is visually shown might have a zombie that should be dead in the next 	turn, but the saved frame is the frame when that zombie is dead so when you load that frame, it will not show that particular 		zombie because it is actually dead. 
 =================================================================================================
 ZIP folder contains:
 - User Manual
@@ -175,12 +176,13 @@ Sarah Lamonica:
 - Implemented Save/Load functionality using Java Serialization
 - Implemented level builder by including different functions for different levels and logic for switching between levels
 - Added buttons for save/load and multi-level menu bar and its implementation in gamePlay
+- Fixed known errors from Milestone 3
 
 Mounica Pillarisetty:
 - ReadMe File
 - User Manual
 - Detailed Discription
-- Refactored gamePlay and View classes to suit the changes to the game
+- Refactored gamePlay and View classes to suit the changes and fix issues
 - Worked on level builder as well as the visual representation of it
 
 Shoana Sharma:
