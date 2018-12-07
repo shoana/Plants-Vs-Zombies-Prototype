@@ -174,14 +174,18 @@ Sarah Lamonica:
 - Implemented level builder by including different functions for different levels and logic for switching between levels
 - Added buttons for save/load and multi-level menu bar and its implementation in gamePlay
 
-
 Mounica Pillarisetty:
+- ReadMe File
+- User Manual
+- Detailed Discription
+- Refactored gamePlay and View classes to suit the changes to the game
+- Worked on level builder as well as the visual representation of it
 
 Shoana Sharma:
 - Class Diagrams 
 - Java Documentation
-_ Test Cases for MVC
-_ Refactoring gamePlay class
+- Test Cases for MVC
+- Refactoring gamePlay class
 
 Fatima Hashi:
 - Sequence Diagram
